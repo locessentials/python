@@ -60,7 +60,7 @@ frase.replace("dos", "2") # reemplaza texto → "uno 2 tres"
 
 ---
 
-![Logo de Python en amarillo y rojo](/imagenes/python-logo.png){: .tip-circle }
+![Logo de Python en amarillo y rojo]({{ '/imagenes/python-logo.png' | relative_url }}){: .tip-circle }
 
 Recuerda: los métodos de cadena regresan una cadena NUEVA; `nombre` no cambia a menos que la reasignes:
 `nombre = nombre.strip()`
@@ -107,7 +107,7 @@ print(nums)               # [3, 1, 2]  (sin cambios)
 
 ---
 
-![Logo de Python en amarillo y rojo](/imagenes/python-logo.png){: .tip-circle }
+![Logo de Python en amarillo y rojo]({{ '/imagenes/python-logo.png' | relative_url }}){: .tip-circle }
 
 #### `sort` vs. `sorted`
 
@@ -136,7 +136,7 @@ nums.reverse()            # invierte el orden, regresa None → [3, 1]
 
 ---
 
-![Logo de Python en amarillo y rojo](/imagenes/python-logo.png){: .tip-circle }
+![Logo de Python en amarillo y rojo]({{ '/imagenes/python-logo.png' | relative_url }}){: .tip-circle }
 
 #### Lo que hay que saber sobre `.pop()`
 
