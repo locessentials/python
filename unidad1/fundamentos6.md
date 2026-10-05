@@ -67,3 +67,5 @@ Recuerda: los métodos de cadena regresan una cadena NUEVA; `nombre` no cambia a
 <span class="clear"></span>
 
 ---
+
+Listas
