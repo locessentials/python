@@ -7,6 +7,3 @@ nav_order: 4
 ---
 
 # Cheat Sheet 4: estructuras de datos
-
-1. Listas
-2. 
