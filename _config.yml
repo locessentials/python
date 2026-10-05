@@ -1,0 +1,47 @@
+title: "Python"
+description: "Python study guide"
+
+# Use Just the Docs theme for sidebar navigation
+remote_theme: just-the-docs/just-the-docs
+
+# Color scheme (optional)
+color_scheme: uwm
+
+# Favicon (optional)
+favicon_ico: "/imagenes/favicon.ico"
+
+# Enable search
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+
+# Navigation structure
+nav_sort: case_insensitive
+
+# Footer
+footer_content: "© Alaina Brandt 2026. Todos los derechos reservados sobre materiales curatoriales, comentarios, ejercicios y contenido original. Las obras literarias y audiovisuales incluidas en este currículo pertenecen a sus respectivos autores, directores, creadores y titulares de derechos."
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Markdown settings
+markdown: kramdown
+kramdown:
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+# Exclude files from processing
+exclude:
+  - node_modules/
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
