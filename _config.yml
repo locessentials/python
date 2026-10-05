@@ -5,7 +5,7 @@ description: "Python study guide"
 remote_theme: just-the-docs/just-the-docs
 
 # Color scheme (optional)
-color_scheme: uwm
+color_scheme: ipn-cic
 
 # Favicon (optional)
 favicon_ico: "/imagenes/favicon.ico"
