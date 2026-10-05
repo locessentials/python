@@ -22,3 +22,18 @@ a:hover {
   object-fit: cover; // crops instead of distorting
   border-radius: 5px;
 }
+
+.tip-circle {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
+  float: left;
+margin: 10px 15px 10px 0;
+}
+
+// clearfix so content after the paragraph doesn't wrap awkwardly
+.clear {
+  clear: both;
+  display: block;
+}

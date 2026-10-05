@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Fundamentos 2
-parent: 1. Fundamentos
+title: Operadores y expresiones
+parent: 1. Cheat Sheets
 nav_order: 2
 ---
 
-# Fundamentos 2
+# Cheat Sheet 2: operadores y expresiones

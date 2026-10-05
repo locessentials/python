@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Fundamentos 3
-parent: 1. Fundamentos
+title: Estructuras de control
+parent: 1. Cheat Sheets
 nav_order: 3
 ---
 
-# Fundamentos 3
+# Cheat Sheet 3: estructuras de control

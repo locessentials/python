@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Fundamentos 5
-parent: 1. Fundamentos
+title: Funciones
+parent: 1. Cheat Sheets
 nav_order: 5
 ---
 
-# Fundamentos 5
+# Cheat Sheet 5: funciones

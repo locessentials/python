@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 2. Matemática
+title: 2. Matemáticas
 nav_order: 4
 has_children: true
 ---
