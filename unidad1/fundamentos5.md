@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Fundamentos 5
-title: 1. Fundamentos
+parent: 1. Fundamentos
 nav_order: 5
 ---
 
