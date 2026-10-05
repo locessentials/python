@@ -1,37 +1,7 @@
 // Color scheme for IPN-CIC
 
-// Sidebar background
 $sidebar-color: #EDE308;
-
-// Link colors - dark green
 $link-color: #11110F;
-$link-hover-color: #E52125;
-
-// Apply to Just the Docs variables
-$nav-list-link-color: $link-color;
-$nav-list-link-color-hover: $link-hover-color;
-$nav-list-link-color-active: $link-hover-color;
-
-// Body link colors
 $body-text-color: #11110F;
-$body-link-color: $link-color;
-$body-link-hover-color: $link-hover-color;
-
-// Search results
 $search-result-preview-color: $body-text-color;
-
-// Buttons (optional - keeps them green themed)
 $btn-primary-color: $link-color;
-
-// Image styling
-
-.cover-img {
-  border-radius: 5px;
-}
-
-.img-styling {
-  width: 600px;
-  height: 400px;
-  object-fit: cover; // crops instead of distorting
-  border-radius: 5px;
-}

@@ -1,0 +1,24 @@
+// Color scheme for IPN-CIC
+
+// Link hover color
+a:hover {
+  color: #E52125;
+}
+
+// Sidebar nav links: hover and current page
+.nav-list .nav-list-item .nav-list-link:hover,
+.nav-list .nav-list-item .nav-list-link.active {
+  color: #E52125;
+}
+
+// Image styling
+.cover-img {
+  border-radius: 5px;
+}
+
+.img-styling {
+  width: 600px;
+  height: 400px;
+  object-fit: cover; // crops instead of distorting
+  border-radius: 5px;
+}
