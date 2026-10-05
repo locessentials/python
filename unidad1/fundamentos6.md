@@ -111,11 +111,11 @@ print(nums)               # [3, 1, 2]  (sin cambios)
 
 #### `sort` vs. `sorted`
 
-- El método `nums.sort()` ordena la lista misma y regresa `None`.
-- La función `sorted(nums)` deja la lista igual y regresa una nueva lista ordenada:
-  - `ordenada = sorted(nums)` guarda la versión ordenada en otra variable; `nums` no cambia.
-  - `nums = sorted(nums)` reemplaza `nums` con la versión ordenada.
-- Cómo recordarlo: *sort* es un verbo (una orden: "ordena esta lista"); *sorted* es un adjetivo ("una versión ordenada").
+El método `nums.sort()` ordena la lista misma y regresa `None`. La función `sorted(nums)` deja la lista igual y regresa una nueva lista ordenada:
+- `ordenada = sorted(nums)` guarda la versión ordenada en otra variable; `nums` no cambia.
+- `nums = sorted(nums)` reemplaza `nums` con la versión ordenada.
+
+Cómo recordarlo: *sort* es un verbo (una orden: "ordena esta lista"); *sorted* es un adjetivo ("una versión ordenada").
 
 <span class="clear"></span>
 
