@@ -1,10 +1,8 @@
 ---
 layout: default
-title: Manejo de errores
+title: Módulos e importaciones
 parent: 1. Cheat Sheets
 nav_order: 8
 ---
 
-# Cheat Sheet 8: manejo de errors
-
-aka manejo de excepciones
+# Cheat Sheet 8: módulos e importaciones

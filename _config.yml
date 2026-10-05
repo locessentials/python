@@ -1,5 +1,6 @@
 title: "Python"
 description: "Python study guide"
+baseurl: "/python"
 
 # Use Just the Docs theme for sidebar navigation
 remote_theme: just-the-docs/just-the-docs

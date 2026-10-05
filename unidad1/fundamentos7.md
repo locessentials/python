@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Módulos e importaciones
+title: Clases
 parent: 1. Cheat Sheets
 nav_order: 7
 ---
 
-# Cheat Sheet 7: módulos e importaciones
+# Cheat Sheet 7: clases

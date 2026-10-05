@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Clases y métodos
+title: Métodos
 parent: 1. Cheat Sheets
 nav_order: 6
 ---
 
-# Cheat Sheet 6: clases y métodos
+# Cheat Sheet 6: métodos
 
 ## Métodos integrados
 
