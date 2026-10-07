@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Conjuntos
-parent: Estructuras de datos
+parent: Colecciones
 grandparent: 1. Cheat Sheets
 nav_order: 5
 ---
 
-# Cheat Sheet 4: estructuras de datos – conjuntos
+# Cheat Sheet 4: colecciones – conjuntos

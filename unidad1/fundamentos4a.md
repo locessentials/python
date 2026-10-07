@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Listas
-parent: Estructuras de datos
+parent: Colecciones
 grandparent: 1. Cheat Sheets
 nav_order: 1
 ---
 
-# Cheat Sheet 4: estructuras de datos – listas
+# Cheat Sheet 4: colecciones – listas
 

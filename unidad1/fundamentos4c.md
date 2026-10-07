@@ -1,11 +1,11 @@
 ---
 layout: default
 title: Matrices
-parent: Estructuras de datos
+parent: Colecciones
 grandparent: 1. Cheat Sheets
 nav_order: 3
 ---
 
-# Cheat Sheet 4: estructuras de datos – matrices
+# Cheat Sheet 4: colecciones – matrices
 
 aka arreglos bidimensionales

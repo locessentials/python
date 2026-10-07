@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Diccionarios
-parent: Estructuras de datos
+parent: Colecciones
 grandparent: 1. Cheat Sheets
 nav_order: 4
 ---
 
-# Cheat Sheet 4: estructuras de datos – diccionarios
+# Cheat Sheet 4: colecciones – diccionarios
