@@ -48,7 +48,7 @@ min(t), max(t), sum(t)          # (10, 40, 100)
 sorted(t, reverse=True)         # [40, 30, 20, 10]  (sorted() siempre regresa una LISTA)
 
 for x in t:
-    print(x)
+    print(x)                    # 10 \n20 \n30 \n40
 ```
 
 ## Lo que no se puede hacer: modificar
@@ -62,7 +62,7 @@ t.append(40)                    # AttributeError: las tuplas no tienen append()
 Para "cambiar" una tupla hay que crear una nueva:
 
 ```python
-t = t + (40,)                   # nueva tupla → (10, 20, 30, 40)
+t = t + (40,)                   # reasigna t: ahora vale (10, 20, 30, 40) y la tupla anterior se pierde
 
 lista = list(t)                 # o convertirla en lista,
 lista[0] = 99                   # modificar la lista
@@ -70,6 +70,8 @@ t = tuple(lista)                # y convertirla de vuelta → (99, 20, 30, 40)
 ```
 
 ## Métodos de tuplas
+
+Un método es una función que pertenece a un objeto, como una tupla, y se llama con un punto: `t.count(2)`. Los métodos se explican en más detalle en [Cheat Sheet 6]({{ '/unidad1/fundamentos6.html' | relative_url }}).
 
 Como no se pueden modificar, las tuplas solo tienen dos métodos:
 
@@ -126,7 +128,7 @@ print(menor, mayor)             # 1 4
 
 ## Tuplas como claves de diccionario
 
-Una tupla puede ser clave de un diccionario porque no cambia; una lista no puede:
+Las tuplas también pueden ser claves de un diccionario, algo que las listas no pueden hacer; ver [Diccionarios]({{ '/unidad1/fundamentos4d.html' | relative_url }}).
 
 ```python
 lugares = {(0, 0): "origen", (2, 3): "tienda"}
