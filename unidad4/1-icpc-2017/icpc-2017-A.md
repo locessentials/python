@@ -30,6 +30,7 @@ Display the length of the longest straight line segment that fits inside the pol
 | ENG | ESP | Definición |
 | --- | --- | ---------- |
 | cross product | producto cruz | dados A = (x₁, y₁), B = (x₂, y₂) y P = (x₃, y₃): (x₂ − x₁)(y₃ − y₁) − (y₂ − y₁)(x₃ − x₁); positivo: de A a B y luego a P se gira en sentido antihorario; negativo: en sentido horario; cero: colineales |
+| crossing test | prueba de cruce | dados la recta que pasa por A y B, y un lado del polígono con extremos C y D: se calcula el producto cruz con P = C y luego con P = D; signos opuestos: el lado cruza la recta; mismo signo: no la cruza |
 | distance formula | fórmula de la distancia | distancia entre (x₁, y₁) y (x₂, y₂): d = √((x₂ − x₁)² + (y₂ − y₁)²) |
 | parametric form | forma paramétrica | dados A = (x₁, y₁) y B = (x₂, y₂), cada punto de la recta es (x₁ + t(x₂ − x₁), y₁ + t(y₂ − y₁)); t = 0 en A, t = 1 en B |
 | ray casting | método del rayo (regla par-impar) | para saber si un punto está dentro de un polígono, se traza un rayo desde él y se cuentan los lados que cruza; impar: dentro, par: fuera |
