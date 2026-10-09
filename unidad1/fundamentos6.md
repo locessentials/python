@@ -51,8 +51,6 @@ frase.find("dos")         # posición donde empieza la cadena → 4 (o -1 si no 
 frase.count("o")          # cuántas veces aparece → 2
 frase.startswith("uno")   # Verdadero o falso → regresa True
 frase.endswith("tres")    # Verdadero o falso → regresa True
-"123".isdigit()           # Verdadero o falso → regresa True: solo dígitos
-"abc".isalpha()           # Verdadero o falso → regresa True: solo letras
 frase.split()             # separa en una lista → ["uno", "dos", "tres"]
 "-".join(["a", "b", "c"]) # une una lista con un separador → "a-b-c"
 frase.replace("dos", "2") # reemplaza texto → "uno 2 tres"

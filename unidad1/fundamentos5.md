@@ -3,45 +3,23 @@ layout: default
 title: Funciones
 parent: 1. Cheat Sheets
 nav_order: 5
+has_children: true
 ---
 
 # Cheat Sheet 5: funciones
 
-The whole expression len(nums) is a function call: you’re calling the function len and passing it nums.
-
-The parts:
-
-len: the function’s name, el nombre de la función
-nums: the argument, el argumento, which is the value you give the function to work on
-5: the value the function gives back, its return value, el valor de retorno
-
-def doble(x):          # DEFINE la función: le dice a Python qué hacer cuando la llamen
-    return x * 2
-
-doble(5)               # LLAMA a la función: ahora sí se ejecuta, y regresa 10
-
-in the definition, x is a parameter (parámetro), the name the function uses for whatever it receives
-in the call, 5 is the argument (argumento), the actual value you pass in
-
-
-## any() y all()
+Para aprender sobre funciones, empecemos con una que ya viene integrada en Python: `len()`
 
 ```python
-s = input()
-
-print(any(c.isalnum() for c in s))
-print(any(c.isalpha() for c in s))
-print(any(c.isdigit() for c in s))
-print(any(c.islower() for c in s))
-print(any(c.isupper() for c in s))
+nums = [1, 2, 3, 4, 5]
+print(len(nums))        # 5
 ```
 
-means
+Las partes:
 
-```python
-found = False
-for c in s:              # go through each character
-    if c.isalpha():      # check just that one character
-        found = True
-print(found)
-```
+- **len**: el nombre de la función
+- **nums**: el argumento, es decir, lo que le pasas a la función en la llamada para que trabaje con ello (aquí, la lista `[1, 2, 3, 4, 5]`)
+- **parámetro**: el nombre de variable que se escribe en la definición de la función y que sirve como marcador de posición para el valor que recibirá cuando la llamen
+- **5**: el valor de retorno, es decir, el valor que la función te devuelve
+
+La expresión completa `len(nums)` es una **llamada a una función**: estás llamando a la función `len` y pasándole `nums`. Normalmente tienes que definir una función con `def` antes de poder llamarla, pero las funciones integradas, como `len`, se saltan ese paso porque Python ya las trae definidas.
