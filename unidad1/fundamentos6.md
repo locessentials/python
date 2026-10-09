@@ -58,6 +58,15 @@ frase.split()             # separa en una lista → ["uno", "dos", "tres"]
 frase.replace("dos", "2") # reemplaza texto → "uno 2 tres"
 ```
 
+```python
+s = "y2K"
+s.isalnum()   # True if all characters are letters or digits (a-z, A-Z and 0-9)
+s.isalpha()   # True if all characters are letters (a-z and A-Z)
+s.isdigit()   # True if all characters are digits (0-9)
+s.islower()   # True if all letters are lowercase (non-letters are ignored) (a-z)
+s.isupper()   # True if all letters are uppercase (non-letters are ignored) (A-Z)
+```
+
 ---
 
 ![Logo de Python en amarillo y rojo]({{ '/imagenes/python-logo.png' | relative_url }}){: .tip-circle }
@@ -125,13 +134,16 @@ Cómo recordarlo: *sort* es un verbo (una orden: "ordena esta lista"); *sorted* 
 
 ```python
 nums = [3, 1, 4]
-nums.append(5)            # agrega al final → [3, 1, 4, 5]
+nums.append(5)            # agrega un elemento al final → [3, 1, 4, 5]
+nums.append([3, 1, 4])    # agrega la lista entera como un solo elemento → [3, 1, 4, [3, 1, 4]]
+nums.extend([3, 1, 4])    # agrega cada elemento, uno por uno → [3, 1, 4, 3, 1, 4]
 nums.insert(0, 9)         # inserta en el índice 0 → [9, 3, 1, 4, 5]
 nums.remove(4)            # quita la primera aparición del VALOR 4 → [9, 3, 1, 5]
 nums.pop()                # quita y regresa el último elemento (5) → [9, 3, 1]
 nums.pop(0)               # quita y regresa el elemento en el índice 0 (9) → [3, 1]
 nums.sort()               # ordena de menor a mayor, regresa None → [1, 3]
 nums.reverse()            # invierte el orden, regresa None → [3, 1]
+
 ```
 
 ---

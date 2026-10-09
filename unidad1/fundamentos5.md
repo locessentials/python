@@ -22,3 +22,26 @@ doble(5)               # LLAMA a la función: ahora sí se ejecuta, y regresa 10
 
 in the definition, x is a parameter (parámetro), the name the function uses for whatever it receives
 in the call, 5 is the argument (argumento), the actual value you pass in
+
+
+## any() y all()
+
+```python
+s = input()
+
+print(any(c.isalnum() for c in s))
+print(any(c.isalpha() for c in s))
+print(any(c.isdigit() for c in s))
+print(any(c.islower() for c in s))
+print(any(c.isupper() for c in s))
+```
+
+means
+
+```python
+found = False
+for c in s:              # go through each character
+    if c.isalpha():      # check just that one character
+        found = True
+print(found)
+```
