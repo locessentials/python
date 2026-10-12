@@ -113,4 +113,5 @@ for i in range(n):
 
 print(f"{best:.9f}")
 
-# Get-Content asample1.txt | python a.py
+# Get-Content asample1.txt | python a.py > 76.157731059
+# Get-Content asample2.txt | python a.py > 4510.149110617
