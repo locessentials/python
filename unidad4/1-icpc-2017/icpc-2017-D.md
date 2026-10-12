@@ -21,11 +21,11 @@ Revisar todos los pares productor–comprador tardaría demasiado (hasta 500,000
 
 ## Implementación
 
-1. Poda (*pruning*)
+### 1. Poda (*pruning*)
 - **Productores:** ordenar por día inicial y precio más bajo, menor a mayor; quitar los productores que no sean competitivos, es decir, los que tienen otro productor que empieza antes y cobra menos
 - **Compradores:** ordenar por día final y precio más alto, mayor a menor; quitar los compradores que no sean competitivos, es decir, los que tienen otro comprador que termina después y paga más
 
-2. Monotonía (*monotonicity*): optimización con divide y vencerás
+### 2. Monotonía (*monotonicity*): optimización con divide y vencerás
 
 **Lógica**
 - Productores: los primeros son caros, los posteriores son baratos
