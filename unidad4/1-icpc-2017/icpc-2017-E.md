@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Problem E
+title: Problema E
 grandparent: 4. Problemas
 parent: ICPC 2017
 nav_order: 5
@@ -33,10 +33,14 @@ Las lecturas s pueden ser negativas, y c también puede serlo, pero no al mismo 
 
 - El valor de **c**, con un error absoluto o relativo menor que 10⁻⁶ (es decir, 0.000001).
 
+---
+
 ## Idea principal
 No hay una fórmula directa para calcular c (como c aparece dentro de cada denomidador) de la ecuación directamente, pero el tiempo total siempre baja cuando c sube, así que usamos **búsqueda binaria sobre la respuesta**: probamos el punto medio del rango posible de c, calculamos el tiempo que daría y descartamos (*we discard*) la mitad donde c no puede estar. Repetimos hasta que el rango es mucho más pequeño que 10⁻⁶.
 - `T(c)`: función de evaluación; calcula el tiempo total del viaje si la constante fuera c
 - ciclo `for`: aquí está la búsqueda binaria; compara `T(mid)` con `t` y mueve `lo` o `hi` al punto medio
+
+---
 
 ## Panorama de la resolución
 
@@ -85,6 +89,8 @@ En el ciclo `for`, calculamos el punto medio entre `lo` y `hi`, lo evaluamos con
 2. Si el tiempo que da es menor o igual que el tiempo total real, el viaje es demasiado corto y las velocidades son demasiado rápidas. Como c tiene que ser más pequeña, descartamos todos los valores de c mayores que el punto medio, así que `hi` pasa a ser el punto medio.
 
 Repetimos 100 veces, hasta que el rango es mucho más pequeño que 10⁻⁶. Como cada iteración reduce el rango a la mitad, con unas 40 ya se llega a 10⁻⁶; usamos 100, un valor común en búsquedas binarias con decimales porque alcanza de sobra.
+
+---
 
 ## Solución
 
