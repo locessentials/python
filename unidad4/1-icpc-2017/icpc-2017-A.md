@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Problem A
+title: Problema A
 grandparent: 4. Problemas
 parent: ICPC 2017
 nav_order: 1
 ---
 
-# ICPC 2017 - Problem A
+# ICPC 2017 - Problema A
 
 ## Resumen del problema
 

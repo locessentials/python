@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Problem C
+title: Problema C
 grandparent: 4. Problemas
 parent: ICPC 2017
 nav_order: 3
 ---
 
-# ICPC 2017 - Problem C: emparejamiento bipartito
+# ICPC 2017 - Problema C: emparejamiento bipartito
 
 Tenemos una **cuadrícula** (grid) de r renglones y c columnas, y en cada posición hay una pila de cajas de cierta altura (puede ser 0). Desde el frente se ve la altura máxima de cada columna, desde el lado se ve la altura máxima de cada renglón y desde arriba se ve qué posiciones tienen cajas y cuáles están vacías. 
 

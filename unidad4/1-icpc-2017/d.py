@@ -1,3 +1,5 @@
+# Leer la entrada
+
 # m = número de productores
 # n = número de compradores
 

@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Problem D
+title: Problema D
 grandparent: 4. Problemas
 parent: ICPC 2017
 nav_order: 4
 ---
 
-# ICPC 2017 - Problem D: poda y monotonía
+# ICPC 2017 - Problema D: poda y monotonía
 
 ## Problema
 - Entrada: m productores (p = precio, d = día inicial) y n compradores (c = costo, z = día final)
