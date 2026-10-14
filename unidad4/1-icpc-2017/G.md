@@ -59,12 +59,14 @@ cuadrícula final   quitar el error   deshacer el paso   salida
 | ----- | ------ | ------------- | --------- |
 | ....<br>..#.<br>.##.<br>.... | 0 1 1 1<br>1 3 3 2<br>1 3 3 2<br>1 2 2 1 | .###<br>###.<br>###.<br>#..# | .###<br>#.#.<br>###.<br>#..# |
 
-| antes | actualización | con error |
-| ----- | ------------- | --------- |
-| ....<br>..#.<br>.##.<br>.... | .####<br>###.<br>###.<br>#..# | .####<br>#.#.<br>###.<br>#..# |
-| 0 1 1 1<br>1 3 3 2<br>1 3 3 2<br>1 2 2 1
-| | |
-
+| | A. con error | B. paso 2A: deshacer sin arreglar | C. paso 2B: cambiar la candidata y deshacer |
+| --- | --- | --- | --- |
+| cuadrícula | .###<br>#.#.<br>###.<br>#..# | .###<br>#.#.<br>###.<br>#..# | .###<br>###.<br>###.<br>#..# |
+| step_backward | | ....<br>..#.<br>.#..<br>.... | ....<br>..#.<br>.##.<br>.... |
+| conteo | | 0 1 1 1<br>1 2 2 1<br>1 2 2 1<br>1 1 1 0 | 0 1 1 1<br>1 3 3 2<br>1 3 3 2<br>1 2 2 1 |
+| step_forward | | .###<br>#..#<br>#..#<br>###. | .###<br>###.<br>###.<br>#..# |
+| diferencias | | ....<br>..XX<br>.XXX<br>.XXX | ....<br>....<br>....<br>.... |
+| resultado | | más de 1 diferencia: no pasa | 0 diferencias: pasa |
 
 
 
