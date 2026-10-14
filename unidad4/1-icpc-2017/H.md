@@ -8,9 +8,18 @@ nav_order: 8
 
 # ICPC 2017 - Problema H: planificación con plazos
 
-Given the number of tasks to complete n, and a standard time to complete each task t, calculate if you will be able to complete all tasks, given a time a at which you can start each task and a time b at which the task needs to be completed.
+Hay **n** tareas. Cada tarea tarda exactamente **t** unidades de tiempo. Para cada tarea se dan dos números:
 
-Indicate whether you will be able to complete all tasks in a day.
+- **a**: lo más temprano que se puede empezar la tarea
+- **b**: el momento en que la tarea ya tiene que estar terminada
+
+Solo se puede hacer una tarea a la vez, y una tarea no se puede interrumpir: una vez que empieza, dura **t** unidades seguidas.
+
+¿Es posible acomodar todas las tareas de modo que cada una **empiece en a o después** y **termine en b o antes**?
+
+**Salida:** `yes` si se puede, `no` si no se puede.
+
+**Límites:** 1 ≤ n ≤ 10 000, 1 ≤ t ≤ 100 000, a + t ≤ b ≤ 1 000 000 000
 
 ## Ejemplos
 
