@@ -6,7 +6,7 @@ parent: ICPC 2017
 nav_order: 9
 ---
 
-# ICPC 2017 - Problema I: clausura transitiva
+# ICPC 2017 - Problema I: clausura transitiva (grafos)
 
 ## Problema
 - Entrada: m traducciones de letras (a → b, c) y n pares de palabras
