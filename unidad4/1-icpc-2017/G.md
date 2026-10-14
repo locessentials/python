@@ -55,20 +55,15 @@ cuadrícula final   quitar el error   deshacer el paso   salida
 3. Si A o B pasa la revisión, quitar los bordes vacíos de la cuadrícula nueva y volver al paso 2 (solo si mide al menos 3 × 3).
 4. Si ninguno pasa, terminar e imprimir la cuadrícula actual.
 
-| antes | conteo | actualización | con error |
-| ----- | ------ | ------------- | --------- |
-| ....<br>..#.<br>.##.<br>.... | 0 1 1 1<br>1 3 3 2<br>1 3 3 2<br>1 2 2 1 | .###<br>###.<br>###.<br>#..# | .###<br>#.#.<br>###.<br>#..# |
-
 | | A. con error | B. paso 2A: deshacer sin arreglar | C. paso 2B: cambiar la candidata y deshacer |
 | --- | --- | --- | --- |
 | cuadrícula | .###<br>#.#.<br>###.<br>#..# | .###<br>#.#.<br>###.<br>#..# | .###<br>###.<br>###.<br>#..# |
-| step_backward | | ....<br>..#.<br>.#..<br>.... | ....<br>..#.<br>.##.<br>.... |
 | conteo | | 0 1 1 1<br>1 2 2 1<br>1 2 2 1<br>1 1 1 0 | 0 1 1 1<br>1 3 3 2<br>1 3 3 2<br>1 2 2 1 |
+| step_backward | | ....<br>..#.<br>.#..<br>.... | ....<br>..#.<br>.##.<br>.... |
 | step_forward | | .###<br>#..#<br>#..#<br>###. | .###<br>###.<br>###.<br>#..# |
 | diferencias | | ....<br>..XX<br>.XXX<br>.XXX | ....<br>....<br>....<br>.... |
 | resultado | | más de 1 diferencia: no pasa | 0 diferencias: pasa |
-
-
+| candidata | | renglón más alto con X: 2.º<br>columna más a la izquierda con X: 2.ª<br>candidata: 2.º renglón, 2.ª columna | se cambia la candidata (de `.` a `#`) antes de deshacer |
 
 ### Funciones auxiliares
 
