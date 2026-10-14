@@ -10,7 +10,7 @@ nav_order: 7
 
 ## Problema
 
-Se tiene una cuadrícula de celdas, donde el **w** y **h** son el ancho y la altura de la cuadrícula final. Cada celda está vacía (`.`) o llena (`#`), y hay al menos una celda llena en la primera fila, en la última fila, en la primera columna y en la última columna.
+Se tiene una cuadrícula de celdas, donde el **w** y **h** son el ancho y la altura de la cuadrícula final. Cada celda está vacía (`.`) o llena (`#`), y hay al menos una celda llena en la primera renglón, en la última renglón, en la primera columna y en la última columna.
 
 Una figura inicial cambia por pasos. En cada paso, todas las celdas cambian al mismo tiempo según estas reglas:
 
@@ -51,15 +51,15 @@ cuadrícula final   quitar el error   deshacer el paso   salida
    - **A. Deshacer sin arreglar nada:** deshacer y revisar. Si A pasa la revisión, se va directo al paso 3 y no se hace B. Pasa la revisión si hay 0 o 1 celdas diferentes:
      - **0 diferencias:** no hubo ningún error en este paso.
      - **1 diferencia:** esa celda es el error de este paso. La cuadrícula más pequeña es correcta, porque el error no se pasó a ella: al deshacer, el error se quitó.
-   - **B. Arreglar un error:** encontrar la celda candidata (la fila más alta y la columna más a la izquierda con diferencias), cambiarla (de 0 a 1 o de 1 a 0), deshacer y revisar. Pasa la revisión si hay 0 celdas diferentes.
+   - **B. Arreglar un error:** encontrar la celda candidata (la renglón más alta y la columna más a la izquierda con diferencias), cambiarla (de 0 a 1 o de 1 a 0), deshacer y revisar. Pasa la revisión si hay 0 celdas diferentes.
 3. Si A o B pasa la revisión, quitar los bordes vacíos de la cuadrícula nueva y volver al paso 2 (solo si mide al menos 3 × 3).
 4. Si ninguno pasa, terminar e imprimir la cuadrícula actual.
 
 | | A. con error | B. paso 2A: deshacer sin arreglar | C. paso 2B: cambiar la candidata y deshacer |
 | --- | --- | --- | --- |
 | cuadrícula | .###<br>#.#.<br>###.<br>#..# | .###<br>#.#.<br>###.<br>#..# | .###<br>###.<br>###.<br>#..# |
-| conteo | | 0 1 1 1<br>1 2 2 1<br>1 2 2 1<br>1 1 1 0 | 0 1 1 1<br>1 3 3 2<br>1 3 3 2<br>1 2 2 1 |
 | step_backward | | ....<br>..#.<br>.#..<br>.... | ....<br>..#.<br>.##.<br>.... |
+| conteo | | 0 1 1 1<br>1 2 2 1<br>1 2 2 1<br>1 1 1 0 | 0 1 1 1<br>1 3 3 2<br>1 3 3 2<br>1 2 2 1 |
 | step_forward | | .###<br>#..#<br>#..#<br>###. | .###<br>###.<br>###.<br>#..# |
 | diferencias | | ....<br>..XX<br>.XXX<br>.XXX | ....<br>....<br>....<br>.... |
 | resultado | | más de 1 diferencia: no pasa | 0 diferencias: pasa |
@@ -71,6 +71,6 @@ cuadrícula final   quitar el error   deshacer el paso   salida
 - `step_backward`: deshace un paso, encontrando las celdas una por una desde la esquina superior izquierda; devuelve una cuadrícula 2 más pequeña en cada dirección
 - `step_forward`: aplica la regla una vez a la cuadrícula que devuelve `step_backward`; devuelve una cuadrícula 2 más grande en cada dirección, que `find_differences` compara con la cuadrícula que se deshizo para revisar si el paso hacia atrás es correcto
 - `find_differences`: compara dos cuadrículas del mismo tamaño y devuelve las celdas diferentes
-- `find_candidate`: con las celdas diferentes, devuelve la celda candidata (fila más alta, columna más a la izquierda)
-- `trim_grid`: quita las filas y columnas vacías de los bordes
+- `find_candidate`: con las celdas diferentes, devuelve la celda candidata (renglón más alta, columna más a la izquierda)
+- `trim_grid`: quita las renglones y columnas vacías de los bordes
 - `print_grid`: convierte 1 y 0 en `#` y `.` e imprime la cuadrícula
