@@ -14,7 +14,7 @@ Tenemos una **cuadrícula** (*grid*) de r renglones y c columnas, y en cada posi
 
 Dadas las dimensiones de la cuadrícula y la altura de cada posición, hay que encontrar el mayor número de cajas que se pueden quitar sin que cambie ninguna de las tres vistas: cada renglón y cada columna deben conservar su altura máxima, las posiciones vacías deben seguir vacías y las que tienen cajas deben seguir teniendo al menos una.
 
-## Ilustración de la entrada de ejemplo 1
+### Ilustración de la entrada de ejemplo 1
 
 |       | col0 | col1 | col2 | col3 | col4 | lado |
 |-------|------|------|------|------|------|------|
@@ -28,7 +28,7 @@ Dadas las dimensiones de la cuadrícula y la altura de cada posición, hay que e
 frente = cámara frontal; lee la altura máxima de cada columna  
 lado = cámara lateral; lee la altura máxima de cada renglón
 
-*Cámara superior*
+**Cámara superior**
 
 |       | col0 | col1 | col2 | col3 | col4 | lado |
 |-------|------|------|------|------|------|------|
@@ -105,7 +105,11 @@ call try_match(0, seen)
   match_col[0] = 0           column 0 is used by row 0
                              match_col is now [0, -1, -1]
   return True
+```
 
+El renglón 0 tomó la columna 0 solo porque fue la primera que funcionó. Pero el renglón 0 también podría usar la columna 1, y el renglón 1 solo puede usar la columna 0 (su posición en la columna 1 es 0).
+
+```
 # Row 1 (i = 1)
 seen = [False, False, False]
 call try_match(1, seen)
@@ -131,7 +135,6 @@ call try_match(1, seen)
   match_col[0] = 1           column 0 is used by row 1
                              match_col is now [1, 0, -1]
   return True
-
 ```
 
 ### 3. Cálculo final
