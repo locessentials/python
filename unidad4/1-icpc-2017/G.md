@@ -55,10 +55,15 @@ cuadrícula final   quitar el error   deshacer el paso   salida
 3. Si A o B pasa la revisión, quitar los bordes vacíos de la cuadrícula nueva y volver al paso 2 (solo si mide al menos 3 × 3).
 4. Si ninguno pasa, terminar e imprimir la cuadrícula actual.
 
+| antes | conteo | actualización | con error |
+| ----- | ------ | ------------- | --------- |
+| ....<br>..#.<br>.##.<br>.... | 0 1 1 1<br>1 3 3 2<br>1 3 3 2<br>1 2 2 1 | .###<br>###.<br>###.<br>#..# | .###<br>#.#.<br>###.<br>#..# |
+
 | antes | actualización | con error |
 | ----- | ------------- | --------- |
-| .#<br>## | .####<br>###.<br>###.<br>#..# | .####<br>#.#.<br>###.<br>#..# |
-| | | |
+| ....<br>..#.<br>.##.<br>.... | .####<br>###.<br>###.<br>#..# | .####<br>#.#.<br>###.<br>#..# |
+| 0 1 1 1<br>1 3 3 2<br>1 3 3 2<br>1 2 2 1
+| | |
 
 
 
