@@ -30,13 +30,13 @@ def find_letters(letter, t):
     to_check = [letter]
 
     while len(to_check) > 0:
-        current = to_check.pop()            # takes the last item OFF the to_check list
-                                            # assigns it to current for checking
+        current = to_check.pop()        # saca la última letra de la lista to_check
+                                            # y la guarda en current para revisarla
         if current in t:                    # si current tiene traducciones
-            for next in t[current]:         # for each of the values in the dictionary for current 
-                if next not in found:       # if that letter isn't on the found list yet
-                    found.append(next)      # add it to the found list
-                    to_check.append(next)   # add it to the list of letters to look up later
+            for next in t[current]:         # para cada letra a la que se traduce current
+                if next not in found:       # si esa letra todavía no está en la lista found
+                    found.append(next)      # agregarla a la lista found
+                    to_check.append(next)   # agregarla a la lista de letras por revisar
     return found
 
 # RESOLUCIÓN: REVISAR CADA PAR DE PALABRAS
@@ -47,8 +47,6 @@ for original, deciphered in p:
     else:
         match = True                        # empezamos suponiendo que coinciden
         for position in range(len(original)):               # revisar cada posición de las palabras
-            found = find_letters(original[position], t)     # ejecutar la función find_letters para
-                                                            # le letra en que estamos
             found = find_letters(original[position], t)     # ejecutar find_letters 
                                                             # para la letra en la que estamos
                                                             # y guardar la lista de letras 

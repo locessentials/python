@@ -35,3 +35,9 @@ Encuentra todas las letras en las que se puede convertir una letra, con una trad
 3. Si todas las posiciones pasan, imprimir "yes"; si alguna falla, imprimir "no"
 
 [Ver el código completo en GitHub](https://github.com/locessentials/python/blob/main/unidad4/1-icpc-2017/i.py)
+
+## Análisis
+- **Variables y tipos de datos:** `m` y `n` son `int`, porque son cantidades; las letras y las palabras son `str`; `match` es `bool`, porque solo puede ser verdadero o falso
+- **Estructuras de datos:** un diccionario `t` para encontrar rápido las traducciones de cada letra; una lista `p` de tuplas (palabra original, palabra descifrada), porque los pares no cambian; dos listas en `find_letters()`: `found` para las letras encontradas y `to_check` para las que faltan por revisar
+- **Paradigma algorítmico:** búsqueda en grafos (*graph search*): las letras son nodos (*nodes*) y las traducciones son aristas dirigidas (*directed edges*), y desde cada letra se siguen las aristas para encontrar todas las letras en las que se puede convertir. Como `to_check` siempre saca la última letra que entró, es una búsqueda en profundidad (DFS, *depth-first search*): sigue un camino hasta el final antes de probar otro
+- **Estilo de programación:** procedural e iterativo: una función para la búsqueda y un ciclo para revisar los pares. Es suficiente para un problema con dos pasos, y el `while` evita la recursión.

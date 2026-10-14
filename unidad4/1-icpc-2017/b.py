@@ -1,4 +1,4 @@
-# Organización de los datos de entrada
+# Organizar los datos de entradas
 
 n = int(input())                    # Leer el número de sugerencias hechas
 my_hand = input().split()           # Leer mis cinco cartas y separarlas en una lista
@@ -59,7 +59,7 @@ while changed:                                  # Repetir mientras la última pa
                 continue                        # Excluir de las posibilidades: la tiene otro jugador
             if card in lacks[player]:           # Si la carta aparece en la lista lacks de este jugador
                 continue                        # Saltar a la siguiente carta sin agregar esta a possible
-            possible.append(card)               # Si no se descartó, sigue siendo posible
+            possible.append(card)               # Si no se quitó, sigue siendo posible
 
         if len(possible) == 1:                  # Si solo queda una carta posible, esa fue la que mostró
             card = possible[0]                  # Tomar esa única carta
