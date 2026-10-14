@@ -6,7 +6,7 @@ parent: ICPC 2017
 nav_order: 2
 ---
 
-# ICPC 2017 - Problema B: Juego de mesa Clue
+# ICPC 2017 - Problema B: juego de mesa Clue
 
 Clue es un juego de mesa en el que hay que deducir quién cometió un asesinato, con qué arma y en qué habitación, llevando un registro cuidadoso de qué cartas tiene cada jugadorx. Al inicio se colocan tres cartas en un sobre secreto: una de las seis personas sospechosas, una de las seis armas y una de las nueve habitaciones. Las demás cartas se reparten entre lxs cuatro jugadorxs. En su turno, cada jugador hace una sugerencia (persona, arma y habitación), empezando por el jugador 1. La persona a su derecha debe mostrarle una carta de la sugerencia si tiene alguna; si no tiene ninguna, pasa, y le toca a la siguiente, hasta que alguien muestra una carta o nadie puede hacerlo. La carta se muestra en secreto, solo a quien hizo la sugerencia. El resto sabe que se mostró una carta, pero no cuál. Si nadie muestra evidencia, las cartas sugeridas deben estar en el sobre.
 
