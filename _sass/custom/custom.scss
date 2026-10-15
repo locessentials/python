@@ -37,3 +37,8 @@ margin: 10px 15px 10px 0;
   clear: both;
   display: block;
 }
+
+.columnas-iguales {
+  table-layout: fixed;
+  width: 100%;
+}
