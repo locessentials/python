@@ -22,8 +22,6 @@ def z_function(pattern):
 
     # match_lengths guarda, para cada posición, cuántas letras seguidas coinciden con el inicio del patrón
     match_lengths = [0] * pattern_length
-    # En la posición 0, el patrón coincide completo consigo mismo
-    match_lengths[0] = pattern_length
 
     # La ventana es el tramo más a la derecha que ya sabemos que coincide con el inicio del patrón
     # Va de window_start hasta window_end, sin incluir window_end

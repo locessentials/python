@@ -127,7 +127,7 @@ Con 10 000 tareas, el montículo tiene unos 14 niveles, así que agregar o sacar
 
 - `move_past_forbidden_regions`: si el tiempo actual cae dentro de una región prohibida, lo mueve al borde derecho de esa región y repite hasta que quede fuera de todas.
 
-## Análisis
+## Análisis del código
 
 - **Construcción del algoritmo:**
   1. Leer `task_duration` y los pares `(earliest_start, deadline)`.
