@@ -22,20 +22,20 @@ Empareja cada esquina de arriba a la izquierda con una de abajo a la derecha par
 
 | Entrada 1 | Entrada 2 | Entrada 3 | Entrada 4 |
 | --------- | --------- | --------- | --------- |
-| arriba-izq: (4, 7), (9, 8)<br>abajo-der: (14, 17), (19, 18) | arriba-izq: (4, 7), (14, 17)<br>abajo-der: (9, 8), (19, 18) | arriba-izq: (4, 8), (9, 7)<br>abajo-der: (14, 18), (19, 17) | arriba-izq: (1, 1), (4, 8), (8, 4)<br>abajo-der: (10, 6), (6, 10), (10, 10) |
+| arriba-izq:<br>1. (4, 7)<br>2. (9, 8)<br>abajo-der:<br>1. (14, 17)<br>2. (19, 18) | arriba-izq:<br>1. (4, 7)<br>2. (14, 17)<br>abajo-der:<br>1. (9, 8)<br>2. (19, 18) | arriba-izq:<br>1. (4, 8)<br>2. (9, 7)<br>abajo-der:<br>1. (14, 18)<br>2.(19, 17) | arriba-izq:<br>1. (1, 1)<br>2. (4, 8)<br>3. (8, 4)<br>abajo-der:<br>1. (10, 6)<br>2. (6, 10)<br>3. (10, 10) |
 | **Salida:** 2, 1 (uno dentro del otro) | **Salida:** 1, 2 (separados) | **Salida:** syntax error | **Salida:** syntax error |
 
 ```
-Ejemplo 1            Ejemplo 2    Ejemplo 3    Ejemplo 4
-uno dentro del otro  separados    se cruzan    bordes encimados
+Ejemplo 1               Ejemplo 2        Ejemplo 3          Ejemplo 4
+uno dentro del otro     separados        se cruzan          bordes encimados
 
-┌──────────┐         ┌──┐          ┌───────┐   ┌──────────────────┐
-│ ┌──────┐ │         └──┘          │       │   │                  │
-│ │      │ │                      ┌┼─────┐ │   │            ┌─────┤
-│ └──────┘ │               ┌──┐   ││     │ │   │            │  B  │
-└──────────┘               └──┘   │└─────┼─┘   │            └─────┤
-                                  └──────┘     │        A         │
-                                               │      ┌────┐      │
-                                               │      │ C  │      │
-                                               └──────┴────┴──────┘
+┌──────────┐            ┌──┐              ┌───────┐         ┌──────────────────┐
+│ ┌──────┐ │            └──┘              │       │         │                  │
+│ │      │ │                             ┌┼─────┐ │         │            ┌─────┤
+│ └──────┘ │                ┌──┐         ││     │ │         │            │  B  │
+└──────────┘                └──┘         │└─────┼─┘         │            └─────┤
+                                         └──────┘           │        A         │
+                                                            │      ┌────┐      │
+                                                            │      │ C  │      │
+                                                            └──────┴────┴──────┘
 ```
