@@ -6,7 +6,7 @@ parent: ICPC 2017
 nav_order: 7
 ---
 
-# ICPC 2017 – Problema G: Replicate Rfplicbte
+# ICPC 2017 – Problema G: "traducción"
 
 Se tiene una cuadrícula de celdas, donde el **w** y **h** son el ancho y la altura de la cuadrícula final. Cada celda está vacía (`.`) o llena (`#`), y hay al menos una celda llena en la primera renglón, en la última renglón, en la primera columna y en la última columna.
 
