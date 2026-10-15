@@ -6,4 +6,36 @@ parent: ICPC 2017
 nav_order: 12
 ---
 
-# ICPC 2017 - Problema L:
+# ICPC 2017 - Problema L: Visual Python++ (línea de barrido)
+
+Hay **n** rectángulos en una cuadrícula, pero solo se ven sus esquinas: **n** esquinas de arriba a la izquierda y **n** esquinas de abajo a la derecha. No se sabe qué esquina va con cuál.
+
+Empareja cada esquina de arriba a la izquierda con una de abajo a la derecha para que los rectángulos queden bien acomodados: cada dos rectángulos están uno dentro del otro o separados, y sus bordes nunca se enciman ni se cruzan. Si hay varias respuestas, cualquiera vale. Si no se puede, imprime `syntax error`.
+
+**Entrada:** primer renglón: **n**. Luego **n** renglones con el renglón y la columna de cada esquina de arriba a la izquierda, y después **n** renglones con las esquinas de abajo a la derecha.
+
+**Salida:** **n** renglones. El renglón i dice el número de la esquina de abajo a la derecha que va con la esquina i de arriba a la izquierda (las esquinas se numeran en el orden de la entrada).
+
+**Límites:** 1 ≤ n ≤ 100 000, renglones y columnas entre 1 y 1 000 000 000, todas las esquinas en lugares distintos
+
+**Ejemplos**
+
+| Entrada 1 | Entrada 2 | Entrada 3 | Entrada 4 |
+| --------- | --------- | --------- | --------- |
+| arriba-izq: (4, 7), (9, 8)<br>abajo-der: (14, 17), (19, 18) | arriba-izq: (4, 7), (14, 17)<br>abajo-der: (9, 8), (19, 18) | arriba-izq: (4, 8), (9, 7)<br>abajo-der: (14, 18), (19, 17) | arriba-izq: (1, 1), (4, 8), (8, 4)<br>abajo-der: (10, 6), (6, 10), (10, 10) |
+| **Salida:** 2, 1 (uno dentro del otro) | **Salida:** 1, 2 (separados) | **Salida:** syntax error | **Salida:** syntax error |
+
+```
+Ejemplo 1            Ejemplo 2    Ejemplo 3    Ejemplo 4
+uno dentro del otro  separados    se cruzan    bordes encimados
+
+┌──────────┐         ┌──┐          ┌───────┐   ┌──────────────────┐
+│ ┌──────┐ │         └──┘          │       │   │                  │
+│ │      │ │                      ┌┼─────┐ │   │            ┌─────┤
+│ └──────┘ │               ┌──┐   ││     │ │   │            │  B  │
+└──────────┘               └──┘   │└─────┼─┘   │            └─────┤
+                                  └──────┘     │        A         │
+                                               │      ┌────┐      │
+                                               │      │ C  │      │
+                                               └──────┴────┴──────┘
+```
