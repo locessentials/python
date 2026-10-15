@@ -12,6 +12,8 @@ Clue es un juego de mesa en el que hay que deducir quién cometió un asesinato,
 
 El problema que resolvemos aquí consiste en lo siguiente: dados el número de sugerencias *n*, nuestras cinco cartas como jugador 1 y el registro de las *n* sugerencias (las tres cartas sugeridas, si cada jugadorx pasó o mostró una carta, y si pudimos ver cuál), hay que deducir qué cartas del sobre se pueden identificar con certeza. La salida indica la persona, el arma y la habitación, con `?` para cualquiera que todavía no se pueda determinar.
 
+---
+
 ## Panorama del código
 
 Con seis personas, seis armas y nueve habitaciones, hay 6 × 6 × 9 = 324 combinaciones posibles para el sobre. No es un problema grande, pero sí requiere un registro cuidadoso de lo que pasa en el juego. Seguimos la estrategia de propagación de restricciones (*constraint propagation*): guardamos los hechos que conocemos y aplicamos reglas para deducir hechos nuevos, hasta que ya no se puede deducir nada más.
@@ -51,6 +53,8 @@ Para cada categoría, buscamos las cartas que no están en `holder`. Hay dos for
 2. **Solo queda una sin ubicar:** el sobre tiene exactamente una carta de cada categoría. Si todas las demás ya están en la mano de alguien, la que queda tiene que ser la del sobre, aunque nadie haya dicho que no la tiene.
 
 Si ninguna de las dos se cumple, la respuesta para esa categoría es `?`.
+
+---
 
 ## Análisis del código
 

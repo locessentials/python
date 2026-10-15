@@ -37,7 +37,10 @@ lado = cámara lateral; lee la altura máxima de cada renglón
 | row 4 |  1   |  1   |  1   |  1   |  1   |  2   |
 | frente |  2   |  4   |  3   |  5   |  4   |      |
 
+---
+
 ## Conceptos claves
+
 Hay que dejar 1 caja en cada posición distinta de 0, una posición con el máximo en cada renglón y una posición con el máximo en cada columna. Si un renglón y una columna tienen el mismo máximo h y la posición donde se cruzan es distinta de 0, una sola posición sirve para los dos, y se ahorran h − 1 cajas.
 
 **Definiciones**
@@ -62,7 +65,9 @@ Hay que dejar 1 caja en cada posición distinta de 0, una posición con el máxi
 
 La celda **[4]** es una posición compartida. El renglón 2 y la columna 1 tienen máximo 4, así que una sola pila de 4 en esa celda cuenta como la más alta de las dos a la vez.
 
-## Implementación
+---
+
+## Panorama del código
 
 ### 1. Preparación: organizar las entradas
 - `rows`: la cuadrícula, una lista de listas
@@ -140,11 +145,19 @@ call try_match(1, seen)
 - `left = not_zero + row_crates + column_crates − counted_twice`: las cajas que quedan
 - `total − left`: las cajas robadas (9 en el ejemplo 1, 30 en el ejemplo 2)
 
-## Análisis
-- **Variables y tipos de datos:** todo es `int` (alturas, conteos, números de renglón y columna), porque se cuentan cajas enteras; `can_share` y los valores de `seen` son `bool`
-- **Estructuras de datos:** una lista de listas para la cuadrícula; listas para los máximos; la lista `match_col` como hoja de registro; la lista `seen` de `bool`. El grafo bipartito no se guarda: las conexiones se revisan con `can_share` cuando hacen falta
-- **Paradigma algorítmico:** búsqueda en grafos: emparejamiento bipartito máximo con el **algoritmo de Kuhn**, que busca pareja para cada renglón con búsqueda en profundidad (*DFS*). La cadena de cambios que hace la llamada recursiva se llama **camino de aumento**, una cadena de cambios donde cada fila ocupada se mueve a otra columna para dejar espacio; al final, una fila que no tenía pareja consigue una, y hay una pareja más que antes
-- **Estilo de programación:** procedural, con una función `try_match`. Iterativo en la preparación y el cálculo final; recursivo en el emparejamiento, porque cada cambio puede provocar otro y no se sabe de antemano cuántos. La recursión termina porque regresa `True` al encontrar una columna libre o `False` al revisar todas, y `seen` evita revisar la misma columna dos veces
+---
+
+## Análisis del código
+
+- **Construcción del algoritmo:** (1) leer `m`, `n` y la cuadrícula `rows`; (2) calcular `total`, `max_rows`, `max_columns` y `not_zero`; (3) para cada renglón con máximo mayor que 0, buscar pareja con `try_match`, y si la encuentra, sumar `máximo − 1` a `counted_twice`; (4) calcular `row_crates`, `column_crates` y `left`; (5) imprimir `total − left`
+- **Variables y tipos de datos:** `m`, `n`, `i`, `j`, `total`, `not_zero`, `counted_twice`, `row_crates`, `column_crates` y `left` son `int`, porque son números de renglón y columna o cantidades de cajas enteras; `can_share` y los valores de `seen` son `bool`, porque solo pueden ser verdadero o falso
+- **Estructuras de datos:** una lista de listas `rows` para la cuadrícula, para llegar a cada posición con `rows[i][j]`; `columns` es una lista de tuplas creada con `zip`, porque las columnas solo se leen y no cambian; listas `max_rows` y `max_columns`, para encontrar el máximo de cada renglón o columna por su número; la lista `match_col` como hoja de registro, donde -1 quiere decir que la columna está libre; la lista `seen` de `bool`, para revisar directo si la columna `j` ya se probó; el grafo bipartito no se guarda (ni como matriz ni como lista de adyacencia): las conexiones se revisan con `can_share` cuando hacen falta, así no se usa memoria extra
+- **Paradigma algorítmico:** búsqueda en grafos: emparejamiento bipartito máximo con el **algoritmo de Kuhn**, que busca pareja para cada renglón con búsqueda en profundidad (*DFS*); la cadena de cambios que hace la llamada recursiva se llama **camino de aumento**: cada renglón ocupado se mueve a otra columna para dejar espacio, y al final un renglón que no tenía pareja consigue una, así que hay una pareja más que antes
+- **Estilo de programación:** procedural, con una función `try_match` para el emparejamiento y ciclos para la preparación y el cálculo final
+- **Iterativo o recursivo:** iterativo en la preparación y el cálculo final; recursivo en `try_match`, porque cada cambio puede provocar otro y no se sabe de antemano cuántos; la recursión termina porque regresa `True` al encontrar una columna libre o `False` al revisar todas, y `seen` evita revisar la misma columna dos veces; como mucho hay una llamada por columna, así que no se pasa el límite de recursión de Python
+- **Complejidad:** temporal O(m × n²): para cada renglón, `try_match` revisa cada columna como mucho una vez (gracias a `seen`), y en cada revisión recorre las n columnas; la preparación y el cálculo final son O(m × n); espacial O(m × n), por `rows` y `columns`; la operación que determina la complejidad es la revisión de `can_share` dentro de `try_match`
+
+---
 
 ## Extensión del problema
 
