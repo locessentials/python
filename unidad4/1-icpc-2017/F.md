@@ -189,6 +189,8 @@ last_start = 3:   [0, 25, 50]  | [255]
 - Esta es la idea de la programación dinámica: cada respuesta se construye con respuestas más pequeñas que ya están guardadas, sin volver a calcularlas.
 - Así cada renglón se construye con el de arriba, hasta llegar a `best_error[k][d]`: todas las d intensidades con k grupos. Esa es la respuesta.
 
+---
+
 ## Análisis del código
 
 ### Construcción del algoritmo

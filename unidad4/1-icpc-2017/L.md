@@ -41,6 +41,8 @@ uno dentro del otro         separados            se cruzan             bordes en
                                                                        └──────┴────┴──────┘
 ```
 
+---
+
 ## Conceptos clave: línea de barrido (*sweep line*) y búsqueda binaria (*binary search*)
 
 La **línea de barrido** es una línea imaginaria que baja por la cuadrícula, de arriba hacia abajo. Ordenamos las esquinas por renglón y las revisamos una por una, en el orden en que la línea las toca, y en cada momento guardamos solo los rectángulos que ya se abrieron y todavía no se cierran. La usamos porque una esquina de abajo a la derecha solo puede cerrar un rectángulo que se abrió arriba de ella, así que basta con revisar cada esquina una vez en orden. Ordenar cuesta *n log n*, mientras que comparar todas las parejas posibles cuesta *n²*, y con n = 100 000 eso tardaría demasiado.
@@ -56,6 +58,8 @@ paso 1:  mira el centro (12). 7 es menor  →  sigue solo en la mitad izquierda:
 paso 2:  mira el centro (5).  7 es mayor  →  sigue solo en la mitad derecha:   9
 paso 3:  mira el 9.           7 es menor  →  el 7 va justo antes del 9
 ```
+
+---
 
 ## Panorama del código
 
@@ -129,6 +133,7 @@ borde de B: de la columna 7 a la 17  →  tocan 7, 8 y 17  →  3, no 2  →  sy
 
 - Basta con revisar los bordes horizontales: si dos rectángulos se tocan en cualquier punto, siempre hay un borde horizontal de uno que toca un lado vertical del otro.
 
+---
 
 ## Análisis del código
 

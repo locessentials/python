@@ -25,6 +25,8 @@ La entrada empieza con un renglón que tiene un entero *n* (3 ≤ n ≤ 200): el
 
 Mostrar la longitud del segmento de recta más largo que cabe dentro del polígono, con un error absoluto o relativo no mayor que 10⁻⁶.
 
+---
+
 ## Conceptos clave
 
 ### Fórmulas y métodos para la resolución del problema
@@ -52,6 +54,8 @@ Mostrar la longitud del segmento de recta más largo que cabe dentro del polígo
 | polygon | polígono | figura plana cerrada formada por segmentos de recta |
 | simple polygon | polígono simple | polígono cuyos lados no se cruzan ni se tocan, salvo en vértices consecutivos |
 | vertex, vertices | vértice, vértices | punto donde se unen dos lados consecutivos |
+
+---
 
 ## Panorama del código
 
@@ -139,6 +143,8 @@ Por eso, la longitud real es `(ts[hi] − ts[lo]) × ab_length`, donde `ab_lengt
 
 Al terminar de probar todos los pares de vértices, `best` tiene la longitud del segmento más largo, y el código la imprime.
 
+---
+
 ## Análisis del código
 
 - **Construcción del algoritmo:**
@@ -168,3 +174,5 @@ Al terminar de probar todos los pares de vértices, `best` tiene la longitud del
 - **Complejidad:**
   - Temporal: hay O(n²) pares de vértices. Para cada par, encontrar los cortes es O(n) y ordenarlos es O(n log n). Revisar los pedazos es lo más costoso: puede haber O(n) pedazos y cada `inside` revisa los n lados, O(n²). En total, O(n⁴) en el peor caso. En la práctica es mucho menos: el paso 3 se detiene en el primer pedazo fuera, y la mayoría de las rectas tienen pocos cortes.
   - Espacial: O(n). Solo se guardan `vertices` y `ts`, y cada una tiene a lo más del orden de n elementos.
+
+[Ver el código completo en GitHub](https://github.com/locessentials/python/blob/main/unidad4/1-icpc-2017/a.py)

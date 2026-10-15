@@ -20,7 +20,7 @@ Si **F** es la cantidad de L y **W** la cantidad de agua que llegan al nodo 3, �
 
 **Límites:** 3 ≤ n ≤ 200, 1 ≤ v ≤ 10, 0.01 ≤ a ≤ 0.99, 1 ≤ c ≤ 10
 
-## Ejemplos
+**Ejemplos**
 
 | Entrada 1 | Entrada 2 |
 | --------- | --------- |
