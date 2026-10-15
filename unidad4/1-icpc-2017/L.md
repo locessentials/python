@@ -27,16 +27,16 @@ Empareja cada esquina de arriba a la izquierda con una de abajo a la derecha par
 {: .columnas-iguales }
 
 ```
-Ejemplo 1               Ejemplo 2        Ejemplo 3          Ejemplo 4
-uno dentro del otro     separados        se cruzan          bordes encimados
+Ejemplo 1                   Ejemplo 2            Ejemplo 3             Ejemplo 4
+uno dentro del otro         separados            se cruzan             bordes encimados
 
-┌──────────┐            ┌──┐              ┌───────┐         ┌──────────────────┐
-│ ┌──────┐ │            └──┘              │       │         │                  │
-│ │      │ │                             ┌┼─────┐ │         │            ┌─────┤
-│ └──────┘ │                ┌──┐         ││     │ │         │            │  B  │
-└──────────┘                └──┘         │└─────┼─┘         │            └─────┤
-                                         └──────┘           │        A         │
-                                                            │      ┌────┐      │
-                                                            │      │ C  │      │
-                                                            └──────┴────┴──────┘
+┌──────────┐                ┌──┐                  ┌───────┐            ┌──────────────────┐
+│ ┌──────┐ │                └──┘                  │       │            │                  │
+│ │      │ │                                     ┌┼─────┐ │            │            ┌─────┤
+│ └──────┘ │                    ┌──┐             ││     │ │            │            │  B  │
+└──────────┘                    └──┘             │└─────┼─┘            │            └─────┤
+                                                 └──────┘              │        A         │
+                                                                       │      ┌────┐      │
+                                                                       │      │ C  │      │
+                                                                       └──────┴────┴──────┘
 ```
