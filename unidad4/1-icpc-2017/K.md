@@ -29,7 +29,7 @@ Ordena los patrones de mayor a menor según la probabilidad de que aparezcan en 
 
 - **autocorrelación de cadenas**
   - qué es: la lista de pasos en los que un patrón coincide consigo mismo al moverlo, una posición a la vez, sobre una copia de sí mismo
-  - por qué aplica: un patrón que se encima consigo mismo suele aparecer varias veces junto en la misma secuencia, así que aparece en menos secuencias distintas; por eso, entre menos se encime un patrón, más probable es que aparezca
+  - por qué aplica: un patrón que se encima consigo mismo suele aparecer varias veces junto en la misma secuencia, así que aparece en menos secuencias distintas; para comparar dos patrones, se busca el primer paso donde son distintos, y el que se encima en ese paso es menos probable
 
 - **Z-function**
   - qué es: un algoritmo que calcula, para cada posición de una cadena, cuántas letras coinciden con el inicio de la misma cadena
@@ -48,3 +48,5 @@ position 4:  P         vs  P        → 1 letter matches, all the way to the end
 - **ordenamiento estable** (*stable sort*)
   - qué es: un ordenamiento que deja en el mismo orden los elementos que tienen el mismo valor
   - por qué aplica: el problema pide que los patrones con la misma probabilidad queden en el orden de la entrada; `sorted()` de Python ya es estable: cuando dos elementos de la lista empatan, deja primero el que estaba primero en la entrada (no cambia las letras de cada patrón, solo el orden de los patrones en la lista)
+
+## 

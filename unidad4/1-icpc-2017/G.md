@@ -6,7 +6,7 @@ parent: ICPC 2017
 nav_order: 7
 ---
 
-# ICPC 2017 – Problema G: "traducción"
+# ICPC 2017 – Problema G: autómata celular
 
 Se tiene una cuadrícula de celdas, donde el **w** y **h** son el ancho y la altura de la cuadrícula final. Cada celda está vacía (`.`) o llena (`#`), y hay al menos una celda llena en la primera renglón, en la última renglón, en la primera columna y en la última columna.
 
@@ -39,6 +39,17 @@ cuadrícula final   quitar el error   deshacer el paso   salida
 
 - **Límite de tiempo:** 3 segundos
 - 1 ≤ w ≤ 300, 1 ≤ h ≤ 300
+
+## Concepto clave: autómata celular (*cellular automaton*)
+
+Se empieza con una sola celda "encendida" en la parte de arriba, se aplica la misma regla a cada celda en cada renglón nuevo, y aparece un patrón en forma de triángulo (el triángulo de Sierpiński) sin que nadie lo dibuje. Este ejemplo se llama Regla 90.
+
+Todo autómata celular tiene cuatro partes:
+
+- Una cuadrícula de celdas: una línea (1D), un tablero como el de ajedrez (2D) o más dimensiones.
+- Estados: normalmente solo encendido/apagado (1/0).
+- Una vecindad: las celdas que mira cada celda, por ejemplo la de la izquierda y la de la derecha, o las 8 celdas que la rodean.
+- Una regla: cómo depende el siguiente estado de una celda de su vecindad. La misma regla se aplica a todas las celdas en cada paso.
 
 ## Panorama del código
 
