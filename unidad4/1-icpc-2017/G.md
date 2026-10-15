@@ -40,6 +40,8 @@ cuadrícula final   quitar el error   deshacer el paso   salida
 - **Límite de tiempo:** 3 segundos
 - 1 ≤ w ≤ 300, 1 ≤ h ≤ 300
 
+---
+
 ## Concepto clave: autómata celular (*cellular automaton*)
 
 Se empieza con una sola celda "encendida" en la parte de arriba, se aplica la misma regla a cada celda en cada renglón nuevo, y aparece un patrón en forma de triángulo (el triángulo de Sierpiński) sin que nadie lo dibuje. Este ejemplo se llama Regla 90.
@@ -50,6 +52,8 @@ Todo autómata celular tiene cuatro partes:
 - Estados: normalmente solo encendido/apagado (1/0).
 - Una vecindad: las celdas que mira cada celda, por ejemplo la de la izquierda y la de la derecha, o las 8 celdas que la rodean.
 - Una regla: cómo depende el siguiente estado de una celda de su vecindad. La misma regla se aplica a todas las celdas en cada paso.
+
+---
 
 ## Panorama del código
 
@@ -200,6 +204,8 @@ La regla es: el error está donde empiezan las diferencias, del lado donde se em
 - `find_candidate`: con las celdas diferentes, devuelve la celda candidata (renglón más alta, columna más a la izquierda)
 - `trim_grid`: quita las renglones y columnas vacías de los bordes
 - `print_grid`: convierte 1 y 0 en `#` y `.` e imprime la cuadrícula
+
+---
 
 ## Análisis
 

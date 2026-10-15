@@ -28,6 +28,8 @@ Solo se puede hacer una tarea a la vez, y una tarea no se puede interrumpir: una
 | n = 2, t = 10<br>tarea 1: a = 0, b = 15<br>tarea 2: a = 5, b = 20 | n = 2, t = 10<br>tarea 1: a = 1, b = 15<br>tarea 2: a = 0, b = 20 | n = 2, t = 10<br>tarea 1: a = 5, b = 30<br>tarea 2: a = 10, b = 20 |
 | **Salida:** yes | **Salida:** no | **Salida:** yes |
 
+---
+
 ## Conceptos claves
 
 - **regiones prohibidas** (*forbidden regions*) - intervalos de tiempo en los que no se puede empezar ninguna tarea, si una tarea empezara ahí, todavía estaría en curso cuando otro grupo de tareas necesita el tiempo para terminar antes de su **b**; se calculan del `earliest_start` más tardío al más temprano, antes de armar el horario (preprocesamiento), pero por sí solas no arman el horario: solo dicen dónde no empezar
@@ -53,6 +55,8 @@ tiempo: 0    5    10   15   20   25   30
 ```
 
 **Nota:** la combinación de regiones prohibidas con EDF viene del artículo de Garey, Johnson, Simons y Tarjan (1981, *SIAM Journal on Computing*, "Scheduling Unit-Time Tasks with Arbitrary Release Times and Deadlines").
+
+---
 
 ## Resumen del código
 
@@ -126,6 +130,8 @@ nivel 14:   oooooooooooo...       hasta 8192
 Con 10 000 tareas, el montículo tiene unos 14 niveles, así que agregar o sacar un número cuesta, a lo más, unos 13 intercambios. Ese número de niveles es log n: cuántas veces se puede dividir n entre 2 hasta llegar a 1. Por eso agregar o sacar cuesta O(log n). EDF agrega y saca cada tarea una vez, así que en total cuesta O(n log n).
 
 - `move_past_forbidden_regions`: si el tiempo actual cae dentro de una región prohibida, lo mueve al borde derecho de esa región y repite hasta que quede fuera de todas.
+
+---
 
 ## Análisis del código
 

@@ -15,6 +15,8 @@ nav_order: 9
 - Salida: "yes" o "no" para cada par
 - Límites: m ≤ 500; n ≤ 50; palabras de 1 a 50 letras, solo de la a a la z
 
+---
+
 ## Panorama de la resolución
 
 ### Preparación: leer las entradas
@@ -35,9 +37,10 @@ Encuentra todas las letras en las que se puede convertir una letra, con una trad
 
 [Ver el código completo en GitHub](https://github.com/locessentials/python/blob/main/unidad4/1-icpc-2017/i.py)
 
-## Análisis
+---
 
-## Análisis
+## Análisis del código
+
 - **Construcción del algoritmo:** (1) leer `m`, `n`, las traducciones en `t` y los pares en `p`; (2) para cada par, si las palabras no tienen la misma longitud, imprimir "no"; (3) si la tienen, para cada posición, usar `find_letters()` con la letra de `original` y revisar si la letra de `deciphered` está en `found`; (4) imprimir "yes" si todas las posiciones pasan, y "no" si alguna falla
 - **Variables y tipos de datos:** `m`, `n` y `position` son `int`, porque son cantidades y posiciones; las letras (`letter`, `current`, `next`) y las palabras (`original`, `deciphered`) son `str`; `match` es `bool`, porque solo puede ser verdadero o falso
 - **Estructuras de datos:** el grafo se guarda como lista de adyacencia (*adjacency list*) en el diccionario `t`: cada letra es una clave y su valor es la lista de letras a las que se traduce, así se encuentran rápido las traducciones de una letra; `p` es una lista de tuplas (`original`, `deciphered`), porque los pares no cambian; en `find_letters()`, `found` guarda las letras encontradas y `to_check` funciona como pila (*stack*), porque `pop()` saca la última letra que entró; `found` podría ser un conjunto (*set*) para revisar más rápido si una letra ya está, pero como solo hay 26 letras, una lista basta

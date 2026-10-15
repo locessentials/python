@@ -20,6 +20,8 @@ nav_order: 6
 
 todo para que la suma total de errores sea la mínima posible
 
+---
+
 ## Conceptos clave
 
 ### ¿Por qué el promedio ponderado?

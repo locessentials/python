@@ -25,6 +25,8 @@ Ordena los patrones de mayor a menor según la probabilidad de que aparezcan en 
 | n = 3, s = 4<br>PP, RR, PS, SS | n = 20, s = 3<br>PRSPS, SSSSS, PPSPP |
 | **Salida:** PS, PP, RR, SS | **Salida:** PRSPS, PPSPP, SSSSS |
 
+---
+
 ## Conceptos clave y por qué aplican
 
 - **autocorrelación de cadenas**
@@ -48,6 +50,8 @@ position 4:  P         vs  P        → 1 letter matches, all the way to the end
 - **ordenamiento estable** (*stable sort*)
   - qué es: un ordenamiento que deja en el mismo orden los elementos que tienen el mismo valor
   - por qué aplica: el problema pide que los patrones con la misma probabilidad queden en el orden de la entrada; `sorted()` de Python ya es estable: cuando dos elementos de la lista empatan, deja primero el que estaba primero en la entrada (no cambia las letras de cada patrón, solo el orden de los patrones en la lista)
+
+---
 
 ## Panorama del código
 
@@ -143,6 +147,8 @@ P P S P P
         P P S P P
           ↑ ↑ ↑ ↑    4 letras al azar deben ser P S P P      → 1/81
 ```
+
+---
 
 ## Análisis del código
 
