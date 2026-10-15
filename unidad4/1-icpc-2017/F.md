@@ -88,3 +88,49 @@ $$
 La ecuación Σ pᵢ(rᵢ − v) = 0 es el mismo equilibrio: lo que jalan los de la izquierda menos lo que jalan los de la derecha da 0.
 
 v tiene que ser entero, así que probamos el entero de abajo y el de arriba del promedio (83 y 84) y nos quedamos con el que da menos error.
+
+## Panorama del código
+
+El código tiene tres pasos: una función que calcula el error de un grupo, una tabla con el error de cada grupo posible, y la programación dinámica, que usa esa tabla para encontrar la mejor forma de dividir las intensidades en k grupos.
+
+### 1. Error de un grupo (`group_error`)
+
+- Un grupo es un tramo (*stretch, as in stretch of road*) de intensidades vecinas en `red_v` (lista de valores de intensidad del rojo y su p), desde la posición `start` hasta `end` (las dos incluidas). Todas se cambian a un mismo valor v.
+- Primer ciclo: sumamos `total_pixels` (todos los p, p = número de píxeles que tienen la intensidad de rojo r) y `weighted_sum` (cada r, o valor de intensidad del rojo, multiplicada por su p).
+- Con eso calculamos el promedio ponderado. `//` redondea hacia abajo y da `v_low`; `v_high` es el entero de arriba.
+- Segundo ciclo: calculamos el error del grupo con cada uno de los dos valores. Cada intensidad suma p × (r − v)²: elevar al cuadrado quita el signo y castiga más los errores grandes, y multiplicamos por p porque todos los píxeles con esa intensidad tienen el mismo error.
+- Regresamos el menor de los dos errores.
+
+### 2. Tabla de errores (`error_table`)
+
+- Un grupo se define por dónde empieza (`start`) y dónde termina (`end`). `error_table[start][end]` guarda su error.
+- Llenamos la tabla con dos ciclos: para cada `start`, probamos cada `end` desde `start` hasta la última intensidad. Si `end` es menor que `start` no hay grupo, y ese espacio se queda en 0.
+- Así calculamos el error de cada grupo una sola vez, y el paso 3 solo lo consulta.
+
+Ejemplo 3 (intensidades 0, 25, 50, 255): cada espacio guarda el error del grupo que se muestra.
+
+```
+              end = 0   end = 1    end = 2        end = 3
+start = 0     [0]       [0, 25]    [0, 25, 50]    [0, 25, 50, 255]
+start = 1      —        [25]       [25, 50]       [25, 50, 255]
+start = 2      —         —         [50]           [50, 255]
+start = 3      —         —          —             [255]
+```
+
+### 3. Programación dinámica (`best_error`)
+
+- `best_error[num_groups][covered]` guarda el menor error para las primeras `covered` intensidades, usando `num_groups` grupos.
+- La tabla empieza llena de `INFINITY` (todavía no se puede), menos `best_error[0][0] = 0`: 0 intensidades con 0 grupos no tienen error. Ese es el punto de partida.
+- Llenamos la tabla con 1 grupo, luego con 2, hasta k. Para cada `covered`, probamos cada lugar `last_start` donde puede empezar el último grupo, es decir, dónde va el último corte.
+- Cada corte divide el problema en dos partes: `error_before`, el mejor error antes del corte con un grupo menos (ya guardado en `best_error`), y `error_last`, el error del último grupo (de `error_table`). Guardamos la suma más pequeña.
+- `covered` empieza en `num_groups` y `last_start` en `num_groups − 1` porque cada grupo necesita al menos una intensidad.
+- Esta es la idea de la programación dinámica: cada respuesta se construye con respuestas más pequeñas que ya están guardadas, sin volver a calcularlas.
+- La respuesta es `best_error[k][d]`: todas las d intensidades con k grupos.
+
+Ejemplo 3, con 2 grupos para cubrir las 4 intensidades:
+
+```
+last_start = 1:   [0]          | [25, 50, 255]    best_error[1][1] + error_table[1][3]
+last_start = 2:   [0, 25]      | [50, 255]        best_error[1][2] + error_table[2][3]
+last_start = 3:   [0, 25, 50]  | [255]            best_error[1][3] + error_table[3][3]
+```

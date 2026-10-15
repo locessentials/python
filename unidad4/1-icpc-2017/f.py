@@ -60,10 +60,10 @@ for start in range(d):                          # para cada posición donde pued
 # PASO 3: PROGRAMACIÓN DINÁMICA
 
 # num_groups = número de grupos en que dividimos las intensidades (de 1 a k)
-# num_covered = cuántas intensidades de rojo incluimos en esta parte del problema
+# covered = cuántas intensidades de rojo incluimos en esta parte del problema
 # contando desde la primera (de un universo de 1 a d)
 # best_error[num_groups][covered] = el error mínimo para las primeras "covered"
-# "cubiertas" intensidades usando exactamente "grupos" grupos
+# "cubiertas" intensidades usando exactamente num_groups grupos
 
 INFINITY = 2 ** 63      # means "not possible yet"; a whole number, not a float
  
