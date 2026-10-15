@@ -20,8 +20,9 @@ Si **F** es la cantidad de L y **W** la cantidad de agua que llegan al nodo 3, �
 
 **Límites:** 3 ≤ n ≤ 200, 1 ≤ v ≤ 10, 0.01 ≤ a ≤ 0.99, 1 ≤ c ≤ 10
 
-## Ejemplo
+## Ejemplos
 
-| Entrada | Salida |
-| ------- | ------ |
-| n = 5, p = 5, v = 1.0, a = 0.5<br>tubería 1: 1–2, c = 10<br>tubería 2: 2–3, c = 10<br>tubería 3: 3–4, c = 10<br>tubería 4: 4–5, c = 10<br>tubería 5: 3–5, c = 10 | L = 5, agua = 0<br>L = 5, agua = 5<br>L = 4.2, agua = 3.14159<br>L = 4.2, agua = 3.14159<br>L = −4.2, agua = −3.14159<br>valor máximo: 5 |
+| Entrada 1 | Entrada 2 |
+| --------- | --------- |
+| n = 6, p = 6, v = 3.0, a = 0.66<br>tubería 1: 2–4, c = 8<br>tubería 2: 4–6, c = 1<br>tubería 3: 3–6, c = 1<br>tubería 4: 4–5, c = 5<br>tubería 5: 1–5, c = 7<br>tubería 6: 3–5, c = 3 | n = 5, p = 5, v = 1.0, a = 0.5<br>tubería 1: 1–2, c = 10<br>tubería 2: 2–3, c = 10<br>tubería 3: 3–4, c = 10<br>tubería 4: 4–5, c = 10<br>tubería 5: 3–5, c = 10 |
+| **Salida:**<br>tubería 1: L = 0, agua = 1.36<br>tubería 2: L = 0, agua = 1<br>tubería 3: L = 0, agua = −1<br>tubería 4: L = 0, agua = 0.36<br>tubería 5: L = 0.88, agua = 0<br>tubería 6: L = −0.88, agua = −0.36<br>valor máximo: 1.02037965897 | **Salida:**<br>tubería 1: L = 5, agua = 0<br>tubería 2: L = 5, agua = 5<br>tubería 3: L = 4.2, agua = 3.14159<br>tubería 4: L = 4.2, agua = 3.14159<br>tubería 5: L = −4.2, agua = −3.14159<br>valor máximo: 5 |
