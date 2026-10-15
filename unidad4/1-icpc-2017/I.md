@@ -8,7 +8,6 @@ nav_order: 9
 
 # ICPC 2017 - Problema I: clausura transitiva (grafos)
 
-## Problema
 - Entrada: m traducciones de letras (a → b, c) y n pares de palabras
 - Cada traducción va en una sola dirección, y se pueden encadenar: si a → b y b → c, entonces a puede convertirse en c
 - Una letra también puede quedarse igual, sin usar ninguna traducción

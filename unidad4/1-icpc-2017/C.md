@@ -8,13 +8,11 @@ nav_order: 3
 
 # ICPC 2017 - Problema C: emparejamiento bipartito
 
-## Problema
-
 Tenemos una **cuadrícula** (*grid*) de r renglones y c columnas, y en cada posición hay una pila de cajas de cierta altura (puede ser 0). Desde el frente se ve la altura máxima de cada columna, desde el lado se ve la altura máxima de cada renglón y desde arriba se ve qué posiciones tienen cajas y cuáles están vacías.
 
 Dadas las dimensiones de la cuadrícula y la altura de cada posición, hay que encontrar el mayor número de cajas que se pueden quitar sin que cambie ninguna de las tres vistas: cada renglón y cada columna deben conservar su altura máxima, las posiciones vacías deben seguir vacías y las que tienen cajas deben seguir teniendo al menos una.
 
-### Ilustración de la entrada de ejemplo 1
+## Ilustración de la entrada de ejemplo 1
 
 |       | col0 | col1 | col2 | col3 | col4 | lado |
 |-------|------|------|------|------|------|------|

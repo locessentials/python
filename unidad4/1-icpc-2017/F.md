@@ -8,7 +8,6 @@ nav_order: 6
 
 # ICPC 2017 - Problema F: imagen posterizada
 
-## Problema
 - Entrada: **d** intensidades de rojo distintas, en orden creciente (**r** = intensidad, **p** = número de píxeles con esa intensidad), y **k** = número de valores permitidos en la imagen posterizada
 - Cada canal de color de un píxel (rojo, verde y azul) es un entero entre 0 y 255; el problema solo usa el rojo. Entonces, elegir k valores enteros dentro de ese rango (no tienen que estar en la entrada); cada píxel se cambia al valor permitido más cercano
 - Error de cada píxel: (r − v)², donde **v** es su nuevo valor; elevar al cuadrado quita el signo y castiga más los errores grandes

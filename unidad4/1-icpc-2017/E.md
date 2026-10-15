@@ -8,8 +8,6 @@ nav_order: 5
 
 # ICPC 2017 - Problema E: búsqueda binaria
 
-## Resumen del problema
-
 Dado un viaje de **n** segmentos, cada uno con una distancia **d** y una lectura **s** de un velocímetro sin calibrar, y el tiempo total **t** que tomó el viaje completo, calcular la constante **c** que, sumada a cada lectura, da la velocidad real: **s + c**.
 
 La constante debe cumplir dos condiciones:
@@ -24,12 +22,12 @@ La constante debe cumplir dos condiciones:
 
 Las lecturas s pueden ser negativas, y c también puede serlo, pero no al mismo tiempo: la velocidad real, s + c, siempre tiene que ser positiva.
 
-### Entrada
+**Entrada**
 
 - Primera línea: **n** (1 ≤ n ≤ 1000) y **t** (1 ≤ t ≤ 10⁶, es decir, 1000000).
 - Siguientes **n** líneas: **d** (1 ≤ d ≤ 1000) y **s** (|s| ≤ 1000) de cada segmento.
 
-### Salida
+**Salida**
 
 - El valor de **c**, con un error absoluto o relativo menor que 10⁻⁶ (es decir, 0.000001).
 

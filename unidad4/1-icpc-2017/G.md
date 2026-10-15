@@ -8,8 +8,6 @@ nav_order: 7
 
 # ICPC 2017 – Problema G: Replicate Rfplicbte
 
-## Problema
-
 Se tiene una cuadrícula de celdas, donde el **w** y **h** son el ancho y la altura de la cuadrícula final. Cada celda está vacía (`.`) o llena (`#`), y hay al menos una celda llena en la primera renglón, en la última renglón, en la primera columna y en la última columna.
 
 Una figura inicial cambia por pasos. En cada paso, todas las celdas cambian al mismo tiempo según estas reglas:
@@ -27,7 +25,7 @@ Dada la cuadrícula final, hay que encontrar la figura inicial más pequeña (y 
 3. Repetir hasta que ya no se pueda deshacer otro paso.
 4. Imprimir la figura que queda.
 
-### Ejemplo 3
+**Ejemplo 3**
 
 ```
 cuadrícula final   quitar el error   deshacer el paso   salida
@@ -37,7 +35,7 @@ cuadrícula final   quitar el error   deshacer el paso   salida
 ..###              ..###             .....
 ```
 
-### Límites
+**Límites**
 
 - **Límite de tiempo:** 3 segundos
 - 1 ≤ w ≤ 300, 1 ≤ h ≤ 300

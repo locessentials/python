@@ -8,7 +8,6 @@ nav_order: 4
 
 # ICPC 2017 - Problema D: poda y monotonía
 
-## Problema
 - Entrada: m productores (p = precio, d = día inicial) y n compradores (c = costo, z = día final)
 - Elegir un productor y un comprador para maximizar ganacias: (c − p) × (z − d)
 - Solo cuentan los pares donde c > p y z > d; si no hay ninguno, la respuesta es 0

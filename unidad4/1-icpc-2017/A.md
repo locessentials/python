@@ -8,8 +8,6 @@ nav_order: 1
 
 # ICPC 2017 - Problema A
 
-## Resumen del problema
-
 Dado un **polígono simple** de *n* vértices, en sentido antihorario, calcular la longitud del **segmento de recta más largo** que cabe dentro de él.
 
 - El segmento **no puede salir** del polígono.
