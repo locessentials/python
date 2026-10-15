@@ -14,7 +14,7 @@ Empareja cada esquina de arriba a la izquierda con una de abajo a la derecha par
 
 **Entrada:** primer renglón: **n**. Luego **n** renglones con el renglón y la columna de cada esquina de arriba a la izquierda, y después **n** renglones con las esquinas de abajo a la derecha.
 
-**Salida:** **n** renglones. El renglón i dice el número de la esquina de abajo a la derecha que va con la esquina i de arriba a la izquierda (las esquinas se numeran en el orden de la entrada).
+**Salida:** **n** renglones, uno por cada esquina de arriba a la izquierda, en orden. Cada renglón dice en qué lugar de la lista de esquinas de abajo a la derecha está su pareja (empezando en 1). Si no se puede, un solo renglón: `syntax error`.
 
 **Límites:** 1 ≤ n ≤ 100 000, renglones y columnas entre 1 y 1 000 000 000, todas las esquinas en lugares distintos
 
