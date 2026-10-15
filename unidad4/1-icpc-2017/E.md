@@ -34,7 +34,7 @@ Las lecturas s pueden ser negativas, y c también puede serlo, pero no al mismo 
 ---
 
 ## Idea principal
-No hay una fórmula directa para calcular c (como c aparece dentro de cada denomidador) de la ecuación directamente, pero el tiempo total siempre baja cuando c sube, así que usamos **búsqueda binaria sobre la respuesta**: probamos el punto medio del rango posible de c, calculamos el tiempo que daría y descartamos (*we discard*) la mitad donde c no puede estar. Repetimos hasta que el rango es mucho más pequeño que 10⁻⁶.
+No hay una fórmula directa para calcular c (como c aparece dentro de cada denominador) de la ecuación directamente, pero el tiempo total siempre baja cuando c sube, así que usamos **búsqueda binaria sobre la respuesta**: probamos el punto medio del rango posible de c, calculamos el tiempo que daría y quitamos (*we discard*) la mitad donde c no puede estar. Repetimos hasta que el rango es mucho más pequeño que 10⁻⁶.
 - `T(c)`: función de evaluación; calcula el tiempo total del viaje si la constante fuera c
 - ciclo `for`: aquí está la búsqueda binaria; compara `T(mid)` con `t` y mueve `lo` o `hi` al punto medio
 
@@ -42,7 +42,7 @@ No hay una fórmula directa para calcular c (como c aparece dentro de cada denom
 
 ## Panorama de la resolución
 
-### Establecer los límites de la busquéda
+### Establecer los límites de la búsqueda
 
 #### Límite inferior de c (lo)
 
@@ -56,7 +56,7 @@ Por ejemplo, en el ejemplo 1 la lectura más baja es −1, así que −1 + c = 0
 
 #### Límite superior de c (hi)
 
-Calculamos la límite superior de c a partir de los rangos de las entradas n, d, t y s permitidos por el problema.
+Calculamos el límite superior de c a partir de los rangos de las entradas n, d, t y s permitidos por el problema.
 
 | Límite | Según el problema | Peor caso |
 |---|---|---|
@@ -83,8 +83,8 @@ Definimos una función que calcula el tiempo total del viaje si la constante fue
 
 En el ciclo `for`, calculamos el punto medio entre `lo` y `hi`, lo evaluamos con `T`, y hay dos resultados posibles:
 
-1. Si el tiempo que da es mayor que el tiempo total real del viaje, el viaje tarda demasiado y las velocidades son demasiado lentas. Como c tiene que ser más grande, descartamos todos los valores de c menores que el punto medio, así que `lo` pasa a ser el punto medio.
-2. Si el tiempo que da es menor o igual que el tiempo total real, el viaje es demasiado corto y las velocidades son demasiado rápidas. Como c tiene que ser más pequeña, descartamos todos los valores de c mayores que el punto medio, así que `hi` pasa a ser el punto medio.
+1. Si el tiempo que da es mayor que el tiempo total real del viaje, el viaje tarda demasiado y las velocidades son demasiado lentas. Como c tiene que ser más grande, quitamos todos los valores de c menores que el punto medio, así que `lo` pasa a ser el punto medio.
+2. Si el tiempo que da es menor o igual que el tiempo total real, el viaje es demasiado corto y las velocidades son demasiado rápidas. Como c tiene que ser más pequeña, quitamos todos los valores de c mayores que el punto medio, así que `hi` pasa a ser el punto medio.
 
 Repetimos 100 veces, hasta que el rango es mucho más pequeño que 10⁻⁶. Como cada iteración reduce el rango a la mitad, con unas 40 ya se llega a 10⁻⁶; usamos 100, un valor común en búsquedas binarias con decimales porque alcanza de sobra.
 
@@ -95,3 +95,15 @@ Repetimos 100 veces, hasta que el rango es mucho más pequeño que 10⁻⁶. Com
 Después de repetir esta operación 100 veces, `lo` y `hi` son prácticamente el mismo número dentro del rango. Ese valor es nuestra c: la constante que, con las entradas n, t, d y s, da el tiempo total del viaje.
 
 [Ver el código completo en GitHub](https://github.com/locessentials/python/blob/main/unidad4/1-icpc-2017/e.py)
+
+---
+
+## Análisis del código
+
+- **Construcción del algoritmo:** (1) leer `n`, `t` y los segmentos en `segmentos`; (2) encontrar `low_s`, la lectura más baja, y fijar `lo = -low_s` y `hi = 1001001`; (3) repetir 100 veces: calcular `mid`, evaluar `T(mid)` y mover `lo` o `hi` a `mid`; (4) imprimir `hi` con 9 decimales
+- **Variables y tipos de datos:** `n`, `t`, `d` y `s` son `int`, porque la entrada son números enteros; `c`, `mid`, `lo`, `hi` y `running` son `float`, porque la respuesta es un número decimal y cada tiempo d / (s + c) también lo es; la precisión de `float` (unos 15 dígitos) alcanza de sobra para el error de 10⁻⁶ que pide el problema; `float("inf")` solo se usa como valor inicial de `low_s`, para que cualquier lectura real sea más baja
+- **Estructuras de datos:** una lista de listas `segmentos`, porque `T(c)` necesita recorrer todos los segmentos en cada repetición; no hacen falta diccionarios, conjuntos, colas, montículos ni grafos, porque solo se recorre la lista completa
+- **Paradigma algorítmico:** búsqueda binaria sobre la respuesta (*binary search on the answer*): no hay fórmula para encontrar c, pero `T(c)` siempre baja cuando c sube (cada s + c sube, así que cada d / (s + c) baja), así que comparar `T(mid)` con `t` dice en qué mitad está c, y se quita la otra mitad
+- **Estilo de programación:** procedural, con una función `T(c)` para calcular el tiempo y un ciclo para la búsqueda
+- **Iterativo o recursivo:** iterativo: un ciclo `for` de 100 repeticiones; no hace falta recursión, porque cada repetición solo cambia `lo` o `hi`
+- **Complejidad:** temporal O(100 × n): en cada una de las 100 repeticiones, `T(c)` recorre los n segmentos (como mucho 100 × 1000 = 100,000 divisiones); espacial O(n), por la lista `segmentos`; la operación que determina la complejidad es la división d / (s + c) dentro de `T(c)`
