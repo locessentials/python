@@ -97,7 +97,14 @@ Luego usamos el algoritmo una sola vez, de S al nodo 3. El algoritmo solo sabe t
 
 **Cambio de unidades**
 
-Cada litro de L usa v unidades de espacio en la tubería. Si medimos L en unidades de espacio, x = v × F, la regla de cada tubería queda como x + w ≤ c. Con este cambio, los dos líquidos usan el espacio de la misma forma.
+Cada litro de L usa v unidades de espacio en la tubería, y cada litro de agua usa 1. L usa más espacio porque es más viscoso que el agua. Si medimos L en unidades de espacio, la regla de cada tubería, v × f + w ≤ c, dice: el espacio que usan L y el agua, sumado, no puede pasar la capacidad de la tubería. Con este cambio, los dos líquidos usan el espacio de la misma forma. En total, L usa x = v × f unidades de espacio.
+
+Aquí:
+- **v:** cuántas unidades de espacio usa un litro de L, comparado con un litro de agua, que usa 1
+- **f:** litros de L en total que llegan al nodo 3
+- **w:** litros de agua en una tubería
+- **c:** capacidad de una tubería
+- **x:** espacio que usa L en total, x = v × F (el cambio de unidades)
 
 En este problema usamos flujo máximo cinco veces:
 
