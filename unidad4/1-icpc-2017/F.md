@@ -89,6 +89,8 @@ La ecuación Σ pᵢ(rᵢ − v) = 0 es el mismo equilibrio: lo que jalan los de
 
 v tiene que ser entero, así que probamos el entero de abajo y el de arriba del promedio (83 y 84) y nos quedamos con el que da menos error.
 
+---
+
 ## Panorama del código
 
 El código tiene tres pasos: una función que calcula el error de un grupo, una tabla con el error de cada grupo posible, y la programación dinámica, que usa esa tabla para encontrar la mejor forma de dividir las intensidades en k grupos.
@@ -116,21 +118,115 @@ start = 1      —        [25]       [25, 50]       [25, 50, 255]
 start = 2      —         —         [50]           [50, 255]
 start = 3      —         —          —             [255]
 ```
+Los mismos espacios con su error (cada intensidad tiene 30,000 píxeles):
+
+```
+              end = 0   end = 1      end = 2       end = 3
+start = 0     0         9,390,000    37,500,000    1,227,780,000
+start = 1      —        0            9,390,000     955,500,000
+start = 2      —         —           0             630,390,000
+start = 3      —         —            —            0
+```
 
 ### 3. Programación dinámica (`best_error`)
 
-- `best_error[num_groups][covered]` guarda el menor error para las primeras `covered` intensidades, usando `num_groups` grupos.
-- La tabla empieza llena de `INFINITY` (todavía no se puede), menos `best_error[0][0] = 0`: 0 intensidades con 0 grupos no tienen error. Ese es el punto de partida.
-- Llenamos la tabla con 1 grupo, luego con 2, hasta k. Para cada `covered`, probamos cada lugar `last_start` donde puede empezar el último grupo, es decir, dónde va el último corte.
-- Cada corte divide el problema en dos partes: `error_before`, el mejor error antes del corte con un grupo menos (ya guardado en `best_error`), y `error_last`, el error del último grupo (de `error_table`). Guardamos la suma más pequeña.
+- `best_error[num_groups][covered]` guarda el menor error para las primeras `covered` intensidades, usando `num_groups` grupos. Usa los errores de `error_table` y los combina para encontrar la mejor forma de dividir las intensidades en k grupos. La tabla empieza llena de `INFINITY` (todavía no se puede), menos `best_error[0][0] = 0`: 0 intensidades con 0 grupos no tienen error. Ese es el punto de partida.
+
+```
+                covered=0  covered=1  covered=2   covered=3             covered=4
+num_groups=0    0          INF        INF         INF                   INF
+num_groups=1    INF        [0]        [0,25]      [0,25,50]             [0,25,50,255]
+num_groups=2    INF        INF        [0]|[25]    mejor de 2 opciones   mejor de 3 opciones  ← respuesta
+                                                 es decir, [0] | [25, 50]
+                                                 o [0, 25] | [50]
+
+```
+
+```
+                covered=0  covered=1  covered=2   covered=3    covered=4
+num_groups=0    0          INF        INF         INF          INF
+num_groups=1    INF        0          9,390,000   37,500,000   1,227,780,000
+num_groups=2    INF        INF        0           9,390,000    37,500,000  ← respuesta
+```
+
+- `num_groups` va de 1 a k (el máximo de valores de rojo distintos permitidos), porque para encontrar la respuesta con k grupos, el programa primero resuelve los casos más pequeños; `covered` funciona igual, pero con las intensidades: va de 1 a d (el total de distintos rojos), y quiere decir "usar solo las primeras `covered` intensidades, como si las demás no existieran todavía".
+
+Para [0, 25, 50, 255]:
+
+```
+covered = 1:   [0]                  25   50   255   ← todavía no se usan
+covered = 2:   [0, 25]                   50   255   ← todavía no se usan
+covered = 3:   [0, 25, 50]                    255   ← todavía no se usan
+covered = 4:   [0, 25, 50, 255]
+```
+
+- Llenamos la tabla con 1 grupo, luego con 2, hasta k. Para cada `covered`, probamos cada lugar donde puede ir el último corte (`last_start` = donde empieza el último grupo); lo de la izquierda del corte ya está resuelto en el renglón de arriba.
+
+```
+last_start = 1:   [0]          | [25, 50, 255]
+last_start = 2:   [0, 25]      | [50, 255]
+last_start = 3:   [0, 25, 50]  | [255]
+```
+
+- Cada corte divide el problema en dos partes: `error_before`, el mejor error antes del corte con un grupo menos (ya guardado en `best_error`), y `error_last`, el error del último grupo (de `error_table`). Guardamos la suma más pequeña en best_error[num_groups][covered], y el renglón de abajo la usa después.
+
+```
+1 GRUPO (solo hay una forma: todo en un grupo)
+  [0]              →  error del grupo [0]
+  [0, 25]          →  error del grupo [0, 25]
+  [0, 25, 50]      →  error del grupo [0, 25, 50]
+
+2 GRUPOS, para [0, 25, 50, 255]: probamos cada corte
+  [0]          +  [25, 50, 255]
+  [0, 25]      +  [50, 255]
+  [0, 25, 50]  +  [255]
+  ───────────     ─────────────
+  ya guardado      un grupo más
+  arriba           (error_table)
+```
+
 - `covered` empieza en `num_groups` y `last_start` en `num_groups − 1` porque cada grupo necesita al menos una intensidad.
 - Esta es la idea de la programación dinámica: cada respuesta se construye con respuestas más pequeñas que ya están guardadas, sin volver a calcularlas.
-- La respuesta es `best_error[k][d]`: todas las d intensidades con k grupos.
+- Así cada renglón se construye con el de arriba, hasta llegar a `best_error[k][d]`: todas las d intensidades con k grupos. Esa es la respuesta.
 
-Ejemplo 3, con 2 grupos para cubrir las 4 intensidades:
+## Análisis del código
 
-```
-last_start = 1:   [0]          | [25, 50, 255]    best_error[1][1] + error_table[1][3]
-last_start = 2:   [0, 25]      | [50, 255]        best_error[1][2] + error_table[2][3]
-last_start = 3:   [0, 25, 50]  | [255]            best_error[1][3] + error_table[3][3]
-```
+### Construcción del algoritmo
+
+1. Leer d, k y las d parejas (r, p).
+2. `group_error`: para un grupo, calcular el promedio ponderado, probar el entero de abajo y el de arriba, y regresar el menor error.
+3. `error_table`: calcular el error de cada grupo posible una sola vez.
+4. `best_error`: llenar renglón por renglón (1 grupo, 2 grupos, hasta k); en cada espacio, probar cada lugar del último corte y guardar la suma más pequeña.
+5. Imprimir `best_error[k][d]`.
+
+### Variables y tipos de datos
+
+- Todo es `int`: d, k, r, p, las sumas, v y los errores. La respuesta debe ser un entero exacto, y `float` puede perder precisión.
+- Por eso usamos `//` (da `int`) para el promedio, e `INFINITY = 2 ** 63` (entero) en lugar de `float('inf')`.
+
+### Estructuras de datos
+
+- `red_v`: lista de parejas [r, p], en orden creciente; el orden es importante porque los grupos son intensidades vecinas.
+- `error_table` y `best_error`: matrices (listas de listas). Los índices son enteros seguidos (0, 1, 2…), así que una lista da acceso directo a cada espacio en O(1); un diccionario no da ninguna ventaja aquí.
+- No se necesitan colas, montículos ni grafos: no hay que buscar caminos ni sacar siempre el menor elemento.
+
+### Paradigma algorítmico
+
+- Programación dinámica: el mejor resultado con k grupos se construye con los mejores resultados con k − 1 grupos, y esos resultados se repiten, así que se guardan para no volver a calcularlos.
+- Fuerza bruta no sirve: hay demasiadas formas de dividir d intensidades en k grupos.
+- Voraz no sirve: elegir el mejor corte en cada paso no garantiza el menor error total.
+
+### Estilo de programación
+
+- Imperativo/procedural: una función (`group_error`) y ciclos. Es un problema pequeño con una sola entrada; basta con una función y ciclos.
+
+### Iterativo o recursivo
+
+- Iterativo: los ciclos llenan las tablas de los casos pequeños a los grandes, así que el renglón de arriba siempre está listo cuando se necesita.
+- Sin recursión, no hay riesgo de pasar el límite de recursión de Python y se usa menos memoria.
+
+### Complejidad
+
+- Tiempo: O(d³). Llenar `error_table` es O(d³) (d² grupos, y cada `group_error` recorre hasta d intensidades); la programación dinámica es O(k · d²), y k ≤ d. Con d = 256, son unos millones de operaciones.
+- Espacio: O(d²), por las dos tablas.
+- La operación que determina el tiempo son las sumas dentro de `group_error`.
