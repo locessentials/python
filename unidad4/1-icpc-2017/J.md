@@ -120,11 +120,16 @@ En este problema usamos flujo máximo cinco veces:
 
 - **Media aritmética** de A y B: (A + B) / 2. Ejemplo: A = 4, B = 9 → 6.5
 - **Media geométrica**: √(A × B), que es lo mismo que A<sup>0.5</sup> × B<sup>0.5</sup>. Ejemplo: A = 4, B = 9 → 6
-- **Media geométrica ponderada**: A<sup>a</sup> × B<sup>1 − a</sup>. El número a dice cuánto "pesa" A, y 1 − a dice cuánto pesa B.
+- **Media geométrica ponderada**: A<sup>a</sup> × B<sup>1 − a</sup>. El número a dice cuánto "pesa" A, y 1 − a dice cuánto pesa B. Con 1 − a, los dos pesos suman 1, y eso hace falta para que sea un promedio.
 
-**Regla clave:** si la suma A + B = S no cambia, el valor máximo de A<sup>a</sup> × B<sup>1 − a</sup> se encuentra con A = a × S y B = (1 − a) × S.
+**Regla clave:** si la suma A + B = T no cambia, el valor máximo de A<sup>a</sup> × B<sup>1 − a</sup> se encuentra con A = a × T y B = (1 − a) × T.
 
-Ejemplo con S = 10 y a = 0.5:
+En nuestro problema:
+- **A** es x, el espacio que usa L en total. Como x = v × F, buscar el máximo con x da la misma respuesta que buscarlo con F.
+- **B** es W, el agua en total.
+- **T** es M12, el valor más grande que puede tener x + W.
+
+Ejemplo con T = 10 y a = 0.5:
 
 | A | B | A<sup>0.5</sup> × B<sup>0.5</sup> |
 | - | - | --- |
