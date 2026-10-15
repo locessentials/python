@@ -57,7 +57,7 @@ for start in range(d):                          # para cada posición donde pued
         row[end] = group_error(start, end)      # guardar el error de ese grupo en la columna end
     error_table.append(row)                     # agregar el renglón completo a la tabla
 
-# Paso 3: programación dinámica
+# PASO 3: PROGRAMACIÓN DINÁMICA
 
 # num_groups = número de grupos en que dividimos las intensidades (de 1 a k)
 # num_covered = cuántas intensidades de rojo incluimos en esta parte del problema

@@ -6,7 +6,7 @@ parent: ICPC 2017
 nav_order: 12
 ---
 
-# ICPC 2017 - Problema L: Visual Python++ (línea de barrido)
+# ICPC 2017 - Problema L: línea de barrido
 
 Hay **n** rectángulos en una cuadrícula, pero solo se ven sus esquinas: **n** esquinas de arriba a la izquierda y **n** esquinas de abajo a la derecha. No se sabe qué esquina va con cuál.
 
