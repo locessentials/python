@@ -16,7 +16,7 @@ Dado un **polígono simple** de *n* vértices, en sentido antihorario, calcular 
 
 **Entrada**
 
-La entrada empieza con un renglón que tiene un entero *n* (3 ≤ n ≤ 200): el número de vértices del polígono. Después siguen *n* renglones, cada uno con dos enteros *x*, *y* (|x|, |y| ≤ 10⁶): las coordenadas (x, y) de los vértices, en sentido antihorario.
+La entrada empieza con un renglón que tiene un entero *n* (3 ≤ n ≤ 200): el número de vértices del polígono. Después siguen *n* renglones, cada uno con dos enteros *x*, *y* (\|x\|, \|y\| ≤ 10⁶): las coordenadas (x, y) de los vértices, en sentido antihorario.
 
 - El polígono es **simple**: sus vértices son distintos y dos lados no se cruzan ni se tocan, salvo los lados consecutivos, que se tocan en su vértice común.
 - Dos lados consecutivos **nunca son colineales**.
