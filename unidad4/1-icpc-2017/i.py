@@ -18,10 +18,11 @@ for _ in range(m):
 # p = pares
 # cada par guarda la palabra original y la palabra descifrada
 
-p = []
+p = []              # [('can', 'the'), ('work', 'people'), ('out', 'the')]
 for _ in range(n):
     original, deciphered = input().split()
     p.append((original, deciphered))
+    print(p)
 
 # FUNCIÓN: PARA CADA LETRA, ENCONTRAR LA CADENA DE TODAS LAS LETRAS EN LAS QUE SE PUEDE TRADUCIR
 

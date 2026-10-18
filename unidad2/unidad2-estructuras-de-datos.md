@@ -30,12 +30,3 @@ has_children: true
 6. Árboles: nodos jerárquicos con una raíz e hijos; el árbol binario de búsqueda es el más común en exámenes
 7. Montículos: árbol que mantiene el menor (o mayor) elemento arriba; base de las colas de prioridad
 8. Grafos: nodos conectados por aristas; se representan con lista o matriz de adyacencia
-
-## Big O
-
-O stands for orden (“order of”), and it’s called notación O grande (big O notation). O(log n), O(n log n), O(n), and O(n⁴) are all the same notation. Each one describes how fast the cost grows as n grows:
-
-- O(log n): grows very slowly. Double n and it adds only one step.
-- O(n): grows at the same rate as n. Double n and the cost doubles.
-- O(n log n): a little faster than O(n).
-- O(n⁴): grows very fast. Double n and the cost is multiplied by 16.
