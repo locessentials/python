@@ -110,8 +110,10 @@ for card in left_rooms:
 if len(left_rooms) == 1:
     room_answer = left_rooms[0]
 
-print(person_answer + weapon_answer + room_answer)  # Imprimir la respuesta: persona, arma y habitación
-                                                    # ('?' si no se puede determinar)
+# Imprimir la respuesta: persona, arma y habitación
+
+print(person_answer + weapon_answer + room_answer)  # ('?' si no se puede determinar)
+
 
 # Get-Content bsample1.txt | python b.py > AGM
 # Get-Content bsample2.txt | python b.py > E??
