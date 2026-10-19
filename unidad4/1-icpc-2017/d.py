@@ -6,14 +6,14 @@
 m, n = map(int, input().split())
 
 # p = precio
-# d = día en que el primer producto sería listo
+# d = día en que el primer producto estaría listo
 
 prod = []
 for _ in range(m):
     prod.append(list(map(int, input().split())))
 
 # c = costo
-# z = fin, día en que el vendedor parará de comprar producto
+# z = fin, día en que el comprador parará de comprar producto
 
 comp = []
 for _ in range(n):

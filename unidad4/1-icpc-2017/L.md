@@ -86,7 +86,7 @@ columna:      2     5     9
 
 ### Verificar los resultados (`check_rectangles`)
 
-- El emparejamiento encuentra la única pareja posible para cada esquina, pero los bordes todavía se pueden cruzar o encimar, como en los ejemplos 3 y 4. Por eso hacemos una segunda línea de barrido.
+- El emparejamiento encuentra una pareja válida para cada esquina, pero los bordes todavía se pueden cruzar o encimar, como en los ejemplos 3 y 4. Por eso hacemos una segunda línea de barrido.
 - Para cada rectángulo creamos cuatro eventos: en el renglón de arriba abrimos sus dos lados verticales (`ADD`) y revisamos el borde de arriba (`CHECK`); en el renglón de abajo revisamos el borde de abajo (`CHECK`) y cerramos los lados (`REMOVE`).
 
 ```
@@ -136,11 +136,6 @@ borde de B: de la columna 7 a la 17  →  tocan 7, 8 y 17  →  3, no 2  →  sy
 ---
 
 ## Análisis del código
-
-Library
-Inputting corners with their position number in the list so as to be able to answe the problem
-
-## Análisis
 
 - **Construcción del algoritmo:**
   1. Leemos la entrada y guardamos cada esquina con su índice en la lista (empezando en 0), porque la salida pide la posición de cada pareja. Al imprimir sumamos 1, porque la salida empieza a contar en 1.

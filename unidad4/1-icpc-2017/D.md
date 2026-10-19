@@ -9,7 +9,7 @@ nav_order: 4
 # ICPC 2017 - Problema D: poda y monotonía
 
 - Entrada: m productores (p = precio, d = día inicial) y n compradores (c = costo, z = día final)
-- Elegir un productor y un comprador para maximizar ganacias: (c − p) × (z − d)
+- Elegir un productor y un comprador para maximizar ganancias: (c − p) × (z − d)
 - Solo cuentan los pares donde c > p y z > d; si no hay ninguno, la respuesta es 0
 - Límites: m, n ≤ 500,000; valores ≤ 10⁹
 
@@ -48,7 +48,7 @@ Revisar todos los pares productor–comprador tardaría demasiado (hasta 500,000
 **`ganancia()`**
 - La llama `buscar()` en el paso 2 para cada par
 - Calcula (c − p) × (z − d)
-- Quitaa los pares donde (c − p) y (z − d) son negativos, porque negativo × negativo da positivo y parecería una ganancia; ej.: p=10, d=8, c=4, z=3 → (−6) × (−5) = 30
+- Quita los pares donde (c − p) y (z − d) son negativos, porque negativo × negativo da positivo y parecería una ganancia; ej.: p=10, d=8, c=4, z=3 → (−6) × (−5) = 30
 
 **Conclusión**
 - Al terminar, `mejor_total` es la respuesta. Gracias a la poda y a la monotonía, cada productor se compara solo con una parte de los compradores, y el programa hace unas (m + n) × log m comparaciones en vez de m × n, lo suficiente para el límite de 5 segundos.

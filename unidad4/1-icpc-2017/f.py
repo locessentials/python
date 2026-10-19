@@ -73,7 +73,7 @@ for num_groups in range(k + 1):                     # una lista por cada número
     best_error.append([INFINITY] * (d + 1))         # cada lista tiene d + 1 espacios en INFINITY
                                                     # (INFINITY = todavía no se puede)
 
-best_error[0][0] = 0                                # punto de partida: lista 1, posición 1 en la lista 
+best_error[0][0] = 0                                # punto de partida: lista 0, posición 0 en la lista 
                                                     # 0 intensidades con 0 grupos no tienen error
 
 for num_groups in range(1, k + 1):              # llenar la lista de 1 grupo, luego la de 2, hasta k

@@ -81,7 +81,7 @@ La celda **[4]** es una posición compartida. El renglón 2 y la columna 1 tiene
   1. `can_share` es `True` si el renglón y la columna tienen el mismo máximo **y** la posición donde se cruzan es distinta de 0
   2. Si la columna está libre, el renglón la toma y regresa `True`
   3. Si está ocupada, la **llamada recursiva** `try_match(match_col[j], seen)` le pregunta al renglón que la usa si se puede cambiar a otra columna. Si se cambia, regresa `True` y el renglón `i` toma la columna. Si no, se prueba la siguiente columna
-  4. Si ninguna columna funciona, regresa `False`
+  4. Si ninguna columna funciona, regresa `False`. Si un renglón no encuentra pareja, no pasa nada. Ese renglón no tiene una posición compartida, así que no sumamos nada a las cajas contadas dos veces (counted_twice). Su pila máxima ya está contada por separado en el cálculo final.
 - `seen`: marca las columnas ya revisadas en la búsqueda de un renglón, para que dos renglones no se pidan intercambiar hasta infinito
 - `counted_twice`: un ciclo llama a `try_match` una vez por renglón; si encuentra pareja, suma `máximo − 1` cajas
 
@@ -155,7 +155,7 @@ call try_match(1, seen)
 - **Paradigma algorítmico:** búsqueda en grafos: emparejamiento bipartito máximo con el **algoritmo de Kuhn**, que busca pareja para cada renglón con búsqueda en profundidad (*DFS*); la cadena de cambios que hace la llamada recursiva se llama **camino de aumento**: cada renglón ocupado se mueve a otra columna para dejar espacio, y al final un renglón que no tenía pareja consigue una, así que hay una pareja más que antes
 - **Estilo de programación:** procedural, con una función `try_match` para el emparejamiento y ciclos para la preparación y el cálculo final
 - **Iterativo o recursivo:** iterativo en la preparación y el cálculo final; recursivo en `try_match`, porque cada cambio puede provocar otro y no se sabe de antemano cuántos; la recursión termina porque regresa `True` al encontrar una columna libre o `False` al revisar todas, y `seen` evita revisar la misma columna dos veces; como mucho hay una llamada por columna, así que no se pasa el límite de recursión de Python
-- **Complejidad:** temporal O(m × n²): para cada renglón, `try_match` revisa cada columna como mucho una vez (gracias a `seen`), y en cada revisión recorre las n columnas; la preparación y el cálculo final son O(m × n); espacial O(m × n), por `rows` y `columns`; la operación que determina la complejidad es la revisión de `can_share` dentro de `try_match`
+- **Complejidad:** temporal O(m × n²) (cúbica): para cada renglón, `try_match` revisa cada columna como mucho una vez (gracias a `seen`), y en cada revisión recorre las n columnas; la preparación y el cálculo final son O(m × n); espacial O(m × n), por `rows` y `columns`; la operación que determina la complejidad es la revisión de `can_share` dentro de `try_match`
 
 ---
 
