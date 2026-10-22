@@ -13,21 +13,24 @@ Herramientas básicas para resolver problemas con puntos, rectas y polígonos. C
 
 | ENG | ESP | Definición |
 | --- | --- | ---------- |
-| quadrant | cuadrante | cada una de las cuatro partes en que los ejes x y y dividen el plano |
-| vector | vector | el viaje de un punto a otro: cuánto se mueve en x y cuánto en y |
-| distance formula | fórmula de la distancia | longitud del segmento entre dos puntos |
-| cross product | producto cruz | número cuyo signo dice de qué lado de una recta está un punto |
-| orientation | orientación | sentido del giro al pasar por tres puntos: antihorario, horario o en línea recta |
-| crossing test | prueba de cruce | forma de saber si un segmento cruza una recta, con el signo del producto cruz |
-| parametric form | forma paramétrica | forma de describir cada punto de una recta con un solo número t |
-| dot product | producto punto | número que dice cuánto avanza un vector en la dirección de otro |
-| ray casting | método del rayo (regla par-impar) | forma de saber si un punto está dentro de un polígono contando cruces |
-| shoelace formula | fórmula de la lazada | forma de calcular el área de un polígono a partir de sus vértices |
+| quadrant | cuadrante | cada una de las cuatro partes en que los ejes `x` y `y` dividen el plano |
+| vertex, vertices | vértice, vértices | punto donde se unen dos lados consecutivos |
+| vector | vector | el viaje de un punto a otro: cuánto se mueve en `x` y cuánto en `y`; de `A = (x1, y1)` a `B = (x2, y2)`: `(x2 − x1, y2 − y1)` |
+| distance formula | fórmula de la distancia | longitud del segmento entre dos puntos: `√(dx² + dy²)`, donde `dx = x2 − x1` y `dy = y2 − y1` |
+| cross product | producto cruz | cálculo que responde la pregunta de la **orientación**; dados `A = (x1, y1)`, `B = (x2, y2)` y `P = (x3, y3)`: `(x2 − x1)(y3 − y1) − (y2 − y1)(x3 − x1)`; positivo: `P` está a la izquierda de `AB`; negativo: a la derecha; cero: sobre la recta |
+| orientation | orientación | pregunta que responde el **producto cruz**: al pasar por `A`, `B` y `P`, ¿el giro es antihorario, horario o en línea recta?; es el signo de `cross(A, B, P)`; positivo: antihorario; negativo: horario; cero: en línea recta |
+| crossing test | prueba de cruce | el segmento `CD` cruza la recta `AB` si `cross(A, B, C) × cross(A, B, D) < 0`, es decir, si `C` y `D` dan signos opuestos |
+| parametric form | forma paramétrica | forma de describir cada punto de la recta `AB` con un solo número `t`: `(x1 + t(x2 − x1)`, `y1 + t(y2 − y1))`; `t = 0` en `A` y `t = 1` en `B` |
+| dot product | producto punto | con `A`, `B` y `P` como en el producto cruz: `(x2 − x1)(x3 − x1) + (y2 − y1)(y3 − y1)`; positivo: `AP` va hacia el mismo lado que `AB`; cero: perpendiculares; negativo: lados contrarios |
+| ray casting | método del rayo (regla par-impar) | forma de saber si un punto está dentro de un polígono: se traza un rayo desde el punto hacia la derecha y se cuentan los lados del polígono que cruza; impar: dentro; par: fuera |
+| shoelace formula | fórmula de la lazada | área de un polígono: la suma de `cross(vertices[0], vertices[k], vertices[k + 1])` para cada par de vértices seguidos, dividida entre 2 |
 | closest pair of points | pareja de puntos más cercanos | problema de encontrar los dos puntos con la menor distancia entre sí |
 
 ---
 
-## El plano cartesiano
+## Lo básico
+
+### El plano cartesiano
 
 Dos ejes dividen el plano en cuatro cuadrantes. Los signos de `x` y de `y` dicen en qué cuadrante está un punto, sin necesidad de dibujarlo:
 
@@ -51,9 +54,7 @@ Dos ejes dividen el plano en cuatro cuadrantes. Los signos de `x` y de `y` dicen
 
 Por ejemplo, si todas las coordenadas son positivas, todos los puntos están en el cuadrante I, arriba y a la derecha del origen (0, 0).
 
----
-
-## Puntos en Python
+### Puntos y vectores
 
 Un punto se guarda como una tupla `(x, y)`. Para usar sus coordenadas, se separan:
 
@@ -63,6 +64,15 @@ x1, y1 = A
 ```
 
 Un **vector** es el viaje de un punto a otro. De A = (2, 3) a B = (6, 5), el vector AB es (6 − 2, 5 − 3) = (4, 2): avanza 4 en x y 2 en y.
+
+### Rectas y segmentos
+
+Una **recta** sigue sin fin en las dos direcciones; un **segmento** es solo el pedazo de la recta entre dos puntos. En esta página se usan las dos: por ejemplo, un lado puede cruzar la recta AB sin cruzar el segmento AB.
+
+```
+  ◀─ ─ ─ A ──────────── B ─ ─ ─▶   recta AB
+         A ──────────── B          segmento AB
+```
 
 ---
 
