@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Euclid
-parent: 3. Matemáticas y algoritmos
-nav_order: 1
+parent: Teoría de números
+grandparent: 3. Matemáticas y algoritmos
+nav_order: s
 ---
 
 # Euclid

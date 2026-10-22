@@ -20,6 +20,7 @@ Uso de Python para resolver problemas matemáticos e implementar algoritmos clá
 - Métodos de ordenamiento: burbuja, inserción, merge sort, quicksort
 
 ## Paradigmas
+- Planeación
 - Fuerza bruta
 - Divide y vencerás
 - Algoritmos voraces
