@@ -32,6 +32,8 @@ El número de pasos crece igual que n, porque se visita cada elemento una vez; s
 ### O(n log n), lineal-logarítmica
 Se hacen unos log n pasos por cada uno de los n elementos (en inglés: *for each of the n elements, you do about log n steps*), o sea, n × log n; crece un poco más rápido que lineal, pero mucho más despacio que n²; ejemplo: con 8 elementos, log 8 = 3 (8 → 4 → 2 → 1), así que 8 × 3 = 24 pasos; con 1,000,000: log 1,000,000 ≈ 20, así que 1,000,000 × 20 = unos 20,000,000 pasos (n² serían 1,000,000,000,000). Es la complejidad de los mejores algoritmos para ordenar comparando elementos.
 
+- dividir y vencerás
+
 ### O(n²), cuadrática
 Por cada uno de los n elementos, se revisan otra vez los n elementos, o sea, n × n. Para contar los pasos, se multiplica n por sí mismo: con 10 elementos son 10 × 10 = 100 pasos, y con 1,000 son 1,000 × 1,000 = 1,000,000. Por eso los pasos crecen mucho más rápido que la entrada: de 10 a 1,000 elementos, la lista se hizo 100 veces más grande, pero los pasos pasaron de 100 a 1,000,000, o sea, 10,000 veces más.
 
