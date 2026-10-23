@@ -12,7 +12,7 @@ has_children: true
 
 ## Objetivo
 
-En esta sección resuelvo los problemas de geometría del CSES Problem Set. Todas las soluciones están implementadas en **Python**. Los problemas básicos son la implementación de las herramientas de la página Geometría de la Unidad 3.
+En esta sección resuelvo los problemas de geometría del CSES Problem Set. Los problemas básicos son la implementación de las herramientas de la página Geometría de la Unidad 3.
 
 ## Problemas básicos
 
