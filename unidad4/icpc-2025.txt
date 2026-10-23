@@ -1,0 +1,12 @@
+---
+layout: default
+title: ICPC 2025
+parent: 4. Problemas
+nav_order: 2
+has_children: true
+---
+
+# International Collegiate Programming Contest - 2025
+
+[ICPC - Past Problems](https://icpc.global/worldfinals/past-problems)  
+[ICPC - 2025 Problems](https://worldfinals.icpc.global/problems/2025/finals/index.html)

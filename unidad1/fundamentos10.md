@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Paradigmas de programación
+title: Paradigmas
 parent: 1. Cheat Sheets
 nav_order: 10
 ---
