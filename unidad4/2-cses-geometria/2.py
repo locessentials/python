@@ -33,4 +33,4 @@ for i in range(t):
     intersect(coords)
     pos += 1
 
-# Get-Content 2test.txt | python 2.py > NO\n YES\n YES\n YES\n YES
+# Get-Content 2test.txt | python 2.py > NO \nYES \nYES \nYES \nYES

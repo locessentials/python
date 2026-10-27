@@ -23,4 +23,4 @@ for i in range(num):
     print(cross(coords))
     pos += 1
 
-# Get-Content 1test.txt | python 1.py > LEFT\n RIGHT\n TOUCH
+# Get-Content 1test.txt | python 1.py > LEFT \nRIGHT \nTOUCH
