@@ -37,7 +37,7 @@ Mostrar la longitud del segmento de recta más largo que cabe dentro del polígo
 | crossing test | prueba de cruce | dados la recta que pasa por A y B, y un lado del polígono con extremos C y D: se calcula el producto cruz con P = C y luego con P = D; signos opuestos: el lado cruza la recta; mismo signo: no la cruza |
 | distance formula | fórmula de la distancia | distancia entre (x₁, y₁) y (x₂, y₂): d = √((x₂ − x₁)² + (y₂ − y₁)²) |
 | parametric form | forma paramétrica | describe cada punto de la recta AB con un solo número t: (x₁ + t(x₂ − x₁), y₁ + t(y₂ − y₁)); t = 0 en A, t = 1 en B; sirve para ubicar dónde un lado choca con la recta y hasta dónde se puede extender la pista |
-| ray casting | método del rayo (regla par-impar) | determina si un punto está dentro de un polígono: se traza un rayo desde él y se cuentan los lados que cruza; impar: dentro, par: fuera; se usa con el punto medio de AB para saber si la pista está dentro |
+| ray casting | *ray casting* | determina si un punto está dentro de un polígono: se traza un rayo desde él y se cuentan los lados que cruza; impar: dentro, par: fuera; se usa con el punto medio de AB para saber si la pista está dentro |
 
 ### Vocabulario adicional
 
@@ -94,7 +94,7 @@ Se usan estas funciones:
 
 - `piece_inside(A, B, t1, t2)`: ¿el pedazo de la recta entre t1 y t2 está dentro? Calcula el t del punto medio, (t1 + t2) / 2, y prueba ese punto P. Basta probar un punto: la recta solo puede pasar de dentro a fuera en un punto de corte, así que entre dos cortes seguidos el pedazo está todo dentro o todo fuera
 - `point_at(A, B, t)`: convierte un número t en un punto (x, y) de la recta AB; así se obtiene P a partir de su t
-- `inside(P)`: ¿el punto P está dentro del polígono? Usa el método del rayo: traza un rayo desde P hacia la derecha y cuenta cuántos lados cruza; impar: dentro, par: fuera. Si P está justo sobre el borde, este método puede dar una respuesta equivocada, así que antes revisa cada lado con `on_wall`
+- `inside(P)`: ¿el punto P está dentro del polígono? Usa el *ray casting*: traza un rayo desde P hacia la derecha y cuenta cuántos lados cruza; impar: dentro, par: fuera. Si P está justo sobre el borde, este método puede dar una respuesta equivocada, así que antes revisa cada lado con `on_wall`
 
 ```
           ┌─────────┐           ┌──────────┐

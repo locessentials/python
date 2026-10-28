@@ -40,7 +40,7 @@ def on_wall(C, D, P):
     return min(x1, x2) - 1e-7 <= x <= max(x1, x2) + 1e-7 and \
            min(y1, y2) - 1e-7 <= y <= max(y1, y2) + 1e-7
 
-# Método del rayo: True si P está dentro del polígono o sobre su borde
+# Ray casting: True si P está dentro del polígono o sobre su borde
 def inside(P):
     x, y = P
     result = False

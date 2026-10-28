@@ -22,7 +22,7 @@ Herramientas básicas para resolver problemas con puntos, rectas y polígonos. C
 | crossing test | prueba de cruce | el segmento `CD` cruza la recta `AB` si `cross(A, B, C) × cross(A, B, D) < 0`, es decir, si `C` y `D` dan signos opuestos |
 | parametric form | forma paramétrica | forma de describir cada punto de la recta `AB` con un solo número `t`: `(x1 + t(x2 − x1)`, `y1 + t(y2 − y1))`; `t = 0` en `A` y `t = 1` en `B` |
 | dot product | producto punto | con `A`, `B` y `P` como en el producto cruz: `(x2 − x1)(x3 − x1) + (y2 − y1)(y3 − y1)`; positivo: `AP` va hacia el mismo lado que `AB`; cero: perpendiculares; negativo: lados contrarios |
-| ray casting | método del rayo (regla par-impar) | forma de saber si un punto está dentro de un polígono: se traza un rayo desde el punto hacia la derecha y se cuentan los lados del polígono que cruza; impar: dentro; par: fuera |
+| ray casting | *ray casting* | forma de saber si un punto está dentro de un polígono: se traza un rayo desde el punto hacia la derecha y se cuentan los lados del polígono que cruza; impar: dentro; par: fuera |
 | shoelace formula | fórmula de la lazada | área de un polígono: la suma de `cross(vertices[0], vertices[k], vertices[k + 1])` para cada par de vértices seguidos, dividida entre 2 |
 | closest pair of points | pareja de puntos más cercanos | problema de encontrar los dos puntos con la menor distancia entre sí |
 
@@ -269,7 +269,7 @@ Su signo dice la dirección de AP comparada con AB:
 
 ---
 
-## 7. ¿Un punto está dentro de un polígono? (método del rayo)
+## 7. ¿Un punto está dentro de un polígono? (*ray casting*)
 
 Desde el punto, se traza un rayo hacia la derecha y se cuentan los lados que cruza. Cada cruce cambia de dentro a fuera, o de fuera a dentro. Lejos, a la derecha, siempre se está fuera, así que:
 
