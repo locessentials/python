@@ -21,7 +21,7 @@ En esta sección resuelvo los problemas de geometría del CSES Problem Set. Los 
 | 1 | [Point Location Test](https://cses.fi/problemset/task/2189) | Ubicación de un punto | producto cruz (orientación) | ✅ | ✅ |
 | 2 | [Line Segment Intersection](https://cses.fi/problemset/task/2190) | Cruce de segmentos | prueba de cruce | ✅ |✅  |
 | 3 | [Polygon Area](https://cses.fi/problemset/task/2191) | Área de un polígono | fórmula de la lazada | ✅ | ✅ |
-| 4 | [Point in Polygon](https://cses.fi/problemset/task/2192) | Punto en un polígono | *ray casting* | | |
+| 4 | [Point in Polygon](https://cses.fi/problemset/task/2192) | Punto en un polígono | *ray casting* | ✅ | ✅ |
 | 5 | [Polygon Lattice Points](https://cses.fi/problemset/task/2193) | Puntos enteros de un polígono | fórmula de la lazada y MCD | | |
 | 6 | [Minimum Euclidean Distance](https://cses.fi/problemset/task/2194) | Distancia mínima | pareja de puntos más cercanos | | |
 | 7 | [Convex Hull](https://cses.fi/problemset/task/2195) | Envolvente convexa | orientación | | |
