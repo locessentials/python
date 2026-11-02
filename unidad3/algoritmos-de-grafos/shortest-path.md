@@ -14,14 +14,15 @@ Los algoritmos de la ruta más corta (*shortest path*) encuentran en un grafo co
 
 En el algoritmo de Dijkstra, mantenemos una lista con el **costo acumulado mínimo conocido** para ir desde el nodo de origen hasta cada uno de los demás nodos. Al inicio, como no conocemos ninguna ruta, estos costos se consideran infinitos (infinito).
 
-Para encontrar la ruta más corta, evaluamos constantemente las conexiones (aristas) entre nodos. **Relajar una arista** entre un nodo A y un nodo B consiste en hacer una comparación muy simple:
+Para encontrar la ruta más corta, evaluamos constantemente las aristas entre nodos. **Relajar una arista** entre un nodo A y un nodo B consiste en hacer una comparación muy simple:
 
 1. Calculamos cuánto costaría llegar a B **pasando por A**:
-   `Nuevo costo = (Costo acumulado para llegar a A) + (Peso de la arista A -> B)`
+
+`Nuevo costo = (Costo acumulado para llegar a A) + (Peso de la arista A -> B)`
 
 2. **Comparación**: Si este `Nuevo costo` es menor que el **costo mínimo que teníamos guardado para B**, actualizamos el registro de B con este nuevo valor más bajo.
 
-En resumen: relajar una arista es simplemente **actualizar la distancia de un nodo destino si encontramos un camino más corto a través de un nodo vecino**.
+En resumen: relajar una arista es simplemente **actualizar la distancia de un nodo destino si encontramos una ruta más corta a través de un nodo vecino**.
 
 ## Explicación del programa
 
