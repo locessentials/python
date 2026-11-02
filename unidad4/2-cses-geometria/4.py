@@ -26,7 +26,8 @@ def cross(vertices, punto):
         x3, y3 = punto
         product = (x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1)
         if product == 0:
-            return True
+            if min(x1, x2) <= x3 <= max(x1, x2) and min(y1, y2) <= y3 <= max(y1, y2):
+                return True
     return False
 
 ## Do the ray casting
