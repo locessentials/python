@@ -48,9 +48,7 @@ while len(heap) != 0:           # while the heap isn't empty
             heapq.heappush(heap, (new_cost, neighbor))  # add the cost and the destination node
                                                         # to the heap for checking
 
-# Print the shortest path
-
-print("Starting point:", start)
+# Print the shortest path  
 
 for node in range(1, nodes + 1):
     if costs[node] == float("inf"):
