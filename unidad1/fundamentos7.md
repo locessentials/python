@@ -29,6 +29,8 @@ mi_gato = Gato("Oliver", 13)
 tu_gato = Gato("Rex", 5)
 ```
 
+**Nota sobre los guiones bajos dobles:** El método `__init__` lleva dos guiones bajos al inicio y al final (conocidos en inglés como *dunder*, por *double underscore*). En Python, esta convención se usa para identificar **métodos y variables especiales** que el lenguaje crea o utiliza automáticamente. No son simples guiones bajos, son exactamente dos en cada lado.
+
 **Convención de nombres:** Por convención (PEP 8), los nombres de las clases se escriben en `CapWords` (la primera letra de cada palabra en mayúscula, sin guiones bajos), mientras que las variables y funciones se escriben en `snake_case` (todo en minúsculas, separado por guiones bajos). Por ejemplo: la clase `GrafoDirigido` crea el objeto `mi_grafo`.
 
 ## La palabra `self`
