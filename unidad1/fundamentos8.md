@@ -15,7 +15,7 @@ La **importación** es el mecanismo que permite utilizar el código de un módul
 
 Si se tiene un archivo llamado `gatos.py` que contiene una clase `Gato`, desde otro archivo en la misma carpeta se puede importar de la siguiente manera:
 
-```Python
+```
 # Archivo: gatos.py
 class Gato:
     def __init__(self, nombre):
