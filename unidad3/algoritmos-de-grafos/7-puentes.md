@@ -1,12 +1,14 @@
 ---
 layout: default
-title: Siete puentes de Königsberg
+title: Introducción
 parent: Algoritmos de grafos
 grandparent: 3. Matemáticas y algoritmos
 nav_order: 1
 ---
 
-# El problema de los siete puentes de Königsberg
+# Introducción
+
+## El problema de los siete puentes de Königsberg
 
 El problema de los siete puentes de Königsberg es considerado el origen de la **Teoría de Grafos**. A principios del siglo XVIII, la ciudad de Königsberg (actualmente Kaliningrado, Rusia) estaba dividida por el río Pregel en cuatro zonas de tierra, conectadas por siete puentes. El problema consistía en encontrar una ruta para caminar por la ciudad cruzando **cada uno de los siete puentes exactamente una vez**. 
 
@@ -25,6 +27,8 @@ En 1736, Leonhard Euler demostró que esto era imposible, no por falta de ingeni
 ```
 
 *El grafo de Königsberg es un **multigrafo**: hay dos puentes que conectan B y D, y dos que conectan B y C.*
+
+---
 
 ## Definiciones básicas
 
