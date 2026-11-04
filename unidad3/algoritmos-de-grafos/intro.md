@@ -58,7 +58,7 @@ Al observar el grafo de Königsberg y sumar los grados de todos sus nodos (2+5+3
 
 A esta equivalencia fundamental se le denomina el lema del apretón de manos (*Handshaking Lemma*), y la analogía que da origen a su nombre ilustra su demostración: cada arista equivale a un apretón de manos entre dos personas (los nodos), de modo que cada interacción contribuye con dos unidades al total de los grados.
 
-En notación matemática: **Σ grado(v) = 2|E|** (Traducción: la suma de los grados de todos los vértices es igual al doble del número de aristas)
+En notación matemática: **Σ grado(v) = 2\|E\|** (Traducción: la suma de los grados de todos los vértices es igual al doble del número de aristas)
 
 ### Demostración por Inducción
 
@@ -76,7 +76,7 @@ Podemos demostrar que esto se cumple para cualquier grafo no dirigido usando ind
 
 En un **grafo simple** con *n* nodos, el número máximo de aristas se alcanza cuando todos los nodos están conectados entre sí (un **grafo completo**). La fórmula para el número de aristas es:
 
-**|E| = n(n - 1) / 2**
+**\|E\| = n(n - 1) / 2**
 
 ### Demostración por Inducción
 Vamos a demostrar que un grafo completo de *n* nodos tiene *n*(*n*-1)/2 aristas.
@@ -89,4 +89,3 @@ Vamos a demostrar que un grafo completo de *n* nodos tiene *n*(*n*-1)/2 aristas.
   *k*(*k* - 1)/2 + *k* = (*k*² - *k* + 2*k*)/2 = (*k*² + *k*)/2 = *k*(*k* + 1)/2
   
   Y como *k* + 1 es nuestro nuevo *n*, la fórmula se cumple para *n*.
-```
