@@ -7,7 +7,13 @@ nav_order: 9
 
 # Grafos
 
-Un grafo representa entidades y las relaciones entre pares de ellas. Las entidades se llaman **nodos** (o vértices) y las relaciones se llaman **aristas**. Sirve para modelar muchas cosas: personas y amistades, computadoras y cables, ciudades y carreteras.
+Un grafo es una estructura de datos que representa entidades y las relaciones entre pares de ellas. Las entidades se llaman **nodos** (o vértices) y las relaciones se llaman **aristas**. Sirve para modelar muchas cosas: personas y amistades, computadoras y cables, ciudades y carreteras.
+
+![Logo de Python en amarillo y rojo]({{ '/imagenes/python-logo.png' | relative_url }}){: .tip-circle }
+
+**Nota:** Si buscas la historia del origen de los grafos (los puentes de Königsberg), las definiciones matemáticas formales (como el *Handshaking Lemma*) o las demostraciones sobre los grados de los nodos, visita la sección **3. Matemáticas y algoritmos > Algoritmos de grafos > Introducción**. Esta página se enfocará en cómo implementar y almacenar grafos en código.
+
+<span class="clear"></span>
 
 ---
 
@@ -15,8 +21,7 @@ Un grafo representa entidades y las relaciones entre pares de ellas. Las entidad
 
 ### Definición
 
-Un grafo G = (V, E) tiene dos conjuntos:
-
+En programación, un grafo se define por dos conjuntos:
 - **V:** el conjunto de nodos
 - **E:** el conjunto de aristas; cada arista une un par de nodos
 - **n:** el número de nodos
@@ -24,7 +29,7 @@ Un grafo G = (V, E) tiene dos conjuntos:
 
 Este es el grafo de ejemplo que se usa en toda la página. Tiene n = 8 nodos y m = 11 aristas:
 
-```
+```markdown
          1     7
         / \   /|
        /   \ / |
@@ -44,7 +49,7 @@ Este es el grafo de ejemplo que se usa en toda la página. Tiene n = 8 nodos y m
 - **Simple:** no dirigido, sin aristas de un nodo a sí mismo y sin aristas repetidas
 - **Multigrafo:** puede tener dos o más aristas entre el mismo par de nodos; por ejemplo, dos carreteras distintas entre las mismas dos ciudades
 
-```
+```markdown
 no dirigido        dirigido           con pesos         simple        multigrafo
 
   1-----2          1---->2          1----(5)----2       1-----2       1-----2
@@ -71,12 +76,12 @@ Estos son los términos que aparecen en las descripciones de los problemas:
 
 Si al grafo de ejemplo se le agregan los nodos 9 y 10, unidos solo entre ellos, el grafo deja de estar conectado y queda con dos componentes:
 
-```
+```markdown
          1     7
-        / \   /|
-       /   \ / |     9
-      2-----3  |     |
-     / \   / \ |     10
+        / \   /|     9
+       /   \ / |     |
+      2-----3  |     10
+     / \   / \ |
     /   \ /   \|
    4-----5     8
          |
@@ -85,15 +90,6 @@ Si al grafo de ejemplo se le agregan los nodos 9 y 10, unidos solo entre ellos, 
 componente 1: nodos 1 a 8
 componente 2: nodos 9 y 10
 ```
-
-### Número de aristas
-
-En un grafo simple de n nodos, el número de aristas va de 0 a n(n − 1)/2:
-
-- **Mínimo, 0:** solo hay nodos, sin aristas; cada nodo es su propia componente
-- **Máximo, n(n − 1)/2:** cada nodo está unido con todos los demás (grafo completo); cada uno de los n nodos tiene n − 1 vecinos, y se divide entre 2 porque la arista 1–2 es la misma que la 2–1; con 8 nodos, el máximo es 8 × 7 / 2 = 28
-
-El grafo de ejemplo tiene 11 de 28 aristas posibles.
 
 ---
 
@@ -105,7 +101,7 @@ Hay dos formas de guardar un grafo en memoria. Las dos guardan la misma informac
 
 Una tabla de n × n. En el renglón i, columna j, hay un 1 si hay una arista entre i y j, y un 0 si no. Como el grafo no es dirigido, la tabla es simétrica: si el renglón 2, columna 4 tiene un 1, el renglón 4, columna 2 también. En un grafo simple, la diagonal siempre tiene ceros, porque ningún nodo tiene arista consigo mismo.
 
-```
+```markdown
      1  2  3  4  5  6  7  8
  1   0  1  1  0  0  0  0  0
  2   1  0  1  1  1  0  0  0
@@ -121,7 +117,7 @@ Una tabla de n × n. En el renglón i, columna j, hay un 1 si hay una arista ent
 
 Cada nodo tiene una lista de sus vecinos. Cada arista aparece dos veces, una en la lista de cada uno de sus nodos.
 
-```
+```markdown
  1: 2, 3
  2: 1, 3, 4, 5
  3: 1, 2, 5, 7, 8
@@ -239,10 +235,16 @@ matrix[5][3] == 1                       # True  (la misma pregunta con la matriz
 
 ---
 
+![Logo de Python en amarillo y rojo]({{ '/imagenes/python-logo.png' | relative_url }}){: .tip-circle }
+
+**Nota sobre implementación con clases:**
+En esta página hemos visto cómo guardar un grafo usando las estructuras básicas de Python (diccionarios y listas) para entender los fundamentos. Sin embargo, cuando resolvemos problemas complejos, es mucho más limpio y seguro encapsular esta lógica en un módulo (usando Programación Orientada a Objetos). 
+
+En la sección **3. Matemáticas y algoritmos > Algoritmos de grafos**, veremos cómo importar un módulo propio (`graphs.py`) que contiene las clases `Graph`, `Node` y `Edge`. Ese módulo nos permitirá escribir los algoritmos (como BFS, DFS y caminos más cortos) de forma mucho más legible, sin tener que programar la estructura de adyacencia desde cero cada vez.
+
+<span class="clear"></span>
+
+---
+
 ## Algoritmos
-
-Los algoritmos que recorren un grafo (búsqueda por amplitud o BFS, búsqueda en profundidad o DFS, caminos más cortos) están en Algoritmos de grafos.
-
-## Para leer más
-
-- Luis E. Vargas Azcona, [*Problemas y Algoritmos*](https://omegaup.com/docs/assets/libroluisvargas.pdf), parte sobre grafos (libro de la Olimpiada Mexicana de Informática)
+Los algoritmos que recorren un grafo (búsqueda por amplitud o BFS, búsqueda en profundidad o DFS, caminos más cortos) **y su implementación usando el módulo de clases**, se encuentran en la sección de **Algoritmos de grafos**.

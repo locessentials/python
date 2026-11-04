@@ -21,7 +21,7 @@ Un arreglo tiene:
 
 Este es el ejemplo que se usa en toda la página: un arreglo de cinco enteros.
 
-```
+```markdown
 índice:    0    1    2    3    4
          +----+----+----+----+----+
 valor:   | 10 | 20 | 30 | 40 | 50 |
@@ -36,7 +36,7 @@ El elemento en el índice 2 es 30. El último índice siempre es la longitud men
 
 Un arreglo ocupa un **bloque contiguo** de memoria: si el primer elemento está en la posición 100 y cada elemento ocupa 8 bytes, el segundo está en 108, el tercero en 116, y así. Por eso acceder al índice k es instantáneo: la computadora calcula la dirección con una multiplicación y una suma, sin recorrer nada.
 
-```
+```markdown
 memoria:
 
 pos 100:  +----+
@@ -58,7 +58,7 @@ La dirección del elemento en el índice k es `dirección_base + k × tamaño_de
 
 En Python, una lista no guarda solo los elementos: guarda también cuántos caben. La **longitud** es cuántos elementos hay; la **capacidad** es cuántos caben antes de tener que pedir más memoria. Casi siempre la capacidad es mayor que la longitud, para no pedir memoria en cada `append`.
 
-```
+```markdown
 lista = [10, 20, 30]
 
 longitud:   3
@@ -217,28 +217,3 @@ Estos son los patrones que aparecen una y otra vez en problemas de arreglos. Cad
 - **`sort()` devuelve `None`:** `lista = lista.sort()` deja `lista` en `None`. Usa `lista.sort()` sin asignar, o `lista = sorted(lista)`.
 - **Índice fuera de rango:** `lista[len(lista)]` falla; el último índice válido es `len(lista) - 1`. Con índices negativos, `lista[-len(lista)]` es válido pero `lista[-len(lista) - 1]` no.
 - **Rebanadas fuera de rango no fallan:** `lista[0:100]` no da error, devuelve lo que haya. Es cómodo, pero puede esconder un error de lógica.
-
----
-
-## Problemas para practicar
-
-En HackerRank, sección **Data Structures → Arrays** (o **Problem Solving → Algorithms**):
-
-- *Arrays: Left Rotation* — rotar un arreglo k posiciones.
-- *2D Array - DS* — recorrer una matriz y sumar regiones.
-- *Sparse Arrays* — contar ocurrencias con un diccionario (conecta con tablas hash).
-- *Array Manipulation* — diferencias de prefijos para muchas consultas de suma.
-- *New Year Chaos* — contar inversiones con un recorrido.
-
-En CSES, sección **Sorting and Searching** (para practicar prefijos y dos punteros):
-
-- *Distinct Numbers* — contar distintos con un conjunto.
-- *Sum of Two Values* — dos punteros sobre un arreglo ordenado.
-- *Subarray Sums II* — prefijos + tabla hash.
-
----
-
-## Para leer más
-
-- Luis E. Vargas Azcona, [*Problemas y Algoritmos*](https://omegaup.com/docs/assets/libroluisvargas.pdf), sección de arreglos y sumas de prefijos (libro de la Olimpiada Mexicana de Informática).
-```

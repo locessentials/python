@@ -17,7 +17,7 @@ La lista guarda el árbol por niveles, de izquierda a derecha: primero la raíz,
 
 No hay ninguna regla para el orden de los elementos de un mismo nivel. En el ejemplo de abajo, 8 va antes que 5 aunque es más grande. Por eso la lista no está ordenada, pero el más pequeño siempre está en la posición 0, y el resto sigue la regla del árbol, en la que cada padre es más pequeño que sus hijos.
 
-```
+```markdown
 lista:      [ 3,  8,  5, 24, 10, 20 ]
 posición:     0   1   2   3   4   5
 
@@ -49,7 +49,7 @@ En el caso de `heappop`, el elemento que se mueve es el último de la lista, que
 2. 20 es más grande que sus hijos, 8 y 5, así que cambia de lugar con el más pequeño de los dos, 5.
 3. 20 queda en el lugar que tenía 5 y ya no tiene hijos, así que se detiene.
 
-```
+```markdown
 lista:      [ 5,  8, 20, 24, 10 ]
 
                5
@@ -66,7 +66,7 @@ En el caso de `heappush`, el elemento que se mueve es el nuevo. Se agrega al fin
 3. Ahora el padre de 4 es 5, y como 4 también es más pequeño, cambian de lugar otra vez.
 4. 4 llega a la posición 0 y ya no tiene padre, así que se detiene.
 
-```
+```markdown
 lista:      [ 4,  8,  5, 24, 10, 20 ]
 
                4

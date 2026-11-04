@@ -41,7 +41,7 @@ Al usar `import gatos`, Python carga todo el archivo. Para acceder a sus element
 
 Si solo se necesita una parte del módulo, se puede usar la palabra reservada `from` para importar elementos específicos directamente al espacio de nombres actual:
 
-```
+```python
 from gatos import Gato
 
 mi_gato = Gato("Michi")         # Ya no se necesita el prefijo 'gatos.'
@@ -50,7 +50,7 @@ mi_gato.maullar()
 
 También es posible importar múltiples elementos o renombrarlos para evitar conflictos:
 
-```
+```python
 from gatos import Gato, Gatito
 from gatos import Gato as GatoDomestico
 ```
@@ -59,7 +59,7 @@ from gatos import Gato as GatoDomestico
 
 El operador asterisco (`*`) importa todos los nombres del módulo directamente:
 
-```
+```python
 from gatos import *
 ```
 
@@ -83,7 +83,7 @@ Al importar un módulo, Python ejecuta todo el código que esté en el nivel sup
 
 Para evitar esto, se utiliza la condición `if __name__ == "__main__":`. Todo el código dentro de este bloque solo se ejecutará si el archivo se corre directamente desde la terminal (por ejemplo, `python gatos.py`), pero será ignorado si el archivo se importa desde otro script.
 
-```
+```python
 # Archivo: gatos.py
 class Gato:
     pass
@@ -105,7 +105,7 @@ La variable especial `__name__` toma el valor `"__main__"` cuando el archivo se 
 
 Para proyectos más grandes, se pueden agrupar varios módulos dentro de una carpeta. A esto se le llama **paquete**. Para que Python reconozca una carpeta como un paquete, esta debe contener un archivo llamado `__init__.py` (puede estar vacío).
 
-```
+```text
 mi_proyecto/
 ├── main.py
 └── animales/
@@ -115,7 +115,7 @@ mi_proyecto/
 
 Con esta estructura, la importación se realiza de la siguiente forma:
 
-```
+```python
 from animales import gatos
 # o también:
 from animales.gatos import Gato

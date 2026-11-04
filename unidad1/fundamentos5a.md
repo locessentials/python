@@ -131,7 +131,7 @@ for i, fruta in enumerate(frutas):
     print(i, fruta)
 ```
 
-```
+```python
 0 manzana
 1 pera
 2 mango
@@ -198,7 +198,7 @@ for i, (n, fruta) in enumerate(zip(nums, frutas)):
     print(i, n, fruta)
 ```
 
-```
+```python
 0 10 manzana
 1 20 pera
 2 30 mango

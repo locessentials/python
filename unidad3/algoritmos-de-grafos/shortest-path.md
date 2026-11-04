@@ -28,7 +28,7 @@ En resumen: relajar una arista es simplemente **actualizar la distancia a un nod
 
 Esta sección sigue un programa que calcula las rutas más cortas paso a paso con un ejemplo, para mostrar cómo cambian `heap`, `costs` y `previous` hasta encontrar la ruta más corta a cada nodo. Usaremos este grafo, con el **nodo 1** como **nodo de inicio**.
 
-```
+```markdown
    (1)--24---(2)
     |  \     |
  20 |   \ 3  | 5
@@ -39,7 +39,7 @@ Esta sección sigue un programa que calcula las rutas más cortas paso a paso co
 
 La entrada de prueba del programa describe el mismo grafo. El primer renglón da el número de nodos y el número de aristas, cada renglón siguiente da una arista con sus dos nodos y su peso, y el último renglón da el nodo de inicio.
 
-```
+```markdown
 4 5
 1 2 24
 1 4 20
@@ -80,7 +80,7 @@ El programa no calcula todos los costos de golpe: va descubriendo rutas y mejor�
 
 **Estado inicial.** Todos los nodos empiezan en infinito porque aún no conocemos ninguna ruta. El nodo de inicio cuesta 0 llegar a sí mismo, y es lo único que hay en el heap:
 
-```
+```python
 costs = {1: 0, 2: inf, 3: inf, 4: inf}
 heap = [(0, 1)]
 previous = {}
@@ -96,7 +96,7 @@ Con el vecino 3: `new_cost = 0 + 3 = 3`. Como `3 < inf`, se actualiza `costs[3] 
 
 Al terminar el `for`:
 
-```
+```python
 costs = {1: 0, 2: 24, 3: 3, 4: 20}
 heap = [(3, 3), (20, 4), (24, 2)]
 previous = {2: 1, 3: 1, 4: 1}
@@ -110,7 +110,7 @@ Con el vecino 4: `new_cost = 3 + 12 = 15`. Como `15 < 20`, se actualiza `costs[4
 
 Con el vecino 2: `new_cost = 3 + 5 = 8`. Como `8 < 24`, se actualiza `costs[2] = 8`, `previous[2] = 3`, y se mete `(8, 2)` al heap.
 
-```
+```python
 costs = {1: 0, 2: 8, 3: 3, 4: 15}
 heap = [(8, 2), (15, 4), (20, 4), (24, 2)]
 previous = {2: 3, 3: 1, 4: 3}
@@ -124,7 +124,7 @@ Con el vecino 1: `new_cost = 8 + 24 = 32`. Como `32 < 0` es falso, no se hace na
 
 Con el vecino 3: `new_cost = 8 + 5 = 13`. Como `13 < 3` es falso, no se hace nada.
 
-```
+```python
 costs = {1: 0, 2: 8, 3: 3, 4: 15}
 heap = [(15, 4), (20, 4), (24, 2)]
 previous = {2: 3, 3: 1, 4: 3}
@@ -136,7 +136,7 @@ Con el vecino 1: `new_cost = 15 + 20 = 35`. Como `35 < 0` es falso, no se hace n
 
 Con el vecino 3: `new_cost = 15 + 12 = 27`. Como `27 < 3` es falso, no se hace nada.
 
-```
+```python
 costs = {1: 0, 2: 8, 3: 3, 4: 15}
 heap = [(20, 4), (24, 2)]
 previous = {2: 3, 3: 1, 4: 3}
@@ -144,13 +144,13 @@ previous = {2: 3, 3: 1, 4: 3}
 
 **Quinta vuelta.** Se extrae `(20, 4)`. Pero `costs[4]` es 15, y `20 > 15`, así que el par es viejo y se descarta con `continue`. No se toca nada más.
 
-```
+```python
 heap = [(24, 2)]
 ```
 
 **Sexta vuelta.** Se extrae `(24, 2)`. `costs[2]` es 8, y `24 > 8`, así que también se descarta.
 
-```
+```python
 heap = []
 ```
 
@@ -168,7 +168,7 @@ Como la ruta se armó de atrás hacia adelante, se invierte con `reverse()` para
 
 Para el grafo de ejemplo, la salida es:
 
-```
+```python
 Destination: 1 Cost: 0 Path: [1]
 Destination: 2 Cost: 8 Path: [1, 3, 2]
 Destination: 3 Cost: 3 Path: [1, 3]

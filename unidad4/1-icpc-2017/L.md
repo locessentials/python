@@ -26,7 +26,7 @@ Empareja cada esquina de arriba a la izquierda con una de abajo a la derecha par
 | **Salida:** 2, 1 (uno dentro del otro) | **Salida:** 1, 2 (separados) | **Salida:** syntax error | **Salida:** syntax error |
 {: .columnas-iguales }
 
-```
+```python
 Ejemplo 1                   Ejemplo 2            Ejemplo 3             Ejemplo 4
 uno dentro del otro         separados            se cruzan             bordes encimados
 
@@ -51,7 +51,7 @@ La **búsqueda binaria** encuentra un valor en una lista ordenada partiendo la l
 
 Por ejemplo, para encontrar dónde va la columna 7:
 
-```
+```python
 lista:   2   5   9   12   15   20   25
 
 paso 1:  mira el centro (12). 7 es menor  →  sigue solo en la mitad izquierda: 2  5  9
@@ -74,7 +74,7 @@ El código hace dos barridos: el primero empareja las esquinas y el segundo veri
 - Cada esquina de arriba a la izquierda abre un rectángulo: con `insort` la guardamos en `open_corners`, ordenada por columna (`column`, `corner_number`).
 - Cada esquina de abajo a la derecha cierra un rectángulo. Con `bisect_left` encontramos dónde iría su columna en `open_corners`. La esquina justo antes de ese lugar es la esquina abierta más cercana a su izquierda. Buscamos `(column, -1)` en lugar de solo `column` para que una esquina en la misma columna quede a la derecha del lugar encontrado, y no la elijamos.
 
-```
+```python
 posición:     0     1     2
 columna:      2     5     9
                        ↑

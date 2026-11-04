@@ -15,7 +15,7 @@ Una **clase** es el molde o la plantilla que define cómo serán esos objetos. U
 
 Para definir una clase se usa la palabra reservada `class`. El método `__init__` (con doble guion bajo) es el **constructor**: la función que se ejecuta automáticamente cuando se crea un objeto nuevo.
 
-```
+```python
 class Gato:
     def __init__(self, nombre, edad):
         self.nombre = nombre    # atributo (dato)
@@ -41,7 +41,7 @@ No se pasa como argumento al crear el objeto; Python lo hace automáticamente. E
 
 Cuando se invoca un método sobre un objeto, Python pasa ese objeto implícitamente como el primer argumento (`self`). Por lo tanto, la instrucción `mi_gato.maullar()` es equivalente internamente a `Gato.maullar(mi_gato)`.
 
-```
+```python
 # Python pasa 'mi_gato' como el 'self' del método
 mi_gato.maullar()               # Imprime: Oliver dice: ¡Miau!
 tu_gato.maullar()               # Imprime: Michi dice: ¡Miau!
@@ -53,7 +53,7 @@ tu_gato.maullar()               # Imprime: Michi dice: ¡Miau!
 
 Se usa el **operador punto** (`.`) para acceder a los elementos de un objeto.
 
-```
+```python
 mi_gato.nombre                 # "Oliver"
 mi_gato.edad = 14              # modificar un atributo
 mi_gato.maullar()               # llamar a un método
@@ -61,7 +61,7 @@ mi_gato.maullar()               # llamar a un método
 
 ## Diferencias con variables normales
 
-```
+```python
 a = 10                          # variable normal (entero)
 b = [1, 2, 3]                   # variable normal (lista)
 
@@ -75,7 +75,6 @@ p = Perro("Max", 2)             # objeto: agrupa variables y funciones
 A diferencia de las listas o los diccionarios (que ya traen métodos incorporados), las clases te permiten crear tus propios tipos de datos con sus propios métodos. Si quieres saber cómo guardar tus clases en archivos separados para reutilizarlas, revisa **Cheat Sheet 8: módulos e importaciones**.
 
 <span class="clear"></span>
-```
 
 ---
 

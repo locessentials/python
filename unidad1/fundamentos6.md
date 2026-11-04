@@ -141,7 +141,6 @@ nums.pop()                # quita y regresa el último elemento (5) → [9, 3, 1
 nums.pop(0)               # quita y regresa el elemento en el índice 0 (9) → [3, 1]
 nums.sort()               # ordena de menor a mayor, regresa None → [1, 3]
 nums.reverse()            # invierte el orden, regresa None → [3, 1]
-
 ```
 
 ---

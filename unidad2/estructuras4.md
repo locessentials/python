@@ -23,7 +23,7 @@ Una lista enlazada tiene:
 
 Este es el ejemplo que se usa en toda la página. Tiene tres nodos con valores 1, 2 y 3:
 
-```
+```markdown
 cabeza
   |
   v
@@ -38,7 +38,7 @@ El asterisco representa el campo `siguiente`. La flecha indica a qué nodo apunt
 
 En una lista normal de Python, los elementos están en posiciones consecutivas: `[1, 2, 3]` ocupa tres casillas seguidas. En una lista enlazada, **cada nodo puede estar en cualquier parte de la memoria**; lo único que los conecta son las referencias `siguiente`.
 
-```
+```markdown
 memoria (posiciones arbitrarias):
 
   pos 100:  +---+---+
@@ -177,7 +177,7 @@ Estos son los pasos con la lista `1 -> 2 -> 3 -> None`.
 
 **Estado inicial:**
 
-```
+```markdown
 anterior = None
 actual   = 1
 
@@ -189,13 +189,13 @@ anterior   actual
 
 **Paso 1:** guardar el siguiente de `actual` para no perder el resto de la lista.
 
-```
+```markdown
 siguiente = actual.siguiente      # siguiente = 2
 ```
 
 **Paso 2:** invertir la flecha de `actual`.
 
-```
+```markdown
 actual.siguiente = anterior       # 1 -> None
 
 None <- 1    2 -> 3 -> None
@@ -206,7 +206,7 @@ None <- 1    2 -> 3 -> None
 
 **Paso 3:** avanzar `anterior` y `actual`.
 
-```
+```markdown
 anterior = actual                 # anterior = 1
 actual   = siguiente              # actual = 2
 
@@ -218,7 +218,7 @@ None <- 1    2 -> 3 -> None
 
 **Paso 4:** repetir con el nodo 2.
 
-```
+```markdown
 siguiente = 3
 2.siguiente = 1                   # 2 -> 1 -> None
 anterior = 2
@@ -232,7 +232,7 @@ None <- 1 <- 2    3 -> None
 
 **Paso 5:** repetir con el nodo 3.
 
-```
+```markdown
 siguiente = None
 3.siguiente = 2                   # 3 -> 2 -> 1 -> None
 anterior = 3
@@ -283,25 +283,3 @@ Estos son los patrones que aparecen una y otra vez. Cada uno tiene un ejemplo en
 - **Lista vacía:** si la cabeza es `None`, cualquier recorrido debe terminar de inmediato. Conviene probar el código con `cabeza = None` antes de entregarlo.
 - **Un solo nodo:** invertir o borrar con un solo nodo es un caso aparte. Conviene probarlo también.
 - **Modificar la cabeza:** si se inserta al inicio, hay que actualizar la variable `cabeza` fuera de la función, o devolver la nueva cabeza. Si no, la lista "desaparece" desde el punto de vista de quien la llamó.
-
----
-
-## Problemas para practicar
-
-En HackerRank, sección **Data Structures → Linked Lists**:
-
-- *Print the Elements of a Linked List* — recorrer.
-- *Insert a Node at the Tail of a Linked List* — insertar al final.
-- *Insert a node at a specific position in a linked list* — insertar en medio.
-- *Delete a Node* — borrar dado el valor.
-- *Reverse a linked list* — el patrón de invertir.
-- *Cycle Detection* — puntero rápido y lento.
-- *Find Merge Point of Two Lists* — recorrer dos listas a la vez.
-- *Merge two sorted linked lists* — fusionar.
-
----
-
-## Para leer más
-
-- Luis E. Vargas Azcona, [*Problemas y Algoritmos*](https://omegaup.com/docs/assets/libroluisvargas.pdf), sección de listas enlazadas (libro de la Olimpiada Mexicana de Informática).
-```

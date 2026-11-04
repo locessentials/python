@@ -38,15 +38,12 @@ Para resolver el problema, Euler definió los siguientes conceptos que aún usam
 - **nodo / vértice:** entidad; en el problema de los siete puentes, las cuatro zonas de tierra (A, B, C, D)
 - **arista / lado:** conexión entre dos nodos; en el problema, los puentes
 - **grado (*degree*):** número de aristas que tocan (inciden, consulta *incidencia* abajo) en un nodo; por convención, un bucle cuenta como dos aristas para el grado
-- **grafo dirigido (*directed graph*):** grafo en el que cada arista tiene una dirección específica, yendo de un nodo origen a un nodo destino
-- **grafo no dirigido (*undirected graph*):** grafo en el que las aristas no tienen dirección, por lo que la conexión entre dos nodos es mutua y simétrica
-- **grafo simple (*simple graph*):** grafo no dirigido que no contiene bucles ni aristas múltiples entre el mismo par de nodos
-- **grafo completo (*complete graph*):** grafo simple en el que existe exactamente una arista entre cada par de nodos, es decir, todos los nodos son adyacentes entre sí
-- **multigrafo (*multigraph*):** grafo que permite la existencia de múltiples aristas entre el mismo par de nodos, como dos puentes distintos que conectan las mismas dos zonas de tierra
-- **bucle (*self-loop*):** arista que conecta un nodo consigo mismo, de la forma `(A, A)`
-- **peso (*weight*):** número asociado con una arista que representa su costo, distancia o tiempo
 - **incidencia (*incidence*):** cuando una arista toca a un nodo
 - **adyacencia (*adjacency*):** dos nodos son adyacentes (o vecinos) si están unidos por la misma arista
+- **bucle (*self-loop*):** arista que conecta un nodo consigo mismo, de la forma `(A, A)`
+- **peso (*weight*):** número asociado con una arista que representa su costo, distancia o tiempo
+
+*(Nota: Para ver los tipos de grafos como dirigidos, no dirigidos, simples o multigrafos, y cómo se implementan en código, visita la sección **2. Estructuras de datos > Grafos**).*
 
 ---
 
