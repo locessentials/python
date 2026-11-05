@@ -5,7 +5,7 @@ nav_order: 5
 has_children: true
 ---
 
-# Unidad 3: Matemáticas y algoritmos
+# Unidad 3: matemáticas y algoritmos
 
 Uso de Python para resolver problemas matemáticos e implementar algoritmos clásicos.
 

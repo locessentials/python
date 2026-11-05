@@ -5,7 +5,7 @@ nav_order: 6
 has_children: true
 ---
 
-# Unidad 4: Problemas
+# Unidad 4: problemas
 
 Problemas que se puede resolver para practicar el Python. Cada problema incluye, además del código, una explicación y un análisis que abordan los siguientes puntos:
 

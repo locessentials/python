@@ -215,7 +215,7 @@ for edge_number in range(m):
 
 ![Logo de Python en amarillo y rojo]({{ '/imagenes/python-logo.png' | relative_url }}){: .tip-circle }
 
-No se puede crear la matriz con `[[0] * (n + 1)] * (n + 1)`: eso repite la misma lista en todos los renglones, y un cambio en un renglón aparece en todos. Es el mismo problema de `b = a` en "Copiar una lista" (Cheat Sheet 4: listas).
+No se puede crear la matriz con `[[0] * (n + 1)] * (n + 1)`: eso repite la misma lista en todos los renglones, y un cambio en un renglón aparece en todos. Es el mismo problema de `b = a` en "Copiar una lista" (**Cheat Sheet 4: listas**).
 
 <span class="clear"></span>
 
@@ -240,7 +240,7 @@ matrix[5][3] == 1                       # True  (la misma pregunta con la matriz
 **Nota sobre implementación con clases:**
 En esta página hemos visto cómo guardar un grafo usando las estructuras básicas de Python (diccionarios y listas) para entender los fundamentos. Sin embargo, cuando resolvemos problemas complejos, es mucho más limpio y seguro encapsular esta lógica en un módulo (usando Programación Orientada a Objetos). 
 
-En la sección **3. Matemáticas y algoritmos > Algoritmos de grafos**, veremos cómo importar un módulo propio (`graphs.py`) que contiene las clases `Graph`, `Node` y `Edge`. Ese módulo nos permitirá escribir los algoritmos (como BFS, DFS y caminos más cortos) de forma mucho más legible, sin tener que programar la estructura de adyacencia desde cero cada vez.
+En la **Unidad 3: matemáticas y algoritmos > Algoritmos de grafos**, veremos cómo importar un módulo propio (`graphs.py`) que contiene las clases `Graph`, `Node` y `Edge`. Ese módulo nos permitirá escribir los algoritmos (como BFS, DFS y caminos más cortos) de forma mucho más legible, sin tener que programar la estructura de adyacencia desde cero cada vez.
 
 <span class="clear"></span>
 

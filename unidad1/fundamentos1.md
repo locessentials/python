@@ -7,13 +7,29 @@ nav_order: 1
 
 # Cheat Sheet 1: tipos de datos y variables
 
-y = 5         # int (whole number)  
-z = 5.0       # float, because the decimal point makes it one  
+## ¿Qué es un tipo?
 
-  total += total = total +  
+En Python, todo valor tiene un **tipo**: una categoría que determina qué contiene el valor y qué operaciones son válidas sobre él. Dos `int` se pueden sumar; dos `str` se pueden concatenar; una `list` acepta `.append()`, mientras un `int` no. Cada valor pertenece exactamente a un tipo, y ese tipo se puede consultar con `type()`:
 
-- `float("inf")`: infinito positivo; cualquier número real es menor que él  
-- `float("-inf")`: infinito negativo; cualquier número real es mayor que él  
+```python
+type(5)        # <class 'int'>
+type(5.0)      # <class 'float'>
+type("hola")   # <class 'str'>
+```
+
+Los tipos que se usan en este curso son pocos: `int`, `float`, `str`, `bool`, `list`, `dict`, `tuple` y los tipos definidos por el programador con `class` (este wiki cubre las clases en más detalle en **Cheat Sheet 7: clases y objetos** de esta unidad).
+
+## Tipos básicos
+
+```python
+y = 5         # int (número entero)
+z = 5.0       # float (número con punto decimal)
+```
+
+## Valores especiales de `float`
+
+- `float("inf")`: infinito positivo; cualquier número real es menor que él.
+- `float("-inf")`: infinito negativo; cualquier número real es mayor que él.
 
 ## f-strings
 
@@ -21,6 +37,6 @@ z = 5.0       # float, because the decimal point makes it one
 print(f"{lo:.9f}")
 ```
 
-`f"..."` lets you put a variable inside { } and Python replaces it with its value.
+`f"..."` permite insertar una variable dentro de `{ }` y Python la reemplaza por su valor.
 
-In the example, the `:.9f` tells Python to print the variable to 9 decimal places and to show it as regular decimal number (instead of in scientific notation, for example)
+En el ejemplo, `:.9f` indica que la variable se imprima con 9 decimales en notación decimal (en lugar de notación científica, por ejemplo).

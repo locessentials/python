@@ -5,7 +5,7 @@ nav_order: 5
 has_children: true
 ---
 
-# Unidad 2: Estructuras de datos
+# Unidad 2: estructuras de datos
 
 ## ENG y ESP
 
