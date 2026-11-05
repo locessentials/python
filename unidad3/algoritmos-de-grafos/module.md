@@ -50,7 +50,15 @@ def __init__(self, from_node: int, to_node: int, weight: float):
 
 - **`self`** es el objeto que se está construyendo. Python lo llena automáticamente, así que no hay que incluirlo entre los argumentos al llamar a `Edge`. Por eso la llamada `Edge(0, 3, 2.5)` lleva tres argumentos aunque la firma tenga cuatro parámetros.
 - **`from_node`, `to_node`, `weight`** son los parámetros para los tres datos que un `Edge` necesita. Se pueden pasar por posición (`Edge(0, 3, 2.5)`) o por nombre (`Edge(from_node=0, to_node=3, weight=2.5)`).
-- **`: int` y `: float`** son anotaciones de tipo. Son documentación para quien lee el código y para herramientas externas; Python no las verifica al ejecutar el programa. En este módulo aparecen tanto en la firma como en la línea del atributo, algo que parece redundante, pero cada anotación sirve a una herramienta distinta: la de la firma alimenta el autocompletado del editor cuando alguien llama a `Edge(...)`, y la del atributo permite que verificadores de tipos como `mypy` sepan qué contiene `e.from_node` sin rastrear el constructor. Sin embargo, se pueden omitir y el comportamiento no cambia.
+- **`: int` y `: float`** son anotaciones de tipo. Son documentación para quien lee el código y para herramientas externas; Python no las verifica al ejecutar el programa. En este módulo aparecen tanto en la firma como en la línea del atributo, algo que parece redundante, pero cada anotación sirve a una herramienta distinta: la de la firma alimenta el autocompletado del editor cuando alguien llama a `Edge(...)`, y la del atributo permite que verificadores de tipos como `mypy` sepan qué contiene `e.from_node` sin rastrear el constructor. Sin embargo, se pueden omitir y el comportamiento no cambia:
+
+```python
+class Edge:
+    def __init__(self, from_node, to_node, weight):
+        self.from_node = from_node
+        self.to_node = to_node
+        self.weight = weight
+```
 
 ### El cuerpo: los atributos
 
