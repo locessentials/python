@@ -1,16 +1,12 @@
 ---
 layout: default
-title: Generate a Permutation
+title: Problemas básicos
 parent: Permutaciones y combinaciones
 grandparent: 3. Matemáticas y algoritmos
 nav_order: 1
 ---
 
-# Fundamentos de implementación
-
-Aquí tienes la lista de problemas en español, manteniendo el formato de Tarea y Por qué.
-
----
+# Problemas básicos
 
 ## Problema 1: contar
 **Tarea:** El programa recibe `n` (número de listas) y luego `n` listas, una por línea. Para cada lista, calcula el número de permutaciones posibles de sus elementos usando la fórmula `m!` (donde `m` es el número de elementos en una lista), de dos formas: a mano con un bucle y con la biblioteca estándar `math`, usando la función incorporada `math.factorial`. Imprime el conteo por cada lista.
