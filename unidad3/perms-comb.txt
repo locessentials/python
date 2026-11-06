@@ -1,0 +1,58 @@
+## Grupo 1: Generating Permutations (The Basics)
+
+**Problem 1: The Built-in Way**
+- **Task:** Given a list with n elements, like `[1, 2, 3]`, use Python's `itertools.permutations()` to print all 6 arrangements. Then, check the length of the output to verify it equals \(3!\) (which is 6).
+- **Why:** Connect the math formula \(|S_n| = n!\) to a tangible Python output. 
+
+**Problem 2: The Recursive Way (From Scratch)**
+*   **Task:** Write a function `get_permutations(lst)` that generates all permutations *without* using `itertools`. Use recursion.
+*   **Hint:** Pick one element from the list, and recursively find the permutations of the *remaining* elements. Then glue the picked element to the front of each result.
+*   **Why:** This is a classic interview question and forces you to understand the internal logic of how permutations are built. This is the "engine" behind the math.
+
+---
+
+### Phase 2: Two-Line Notation & Composition (The Whiteboard Math)
+*Goal: Understand his messy two-line notation \(\begin{pmatrix} 1 & 2 & 3 \\ i_1 & i_2 & i_3 \end{pmatrix}\) and the composition (multiplication) of permutations.*
+
+**Problem 3: Applying a Permutation**
+*   **Task:** Write a function `apply_permutation(perm, lst)`. 
+    *   `perm` will be a list representing the bottom row (e.g., `[2, 3, 1]` for \(1\to2, 2\to3, 3\to1\)).
+    *   `lst` will be the actual data (e.g., `['A', 'B', 'C']`).
+    *   The function should return the shuffled list (e.g., `['C', 'A', 'B']`).
+*   **Why:** This translates the two-line notation into a practical tool.
+
+**Problem 4: Composing Two Permutations**
+*   **Task:** Remember his note \(\sigma \tau \neq \tau \sigma\)? Write a function `compose(p1, p2)` that takes two permutations (as lists) and returns the resulting permutation. 
+*   **Hint:** If \(p1\) maps \(1\to2\), and \(p2\) maps \(2\to3\), then the composition maps \(1\to3\).
+*   **Why:** This directly solves the non-commutativity problem he wrote on the board. You can run your code and prove to yourself that `compose(p1, p2)` does not equal `compose(p2, p1)`.
+
+---
+
+### Phase 3: Parity and the Sign (The Bottom Left of the Whiteboard)
+*Goal: Understand \(sgn(\sigma) = +1\) or \(-1\), and the "Even/Odd" concepts from the GeeksforGeeks article.*
+
+**Problem 5: Counting Inversions**
+*   **Task:** Write a function `count_inversions(perm)` that counts how many pairs of numbers are "out of order."
+    *   Example: In `[3, 1, 2]`, the pairs \((3,1)\) and \((3,2)\) are out of order. So there are 2 inversions.
+*   **Why:** This is the standard algorithmic way to determine the "disorder" of a permutation. 
+
+**Problem 6: The Parity Checker**
+*   **Task:** Use your inversion counter to write `is_even(perm)`. 
+    *   *The Math Rule:* If the number of inversions is even, the permutation is even. If it's odd, the permutation is odd. 
+    *   Return `True` for even, `False` for odd. 
+    *   *Bonus:* Try to write it using the "transposition swaps" method from the article instead, and see if you get the same answers.
+*   **Why:** This directly implements the \(sgn(\sigma)\) math from his board. 
+
+---
+
+### Phase 4: LeetCode Style (The Application)
+*Goal: See how this math is used in actual software engineering interviews.*
+
+**Problem 7: The "Next Permutation" Algorithm**
+*   **Task:** Go to LeetCode and look up **Problem 31: Next Permutation**. 
+*   **What it is:** Given an array of numbers, rearrange it into the next lexicographically larger permutation. (e.g., `[1, 2, 3]` becomes `[1, 3, 2]`; but `[3, 2, 1]` wraps around to `[1, 2, 3]`).
+*   **Why:** This is the ultimate test of understanding permutation order. It is a very famous algorithm (used in C++'s `std::next_permutation`). It requires you to understand exactly how permutations are structured without generating all of them.
+
+**Problem 8: The Rubik's Cube / Puzzle Solver (Advanced)**
+*   **Task:** Given a scrambled array (like a 2x2 sliding puzzle), write a function that determines if the puzzle is even solvable. 
+*   **Why:** The FAQ in your GeeksforGeeks text mentioned that parity is important for "determining the solvability of certain problems (e.g., Rubik's cube)." If a puzzle has an odd number of inversions, it might be mathematically impossible to solve!

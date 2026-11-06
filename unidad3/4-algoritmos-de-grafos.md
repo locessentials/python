@@ -19,3 +19,4 @@ has_children: true
   - Kruskal: revisa las aristas de la más barata a la más cara y agrega cada una que no forme un ciclo
 - orden topológico: ordering tasks so each one comes after everything it depends on, in a directed graph with no cycles, the tasks have no times; built on DFS
 - emparejamiento bipartito
+- articulation points
