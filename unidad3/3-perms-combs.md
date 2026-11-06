@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Permutaciones y combinatoria
+title: Permutaciones y combinaciones
 parent: 3. Matemáticas y algoritmos
 nav_order: 3
 has_children: true
 ---
 
-# Permutaciones y combinatoria
+# Permutaciones y combinaciones
 
 El estudio de las permutaciones y la combinatoria constituye uno de los pilares fundamentales de la matemática discreta y tiene aplicaciones directas en el diseño de algoritmos, el análisis de complejidad y la resolución de problemas computacionales. Esta sección establece los conceptos esenciales que conectan la teoría matemática con su implementación práctica en Python.
 

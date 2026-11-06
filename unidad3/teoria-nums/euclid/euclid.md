@@ -3,7 +3,7 @@ layout: default
 title: Euclid
 parent: Teoría de números
 grandparent: 3. Matemáticas y algoritmos
-nav_order: s
+nav_order: 1
 ---
 
 # Euclid
@@ -28,25 +28,25 @@ a = b * cociente (es decir, *quotient*) + residuo (es decir, *remainder*)
 
 En el programa iterativo de Euclides, las variables `a` y `b` se actualizan dentro de un ciclo. La variable `residuo` guarda el residuo de `a % b` para que no se pierda cuando `b` cambia.
 
-[Ver el código en Github](https://github.com/locessentials/python/blob/main/unidad3/euclid/iterative.py)
+[Ver el código en Github](https://github.com/locessentials/python/blob/main/unidad3/unidad3/teoria-nums/euclid/iterative.py)
 
 ### Euclid recursivo
 
 En el programa recursivo de Euclides, cada llamada a la función euclid recibe nuevos valores para `a` y `b`: el `b` anterior y el residuo de `a % b`.
 
-[Ver el código en Github](https://github.com/locessentials/python/blob/main/unidad3/euclid/recursive.py)
+[Ver el código en Github](https://github.com/locessentials/python/blob/main/unidad3/teoria-nums/euclid/recursive.py)
 
 ### Euclid recursivo: show your work
 
 Esta versión de Euclides recursivo usa `print` para mostrar su procedimiento: en cada llamada imprime los valores de a y b, el cociente y el residuo.
 
-[Ver el código en Github](https://github.com/locessentials/python/blob/main/unidad3/euclid/showyourwork.py)
+[Ver el código en Github](https://github.com/locessentials/python/blob/main/unidad3/teoria-nums/euclid/showyourwork.py)
 
 ### Euclid recursivo: mínimo común múltiplo
 
 Esta versión usa Euclides para encontrar el máximo común divisor y con él calcula el mínimo común múltiplo: a * b // mcd.
 
-[Ver el código en Github](https://github.com/locessentials/python/blob/main/unidad3/euclid/withlcm.py)
+[Ver el código en Github](https://github.com/locessentials/python/blob/main/unidad3/teoria-nums/euclid/withlcm.py)
 
 ## Referencias
 
