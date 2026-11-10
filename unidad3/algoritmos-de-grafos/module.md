@@ -176,7 +176,51 @@ Como en el resto de Python, estas anotaciones no se verifican en tiempo de ejecu
 
 ## 3. La clase `Graph`
 
-> *Sección pendiente de desarrollo.*
+La clase `Graph` es la capa de composición del módulo: no reimplementa la adyacencia, sino que administra una lista de objetos `Node` en la que cada nodo conserva su propio diccionario de aristas. La estructura de datos completa es, por tanto, un `list[Node]` en el que cada `Node` mapea índices de vecinos a objetos `Edge`.
+
+```python
+class Graph:
+    def __init__(self, num_nodes: int, undirected: bool=False):
+        self.num_nodes: int = num_nodes
+        self.undirected: bool = undirected
+        self.nodes: list = [Node(j) for j in range(num_nodes)]
+```
+
+El constructor establece dos invariantes que el resto del módulo presupone. Primero, los nodos se indexan de `0` a `num_nodes - 1`, y la posición de un nodo en `self.nodes` coincide con su índice: `self.nodes[i].index == i`. Segundo, el grafo se crea sin aristas; toda adyacencia se introduce después mediante `insert_edge`. La lista se construye con una comprensión que asigna a cada posición su índice, de modo que el invariante se cumple desde el inicio.
+
+### Grafo dirigido y grafo no dirigido
+
+El parámetro `undirected` determina la política de inserción y eliminación de aristas. Con el valor por omisión (`undirected=False`), el grafo es dirigido: `insert_edge(u, v, w)` agrega únicamente la arista `u → v`, y `get_edge(v, u)` devuelve `None` salvo que esa dirección se haya insertado de forma explícita. Con `undirected=True`, una sola llamada a `insert_edge(u, v, w)` agrega la arista en ambas direcciones, y `remove_edge` las elimina de la misma manera. En ambos casos se llama a `insert_edge` una sola vez por arista; la diferencia es que, en el modo no dirigido, el método agrega internamente la arista inversa.
+
+```python
+# Grafo dirigido (undirected=False, valor por omisión)
+g = Graph(5)
+g.insert_edge(0, 3, 1.0)
+g.get_edge(0, 3)     # Edge(0, 3, 1.0)
+g.get_edge(3, 0)     # None
+```
+
+```python
+# Grafo no dirigido (undirected=True)
+g = Graph(5, undirected=True)
+g.insert_edge(0, 3, 1.0)   # una sola llamada
+g.get_edge(0, 3)           # Edge(0, 3, 1.0)
+g.get_edge(3, 0)           # Edge(3, 0, 1.0)
+```
+
+Conviene subrayar que la simetría de un grafo no dirigido no la garantiza la estructura de datos, sino los métodos de `Graph`. La comprobación `if self.undirected` vive únicamente en `Graph.insert_edge`; `Node.add_edge` no conoce ese atributo y se limita a agregar una arista a su propio diccionario. Por eso, si se invoca `g.nodes[u].add_edge(v, w)` directamente, se omite la comprobación y se puede construir un grafo declarado como no dirigido que en realidad tiene una sola dirección, sin que el módulo lo detecte. Los métodos de `Graph` son, por diseño, el punto de entrada previsto.
+
+Cabe señalar, además, que las dos aristas de un par no dirigido son objetos `Edge` distintos, con `from_node` y `to_node` intercambiados. En consecuencia, al recolectar todas las aristas con `make_edge_list`, un grafo no dirigido con `m` aristas produce `2m` entradas, una por cada orientación. Esta distinción es relevante al construir listas de aristas y se retoma en la página de Dijkstra.
+
+### Validación de índices
+
+La validación de índices corresponde a `Graph`, no a `Node`. `insert_edge`, `remove_edge` y `get_edge` verifican que ambos índices se encuentren en el rango `0 ≤ i < num_nodes` y lanzan `IndexError` en caso contrario. `Node` no realiza esta comprobación porque no conoce el tamaño del grafo: un nodo aislado no tiene forma de determinar si un índice de vecino es válido. Esta división de responsabilidades concentra la verificación en la única clase que dispone de la información necesaria.
+
+### `insert_node`
+
+El método `insert_node` extiende el grafo en tiempo de ejecución. Crea un `Node` cuyo índice es el valor actual de `num_nodes`, lo agrega a `self.nodes` e incrementa el contador, con lo cual preserva el invariante de que la posición coincide con el índice.
+
+Los métodos de recorrido y los algoritmos que consumen esta estructura, como `get_edge_list`, `get_sorted_edge_list`, el recorrido en profundidad, el recorrido en anchura y la búsqueda de caminos mínimos, se desarrollan en las páginas correspondientes. Esta sección se limita a la estructura y a sus invariantes; el comportamiento de los métodos en el contexto de un recorrido se presenta allí donde se utilizan.
 
 ---
 
@@ -203,7 +247,7 @@ Como en el resto de Python, estas anotaciones no se verifican en tiempo de ejecu
 Una comparación rápida entre usar las estructuras básicas de la sección **2. Estructuras de datos > Grafos** y usar el módulo `graphs.py`:
 
 | Operación | Con diccionario / lista | Con `graphs.py` |
-|---|---|---|
+|-----------|-------------------------|-----------------|
 | ¿Hay arista entre A y B? | `B in graph[A]` | `g.is_edge(A, B)` |
 | Agregar arista | `graph[A].append(B)` | `g.insert_edge(A, B, w)` |
 | Ver vecinos de A | `graph[A]` | `g.nodes[A].get_edge_list()` |
@@ -212,4 +256,3 @@ Una comparación rápida entre usar las estructuras básicas de la sección **2.
 | Recorrer todas las aristas | `for u in graph: for v in graph[u]: ...` | `g.make_edge_list()` |
 | Copia profunda | `copy.deepcopy(graph)` | `g.make_copy()` |
 | Agregar un nodo nuevo | `graph[new_id] = []` | `g.insert_node("label")` |
-```

@@ -9,7 +9,7 @@ nav_order: 1
 # Problemas básicos
 
 ## Problema 1: contar
-**Tarea:** El programa recibe `n` (número de listas) y luego `n` listas, una por línea. Para cada lista, calcula el número de permutaciones posibles de sus elementos usando la fórmula `m!` (donde `m` es el número de elementos en una lista), de dos formas: a mano con un bucle y con la biblioteca estándar `math`, usando la función incorporada `math.factorial`. Imprime el conteo por cada lista.
+- **Tarea:** El programa recibe `n` (número de listas) y luego `n` listas, una por línea. Para cada lista, calcula el número de permutaciones posibles de sus elementos usando la fórmula `m!` (donde `m` es el número de elementos en una lista), de dos formas: a mano con un bucle y con la biblioteca estándar `math`, usando la función incorporada `math.factorial`. Imprime el conteo por cada lista.
 - **Por qué:** Distingue entre calcular el tamaño de un problema y generar sus salidas. Muchas veces solo se necesita el conteo, como generar sería inviable (`20! ≈ 2.4 × 10¹⁸`). Además, construir el factorial a mano muestra el mecanismo, mientras que usar la biblioteca muestra cómo resolver el problema con una sola línea de código.
 
 [Ver el código en Github](https://github.com/locessentials/python/blob/main/unidad3/perms-combs/prob1-1.py)
