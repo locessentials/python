@@ -3,7 +3,7 @@ layout: default
 title: Ruta más corta
 parent: Algoritmos de grafos
 grandparent: 3. Matemáticas y algoritmos
-nav_order: 4
+nav_order: 5
 ---
 
 # Ruta más corta desde un origen, con pesos no negativos (algoritmo de Dijkstra)

@@ -46,3 +46,8 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor/
+
+# Mermaid diagrams
+mermaid:
+  # Version of mermaid library (pick an available version from jsDelivr)
+  version: "9.1.3"
