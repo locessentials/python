@@ -9,7 +9,6 @@ g.insert_edge(1, 2, 2.0)
 g.insert_edge(1, 4, 1.0)
 g.insert_edge(3, 4, 3.0)
 g.insert_edge(4, 2, 3.0)
-g.insert_edge(4, 3, 3.0)
 
 # Recursive DFS function
 def dfs(graph, node, visited, order, depth=0):
