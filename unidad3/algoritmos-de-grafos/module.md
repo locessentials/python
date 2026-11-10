@@ -137,15 +137,15 @@ def get_edge(self, neighbor: int) -> Union[Edge, None]:
     return None
 ```
 
-Cada elemento del diccionario relaciona a un vecino con la arista que lleva a él. La llave es el índice del nodo vecino y el valor es el objeto `Edge` que conecta a este nodo con ese vecino. Por ejemplo, si el nodo 0 tiene aristas hacia los nodos 3 y 4, su diccionario contiene lo siguiente:
+Cada entrada del diccionario asocia el índice de un nodo vecino con el objeto `Edge` que representa la arista dirigida desde este nodo hacia dicho vecino. La clave es el índice del nodo destino y el valor es la instancia de `Edge` correspondiente. Por ejemplo, si el nodo 0 tiene aristas hacia los nodos 3 y 4, su diccionario de adyacencia contiene:
 
 ```python
-{3: Edge(0, 3, 1.0), 4: Edge(0, 4, 3.0)}   # en forma conceptual
+{3: Edge(0, 3, 1.0), 4: Edge(0, 4, 3.0)}   # representación conceptual
 ```
 
-Usar el vecino como llave permite encontrar directamente la arista hacia un nodo específico con `self.edges[neighbor]`, sin recorrer todas las aristas. Por eso `get_edge` y `remove_edge` son tan cortos.
+Indexar por el nodo vecino permite recuperar la arista hacia un destino específico mediante `self.edges[neighbor]` en tiempo constante, sin necesidad de recorrer el conjunto de aristas. Esta es la razón por la que `get_edge` y `remove_edge` resultan tan concisos.
 
-Esta decisión tiene una consecuencia importante. Como una llave solo puede aparecer una vez en un diccionario, si se llama a `add_edge` dos veces con el mismo vecino, la segunda arista reemplaza a la primera:
+Esta decisión de diseño tiene una consecuencia relevante: dado que las claves de un diccionario son únicas, invocar `add_edge` dos veces con el mismo vecino hace que la segunda arista sobrescriba a la primera:
 
 ```python
 node = Node(0)
@@ -155,44 +155,22 @@ node.num_edges()          # 1
 node.get_edge(3).weight   # 5.0
 ```
 
-Es decir, esta estructura no puede representar aristas múltiples entre los mismos dos nodos.
+En otras palabras, esta estructura no admite aristas múltiples (paralelas) entre un mismo par de nodos.
 
-### Cómo se llaman los métodos
+### Anotaciones de tipo en la firma
 
-Los métodos se llaman por su nombre, con un punto después del objeto y con paréntesis:
+Las firmas usan anotaciones de tipo tanto en los parámetros (`neighbor: int`) como en el valor de retorno (`-> int`). En `get_edge`, `-> Union[Edge, None]` documenta que el método devuelve un `Edge` o `None` cuando no existe arista hacia el vecino. De ahí que `Graph.is_edge` compare con `is not None`.  `Union` proviene de `typing`, lo que explica el `from typing import Union` al inicio del archivo (en Python reciente, la misma anotación admite la forma `Edge | None`). 
 
-```python
-node = Node(0)
-node.add_edge(3, 2.5)
-node.num_edges()    # 1
-node.get_edge(3)    # el objeto Edge que va al nodo 3
-```
+`add_edge` y `remove_edge` omiten la anotación de retorno porque no devuelven valor: mutan el nodo. 
 
-Igual que en `__init__`, Python llena `self` automáticamente con el objeto que está antes del punto. Por eso `node.add_edge(3, 2.5)` lleva dos argumentos aunque la firma tenga tres parámetros. Los paréntesis son necesarios aun cuando no hay argumentos, porque `node.num_edges` sin paréntesis devuelve el método mismo y no su resultado.
-
-`__init__` es la excepción porque nunca se llama por su nombre. Python lo ejecuta cuando se escribe `Node(...)`. Los nombres con doble guion bajo a ambos lados son métodos especiales que Python ejecuta como respuesta a otra sintaxis.
-
-En la práctica, normalmente se llega a los nodos a través del grafo, por ejemplo con `g.nodes[0].get_edge(3)`.
-
-### La flecha `->`
-
-```python
-def num_edges(self) -> int:
-    return len(self.edges)
-```
-
-La flecha es una anotación de tipo para el valor que devuelve el método, y funciona igual que `: int` en los parámetros. En `num_edges`, `-> int` indica que el método devuelve un entero. Como las demás anotaciones, Python no la verifica al ejecutar el programa.
-
-En `get_edge`, `-> Union[Edge, None]` indica que el método devuelve un `Edge` o `None`. Devuelve `None` cuando no hay arista hacia ese vecino, así que quien lo llama tiene que revisar el resultado antes de usarlo. Por eso `Graph.is_edge` compara el resultado con `is not None`. `Union` viene del módulo `typing`, y esa es la razón del `from typing import Union` al inicio del archivo. En versiones recientes de Python, la misma anotación también se puede escribir como `Edge | None`.
-
-`add_edge` y `remove_edge` no tienen flecha porque no devuelven nada. Modifican el nodo y terminan.
+Como en el resto de Python, estas anotaciones no se verifican en tiempo de ejecución; son documentación para el lector y para herramientas de análisis estático.
 
 ### Temas para explorar más adelante
 
-- **`add_edge` construye el `Edge`.** Quien llama solo da el vecino y el peso, y el nodo completa `from_node` con su propio `self.index`.
-- **La revisión en `remove_edge`.** El método revisa `if neighbor in self.edges` antes de borrar, porque `del` con una llave que no existe produce un error.
-- **`get_sorted_edge_list`.** El diccionario guarda las aristas en el orden en que se agregaron, y la versión ordenada da un orden predecible, útil para BFS y DFS.
-- **Validación de índices.** `Node` no revisa si el índice del vecino es válido porque no sabe cuántos nodos tiene el grafo. Esa revisión le corresponde a `Graph`.
+- **`add_edge` construye el `Edge`.** El método recibe solo el vecino y el peso; el campo `from_node` lo completa el propio nodo con `self.index`. Por eso `add_edge(3, 1.0)` basta para crear `Edge(0, 3, 1.0)`. Se retoma en el programa de DFS, donde el recorrido itera sobre los `Edge` ya construidos.
+- **`get_sorted_edge_list`.** El diccionario preserva el orden de inserción; la variante ordenada da un orden de visita predecible y reproducible. Se cubre en detalle en el programa de DFS, y se reutiliza en BFS y en Dijkstra.
+- **La revisión en `remove_edge`.** El método revisa `if neighbor in self.edges` antes de borrar, porque `del` con una llave inexistente produce un error. Se retoma en el programa de BFS, que discute las operaciones de mutación sobre el grafo ya construido.
+- **Validación de índices.** `Node` no valida el índice del vecino porque no conoce el tamaño del grafo; esa responsabilidad recae en `Graph`. Se retoma en el programa de Dijkstra, donde la validación de índices y la construcción del grafo son pasos explícitos del preprocesamiento.
 
 ---
 
