@@ -99,7 +99,100 @@ La única diferencia es que `Edge(from_node=0, ...)` ya no funciona, porque el p
 
 ## 2. La clase `Node`
 
-> *Sección pendiente de desarrollo.*
+Un `Node` representa un nodo del grafo junto con todas las aristas que salen de él. Su atributo central es un diccionario, `edges`, y casi todos sus métodos son una sola operación sobre ese diccionario. Aquí aparecen solo los fragmentos que se analizan; la clase completa está en el archivo `graphs.py`.
+
+### El constructor `__init__`: qué va en la firma y qué va en el cuerpo
+
+```python
+def __init__(self, index: int, label=None):
+    self.index: int = index
+    self.edges: dict = {}
+    self.label = label
+```
+
+La firma de `__init__` indica lo que hay que dar al crear un nodo. El parámetro `index` va en la firma porque cada nodo tiene uno distinto, y es la posición del nodo dentro del grafo. El parámetro `label=None` tiene un valor por defecto, así que es opcional, y se puede escribir `Node(3)` o `Node(3, label="rojo")`. La etiqueta sirve para guardar una característica del nodo, como su color en un grafo coloreado.
+
+En cambio, `edges` no aparece en la firma porque todo nodo nuevo empieza sin aristas, así que la llamada a `Node(...)` no necesita proporcionar ningún valor para ese atributo. El constructor crea un diccionario vacío y las aristas se agregan después, una por una, con `add_edge`.
+
+Hay además una razón técnica para evitar `def __init__(self, index, edges={})`. Python evalúa el valor por defecto una única vez, al procesar la definición de la función, y no en cada invocación. En consecuencia, toda llamada que omita el argumento `edges` —es decir, que no lo pase explícitamente— recibe la misma instancia de diccionario creada en la definición, de modo que una arista agregada a un nodo aparecería en todos los demás:
+
+```python
+a = Node(1)          # no pasa `edges` → usa el diccionario compartido
+b = Node(2)          # no pasa `edges` → usa el MISMO diccionario compartido
+a.edges["x"] = 1
+print(b.edges)       # {'x': 1}  ← a.edges y b.edges son el mismo objeto
+```
+
+Al instanciar `{}` dentro del cuerpo del constructor, cada nodo recibe su propio diccionario y el estado queda correctamente aislado entre instancias.
+
+### El diccionario `edges`
+
+```python
+def add_edge(self, neighbor: int, weight: float):
+    self.edges[neighbor] = Edge(self.index, neighbor, weight)
+
+def get_edge(self, neighbor: int) -> Union[Edge, None]:
+    if neighbor in self.edges:
+        return self.edges[neighbor]
+    return None
+```
+
+Cada elemento del diccionario relaciona a un vecino con la arista que lleva a él. La llave es el índice del nodo vecino y el valor es el objeto `Edge` que conecta a este nodo con ese vecino. Por ejemplo, si el nodo 0 tiene aristas hacia los nodos 3 y 4, su diccionario contiene lo siguiente:
+
+```python
+{3: Edge(0, 3, 1.0), 4: Edge(0, 4, 3.0)}   # en forma conceptual
+```
+
+Usar el vecino como llave permite encontrar directamente la arista hacia un nodo específico con `self.edges[neighbor]`, sin recorrer todas las aristas. Por eso `get_edge` y `remove_edge` son tan cortos.
+
+Esta decisión tiene una consecuencia importante. Como una llave solo puede aparecer una vez en un diccionario, si se llama a `add_edge` dos veces con el mismo vecino, la segunda arista reemplaza a la primera:
+
+```python
+node = Node(0)
+node.add_edge(3, 1.0)
+node.add_edge(3, 5.0)
+node.num_edges()          # 1
+node.get_edge(3).weight   # 5.0
+```
+
+Es decir, esta estructura no puede representar aristas múltiples entre los mismos dos nodos.
+
+### Cómo se llaman los métodos
+
+Los métodos se llaman por su nombre, con un punto después del objeto y con paréntesis:
+
+```python
+node = Node(0)
+node.add_edge(3, 2.5)
+node.num_edges()    # 1
+node.get_edge(3)    # el objeto Edge que va al nodo 3
+```
+
+Igual que en `__init__`, Python llena `self` automáticamente con el objeto que está antes del punto. Por eso `node.add_edge(3, 2.5)` lleva dos argumentos aunque la firma tenga tres parámetros. Los paréntesis son necesarios aun cuando no hay argumentos, porque `node.num_edges` sin paréntesis devuelve el método mismo y no su resultado.
+
+`__init__` es la excepción porque nunca se llama por su nombre. Python lo ejecuta cuando se escribe `Node(...)`. Los nombres con doble guion bajo a ambos lados son métodos especiales que Python ejecuta como respuesta a otra sintaxis.
+
+En la práctica, normalmente se llega a los nodos a través del grafo, por ejemplo con `g.nodes[0].get_edge(3)`.
+
+### La flecha `->`
+
+```python
+def num_edges(self) -> int:
+    return len(self.edges)
+```
+
+La flecha es una anotación de tipo para el valor que devuelve el método, y funciona igual que `: int` en los parámetros. En `num_edges`, `-> int` indica que el método devuelve un entero. Como las demás anotaciones, Python no la verifica al ejecutar el programa.
+
+En `get_edge`, `-> Union[Edge, None]` indica que el método devuelve un `Edge` o `None`. Devuelve `None` cuando no hay arista hacia ese vecino, así que quien lo llama tiene que revisar el resultado antes de usarlo. Por eso `Graph.is_edge` compara el resultado con `is not None`. `Union` viene del módulo `typing`, y esa es la razón del `from typing import Union` al inicio del archivo. En versiones recientes de Python, la misma anotación también se puede escribir como `Edge | None`.
+
+`add_edge` y `remove_edge` no tienen flecha porque no devuelven nada. Modifican el nodo y terminan.
+
+### Temas para explorar más adelante
+
+- **`add_edge` construye el `Edge`.** Quien llama solo da el vecino y el peso, y el nodo completa `from_node` con su propio `self.index`.
+- **La revisión en `remove_edge`.** El método revisa `if neighbor in self.edges` antes de borrar, porque `del` con una llave que no existe produce un error.
+- **`get_sorted_edge_list`.** El diccionario guarda las aristas en el orden en que se agregaron, y la versión ordenada da un orden predecible, útil para BFS y DFS.
+- **Validación de índices.** `Node` no revisa si el índice del vecino es válido porque no sabe cuántos nodos tiene el grafo. Esa revisión le corresponde a `Graph`.
 
 ---
 
@@ -115,7 +208,7 @@ La única diferencia es que `Edge(from_node=0, ...)` ya no funciona, porque el p
 
 ---
 
-## 5. El archivo `main.py` (prueba del módulo)
+## 5. El archivo `test.py` (prueba del módulo)
 
 > *Sección pendiente de desarrollo.*
 

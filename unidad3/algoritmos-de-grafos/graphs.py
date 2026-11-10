@@ -1,4 +1,4 @@
-from typing import Union, List
+from typing import Union
 
 class Edge:
     def __init__(self, from_node: int, to_node: int, weight: float):
