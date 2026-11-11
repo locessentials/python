@@ -153,7 +153,7 @@ La función visita los nodos en profundidad gracias a la pila de llamadas de Pyt
 2. **Apilar un nuevo marco.** La nueva llamada entra en la pila de llamadas con sus propios valores.
 3. **Desapilar al regresar.** Cuando la llamada interna termina, Python la saca de la pila y reanuda la llamada suspendida exactamente donde se quedó.
 
-Ese orden es exactamente lo que produce el comportamiento de profundidad, pues el algoritmo explora una rama completa antes de regresar a los nodos anteriores. El recorrido en anchura que se presenta en la página siguiente usa una cola (FIFO, *first in, first out*), que produce el comportamiento opuesto: explora por niveles porque retoma primero el nodo que llegó antes.
+Ese orden es exactamente lo que produce el comportamiento de profundidad, donde el algoritmo explora una rama completa antes de regresar a los nodos anteriores. El recorrido en anchura que se presenta en la página siguiente usa una cola (FIFO, *first in, first out*), que produce el comportamiento opuesto: explora por niveles porque retoma primero el nodo que llegó antes.
 
 ---
 
@@ -189,7 +189,7 @@ Las dos versiones producen el mismo orden de visita sobre el mismo grafo. La ver
 
 #### El recorrido y sus condiciones
 
-Ahora conviene examinar las piezas que hacen que la recursión termine y que no se repitan nodos.
+Ahora conviene examinar las piezas que hacen que la recursión termine y que no se repitan nodos. La lógica central está en estas tres líneas:
 
 ```python
 for edge in graph.nodes[node].get_sorted_edge_list():
@@ -197,7 +197,7 @@ for edge in graph.nodes[node].get_sorted_edge_list():
         dfs(graph, edge.to_node, visited, order)
 ```
 
-La condición de parada es implícita. Una llamada deja de profundizar cuando ninguno de sus vecinos está sin visitar, porque el ciclo `for` ya no ejecuta ninguna otra llamada recursiva. En ese momento la función retorna y el control vuelve a la llamada anterior, que continúa con el siguiente vecino de su ciclo. Este es el retroceso que da nombre al recorrido.
+En la función `dfs`, la condición de parada es implícita. Una llamada deja de profundizar cuando ninguno de sus vecinos está sin visitar, porque el ciclo `for` ya no ejecuta ninguna otra llamada recursiva. En ese momento la función retorna y el control vuelve a la llamada anterior, que continúa con el siguiente vecino de su ciclo. Este es el retroceso que da nombre al recorrido.
 
 El conjunto `visited` es imprescindible en un grafo no dirigido. Como cada arista existe en ambos sentidos, al llegar a un vecino `v` desde `u` existe una arista de regreso a `u`. Sin el conjunto, el recorrido volvería de `v` a `u` y de `u` a `v` indefinidamente. La comprobación `if edge.to_node not in visited` es la que impide ese rebote.
 
@@ -213,6 +213,33 @@ def get_sorted_edge_list(self) -> list:
     return result
 ```
 
-El método obtiene las llaves del diccionario de aristas, que son los índices de los vecinos, las ordena de menor a mayor y devuelve la lista de objetos `Edge` en ese orden. Ordenar los vecinos no es necesario para que el recorrido sea correcto, pero hace que el orden de visita sea determinista y reproducible: el mismo grafo produce siempre la misma salida, independientemente del orden en que se insertaron las aristas. El diccionario de Python preserva el orden de inserción, de modo que sin la ordenación el recorrido dependería del orden en que se construyó el grafo. La variante sin ordenar, `get_edge_list`, devuelve las aristas en el orden del diccionario.
+El método obtiene las llaves del diccionario de aristas, que son los índices de los vecinos, las ordena de menor a mayor y devuelve la lista de objetos `Edge` en ese orden. 
 
-> **Nota sobre las impresiones.** En el archivo `dfs.py` la función incluye dos `print` adicionales, uno al entrar y otro al salir, además de un parámetro `depth` que controla la indentación de la salida. Esas líneas tienen una función exclusivamente didáctica: permiten ver la pila de llamadas creciendo y decreciendo. No forman parte del algoritmo, y en un programa de producción se eliminan. El código de la sección las omite para que la lógica del recorrido quede en primer plano.
+Ordenar los vecinos no es necesario para que el recorrido sea correcto, pero hace que el orden de visita sea determinista y reproducible: el mismo grafo produce siempre la misma salida, independientemente del orden en que se insertaron las aristas. El diccionario de Python preserva el orden de inserción, de modo que sin la ordenación el recorrido dependería del orden en que se construyó el grafo. La variante sin ordenar, `get_edge_list`, devuelve las aristas en el orden del diccionario.
+
+*Nota sobre las impresiones: En el archivo `dfs.py` la función incluye dos `print` adicionales, uno al entrar y otro al salir, además de un parámetro `depth` que controla la indentación de la salida. Esas líneas tienen una función exclusivamente didáctica: permiten ver la pila de llamadas creciendo y decreciendo. No forman parte del algoritmo, y en un programa de producción se eliminan. El código de la sección las omite para que la lógica del recorrido quede en primer plano.*
+
+### 4. El programa principal
+
+La última parte del programa construye el grafo, ejecuta el recorrido y muestra el resultado:
+
+```python
+start = 0
+visited = set()
+order = []
+
+dfs(g, start, visited, order)
+print("Orden de visita:", order)
+```
+
+Las tres primeras líneas preparan la llamada. `start` indica el nodo desde el que comienza el recorrido. `visited` es un conjunto vacío donde se registran los nodos ya procesados. `order` es una lista vacía donde se acumula el orden de visita.
+
+La llamada `dfs(g, start, visited, order)` ejecuta el recorrido. Como `visited` y `order` son mutables, la función los modifica directamente: al terminar, ambos contienen el resultado del recorrido, sin que `dfs` tenga que devolver nada. Por eso la función no tiene una instrucción `return` con valor, y su anotación de tipo es `-> None`.
+
+La última línea imprime el orden de visita. Para el grafo de trabajo desde el nodo 0, la salida es:
+
+```
+Orden de visita: [0, 1, 2, 4, 3]
+```
+
+Este orden se compara con el que produce el recorrido en anchura en la página siguiente, sobre el mismo grafo y desde el mismo nodo de inicio. Esa comparación muestra la diferencia central entre ambos algoritmos: DFS agota una rama antes de pasar a la siguiente, mientras que BFS explora por niveles.
