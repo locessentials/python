@@ -25,15 +25,3 @@ nav_order: 1
 ## Problema 4: Método de inserción
 - **Tarea:** Escribe una función `ins(lst, x)` que inserte un elemento `x` en cada posición posible de una lista `lst`. Luego úsala para escribir `insm(lst)` que genere permutaciones recursivamente insertando el primer elemento en cada posición de las permutaciones de los elementos restantes.
 - **Por qué:** Refuerza la idea de que generar permutaciones consiste en tomar una solución más pequeña y expandirla.
-
-## Problema 5: Aplicar una permutación
-- **Tarea:** Escribe una función `apply_permutation(perm, lst)` que tome una regla de permutación (como `[2, 3, 1]`) y la aplique a una lista de datos (como `['A', 'B', 'C']`). La función debe devolver la lista reordenada.
-- **Por qué:** Traduce la notación de dos líneas de la pizarra en una herramienta práctica. Pasa de "generar" permutaciones a "usarlas" para transformar datos.
-
-## Problema 6: Composición de permutaciones
-- **Tarea:** Escribe una función `compose(p1, p2)` que tome dos permutaciones y devuelva la permutación compuesta resultante. Ejecútala con dos permutaciones diferentes y demuestra que `compose(p1, p2)` no es igual a `compose(p2, p1)`.
-- **Por qué:** Demuestra directamente la propiedad de no conmutatividad (`σ ∘ τ ≠ τ ∘ σ`). Muestra que el orden importa al transformar datos.
-
-## Problema 7: Paridad e inversiones
-- **Tarea:** Escribe una función `is_even(perm)` que devuelva `True` si una permutación es par y `False` si es impar. Hazlo contando las "inversiones" (cuántos pares de números están fuera de orden) y verificando si esa cuenta es par o impar.
-- **Por qué:** Conecta el código con la teoría de grupos más profunda. Es la forma algorítmica de determinar la paridad (signo) de una permutación sin tener que rastrear físicamente los intercambios.

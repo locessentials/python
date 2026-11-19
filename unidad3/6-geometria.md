@@ -2,7 +2,7 @@
 layout: default
 title: Geometría
 parent: 3. Matemáticas y algoritmos
-nav_order: 5
+nav_order: 6
 ---
 
 # Geometría
