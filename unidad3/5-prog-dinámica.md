@@ -15,3 +15,5 @@ has_children: true
 3. Mostrar cómo deducir de forma rápida y correcta la solución final a partir de las soluciones de todos los subproblemas.
 
 Fuente: *Algorithms Illuminated, Part 3: Greedy Algorithms and Dynamic Programming* de Tim Roughgarden.
+
+memoization vs. tabulation
