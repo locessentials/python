@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Listas y secuencias
+title: Ordenamiento y búsqueda
 parent: 3. Matemáticas y algoritmos
-nav_order: 2
+nav_order: 3
 has_children: true
 ---
 
-# Listas y secuencias
+# Ordenamiento y búsqueda
 
 - Inversión: Analyzing the "sortedness" of a sequence.
 - Búsqueda binaria: Finding an item in a sorted sequence.

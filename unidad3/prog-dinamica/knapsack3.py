@@ -26,6 +26,7 @@ def mochila_dp(p, v, W):
                                                     # + el mayor valor que los objetos anteriores pueden agregar
                                                     # en el espacio que queda después de meter este objeto
                 A[i][c] = max(nto, to)              # seleccionar la mejor de las dos opciones
+    print(A)
     return A
 
 def reconstruir(A, p, v, W):
@@ -41,7 +42,7 @@ def reconstruir(A, p, v, W):
             nto = A[i-1][c]                        # no tomar - total si no se lo agrega
             if to >= nto:                          # si tomarlo fue la mejor opción (en empate, se toma)
                 S.append(i-1)                      # anotar el número del objeto
-                c = c - peso                       # ueda menos espacio
+                c = c - peso                       # queda menos espacio
 
     return S
 

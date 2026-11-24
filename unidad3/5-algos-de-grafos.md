@@ -2,7 +2,7 @@
 layout: default
 title: Algoritmos de grafos
 parent: 3. Matemáticas y algoritmos
-nav_order: 4
+nav_order: 5
 has_children: true
 ---
 

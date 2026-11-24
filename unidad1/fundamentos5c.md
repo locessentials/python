@@ -71,5 +71,6 @@ def procesar(lista, transformar):
 procesar([1, 2, 3], lambda x: x * 2)    # → [2, 4, 6]
 procesar([1, 2, 3], lambda x: x ** 2)   # → [1, 4, 9]
 procesar([1, 2, 3], lambda x: x)        # → [1, 2, 3]   ← función identidad, sin cambios
+```
 
 `procesar` necesita una función, así que cuando quieres que los valores se queden igual, le pasas la función identidad.

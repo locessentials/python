@@ -2,7 +2,7 @@
 layout: default
 title: Y más...
 parent: 3. Matemáticas y algoritmos
-nav_order: 7
+nav_order: 8
 ---
 
 # Planeación de más páginas

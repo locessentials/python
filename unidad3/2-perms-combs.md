@@ -2,7 +2,7 @@
 layout: default
 title: Permutaciones y combinaciones
 parent: 3. Matemáticas y algoritmos
-nav_order: 3
+nav_order: 2
 has_children: true
 ---
 
