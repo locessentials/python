@@ -271,10 +271,6 @@ Las diferencias:
 
 Para darse una idea de la diferencia entre la complejidad de la versión recursiva y la de programación dinámica, se puede comparar cuánto trabajo hace cada una para calcular el número del renglón 30, posición 15. La versión recursiva, `pascal(30, 15)`, hace **310,235,039** llamadas. La programación dinámica hace solo **496** sumas, una por cada número del triángulo hasta el renglón 30, y después puede usar ese mismo triángulo para dar el valor de cualquier posición de esos renglones sin volver a calcular nada.
 
-## Complejidad
-
-Para darse una idea de la diferencia: para calcular `pascal(30, 15)`, la versión recursiva hace **310,235,039** llamadas. La programación dinámica hace **496** sumas, una por cada número del triángulo hasta el renglón 30, y con esa misma tabla puede responder cualquier posición de esos renglones.
-
 | Versión | Tiempo | Memoria |
 |---------|--------|---------|
 | Recursiva (y `lambda`) | Exponencial: casi 2ⁿ llamadas en el peor caso (la posición de en medio) | O(*n*): solo las llamadas pendientes en la pila |
