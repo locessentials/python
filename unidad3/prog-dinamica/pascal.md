@@ -202,11 +202,11 @@ Como la versión recursiva no guarda ningún resultado, el número de llamadas c
 
 **Versión recursiva con `lambda`**
 
+El código tiene la misma función recursive escrita como una `lambda`. Como una `lambda` no puede tener `return` ni bloques `if`, el `if` se escribe como **expresión condicional**: `VALOR_SI if CONDICIÓN else VALOR_NO`. La `lambda` se puede llamar a sí misma porque está guardada en el nombre `pascal`, y Python busca ese nombre en el momento de cada llamada.
+
 ```python
 pascal = lambda n, k : 1 if k == 0 or n == k else pascal(n-1, k-1) + pascal> (n-1, k)
 ```
-
-El código tiene la misma función recursive escrita como una `lambda`. Como una `lambda` no puede tener `return` ni bloques `if`, el `if` se escribe como **expresión condicional**: `VALOR_SI if CONDICIÓN else VALOR_NO`. La `lambda` se puede llamar a sí misma porque está guardada en el nombre `pascal`, y Python busca ese nombre en el momento de cada llamada.
 
 <span class="clear"></span>
 
