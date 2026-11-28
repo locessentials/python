@@ -31,6 +31,7 @@ def triangle(n):
         for k in range(1, renglon):
             nuevo_renglon[k] = A[renglon - 1][k - 1] + A[renglon - 1][k] 
         A.append(nuevo_renglon)
+    print(A)
     return A
 
 # Look up a value in the triangle

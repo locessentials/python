@@ -3,7 +3,7 @@ layout: default
 title: Triángulo de Pascal
 parent: Programación dinámica
 grandparent: 3. Matemáticas y algoritmos
-nav_order: 1
+nav_order: 2
 ---
 
 # Triángulo de Pascal
@@ -205,7 +205,7 @@ Como la versión recursiva no guarda ningún resultado, el número de llamadas c
 El código tiene la misma función recursive escrita como una `lambda`. Como una `lambda` no puede tener `return` ni bloques `if`, el `if` se escribe como **expresión condicional**: `VALOR_SI if CONDICIÓN else VALOR_NO`. La `lambda` se puede llamar a sí misma porque está guardada en el nombre `pascal`, y Python busca ese nombre en el momento de cada llamada.
 
 ```python
-pascal = lambda n, k : 1 if k == 0 or n == k else pascal(n-1, k-1) + pascal> (n-1, k)
+pascal = lambda n, k : 1 if k == 0 or n == k else pascal(n-1, k-1) + pascal(n-1, k)
 ```
 
 <span class="clear"></span>
