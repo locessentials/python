@@ -91,13 +91,13 @@ Muestra por qué la recursión directa sin guardar resultados tiene complejidad 
 
 Aplica programación dinámica descendente (*top-down*): mantiene la idea recursiva, pero guarda los resultados en `t` para que cada subproblema se resuelva una sola vez (O(n) en tiempo y O(n) en espacio).
 
-[Ver el código en GitHub](https://github.com/locessentials/python/blob/main/unidad3/prog-dinamica/fib2.py)
+[Ver el código en GitHub](https://github.com/locessentials/python/blob/main/unidad3/prog-dinamica/fib1.py)
 
 ### Versión 3: Tabulación y optimización de espacio
 
 Construye la solución de abajo hacia arriba (*bottom-up*) sin recursión y comprime el arreglo de programación dinámica a solo dos variables (O(n) en tiempo y O(1) en espacio). Es un buen contraste con el triángulo de Pascal, donde una tabla bidimensional usa O(n²) de espacio.
 
-[Ver el código en GitHub](https://github.com/locessentials/python/blob/main/unidad3/prog-dinamica/fib3.py)
+[Ver el código en GitHub](https://github.com/locessentials/python/blob/main/unidad3/prog-dinamica/fib2.py)
 
 ### Versión 4: Fórmula de Binet (teoría de números, sin programación dinámica)
 
@@ -105,4 +105,4 @@ Cuando las matemáticas ofrecen una fórmula cerrada, se puede pasar directo a O
 
 Aunque varios ejemplos siguientes de programación dinámica en esta unidad (como el triángulo de Pascal o el problema de la mochila) ayudan a reducir la complejidad, aquí una fórmula cerrada de teoría de números es la vía más directa. Conviene analizar siempre cuándo usar programación dinámica y cuándo no.
 
-[Ver el código en GitHub](https://github.com/locessentials/python/blob/main/unidad3/prog-dinamica/fib4.py)
+[Ver el código en GitHub](https://github.com/locessentials/python/blob/main/unidad3/prog-dinamica/fib3.py)

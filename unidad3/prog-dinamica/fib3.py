@@ -1,11 +1,11 @@
-# Fibonacci: tabulación
+# Fibonacci: fórmula cerrada de teoría de números (sin PD)
 
-def fib(n):
-  a, b = 0, 1
-  for _ in range(n):
-    a, b = b, a + b
-  return a
+import math
 
+fi = (1 + math.sqrt(5)) / 2
+fi_c = (1 - math.sqrt(5)) / 2
+
+fn = lambda n: ((fi**n) - (fi_c**n)) / math.sqrt(5)
 
 for i in range(50):
-  print(f"n={i} -> {fib(i)}")
+  print(f"n={i} -> {round(fn(i))}")
